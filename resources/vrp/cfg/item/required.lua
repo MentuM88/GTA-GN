@@ -13,6 +13,18 @@ items["foin"] = {"Foin","",nil,0.1}
 items["jeton"] = {"Jeton de casino","",nil,0.1}
 items["caisse"] = {"Caisse de médicaments usagés","",nil,0.1}
 items["caissearme"] = {"Caisse de pièces d'armement","",nil,0.3}
+items["cube"] = {"Bagnole comprimée","Cube de ferraille",nil,30}
+--TRESOR
+items["diamant"] = {"Diamant","",nil,15}
+items["meteorite"] = {"Meteorite","",nil,15}
+items["sel"] = {"Sel","",nil,10}
+items["tresor"] = {"Tresor","",nil,50}
+items["pneu"] = {"Pneu Rechappé","",nil,1}
+items["lingot"] = {"lingot inerte","",nil,1}
+items["raisin"] = {"raisin","",nil,0.2}
+items["vin"] = {"vin","",nil,0.2}
+items["champagne"] = {"champagne","",nil,0.2}
+
 
 
 -- money

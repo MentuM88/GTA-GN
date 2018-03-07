@@ -3,9 +3,10 @@ server_scripts{
   "deletepoliceweapons-server.lua",
   "me-server.lua",
   "ooc-server.lua",
+  "handsup-server.lua",
   --"deathmessages-server.lua",
-  "deletevehicle-server.lua",
-  "weathersync-server.lua",
+  --"deletevehicle-server.lua",
+  --"weathersync-server.lua",
   --"fix-server.lua",
   "dispatch-server.lua"
 }
@@ -20,9 +21,13 @@ client_scripts{
   --"deathmessages-client.lua",
   "gameui-client.lua",
   --"names-client.lua",
-  "deletevehicle-client.lua",
-  "weathersync-client.lua",
+  --"deletevehicle-client.lua",
+  --"weathersync-client.lua",
   --"fix-client.lua",
   "missiontext-client.lua",
   "noweapondrops-client.lua"
  }
+
+   exports {
+    'getSurrenderStatus',
+}

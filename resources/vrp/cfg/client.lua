@@ -5,7 +5,7 @@ local cfg = {}
 cfg.iplload = true
 
 cfg.voice_proximity = 20.0 -- default voice proximity (outside)
-cfg.voice_proximity_vehicle = 5.0
+cfg.voice_proximity_vehicle = 9.0
 cfg.voice_proximity_inside = 9.0
 
 cfg.gui = {
@@ -28,8 +28,8 @@ cfg.controls = {
     open = {3,311}, -- K to open the menu
   },
   request = {
-    yes = {1,166}, -- Michael, F5
-    no = {1,167} -- Franklin, F6
+    yes = {1,96}, -- Numbpad+
+    no = {1,97} -- Numbpad-
   }
 }
 
@@ -48,6 +48,7 @@ cfg.coma_disable_menu = false
 
 -- see https://wiki.fivem.net/wiki/Screen_Effects
 cfg.coma_effect = "DeathFailMPIn"
+cfg.drug_effect = "PeyoteIn"
 
 -- if true, vehicles can be controlled by others, but this might corrupts the vehicles id and prevent players from interacting with their vehicles
 cfg.vehicle_migration = false

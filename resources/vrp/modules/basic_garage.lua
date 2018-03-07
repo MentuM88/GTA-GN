@@ -286,9 +286,9 @@ local function build_client_garages(source)
         end
 
         vRPclient.addBlip(source,{x,y,z,gcfg.blipid,gcfg.blipcolor,lang.garage.title({gtype})})
-        vRPclient.addMarker(source,{x,y,z-1,2,2,2,0,255,125,125,150})
+        vRPclient.addMarker(source,{x,y,z-1,5,5,5,0,255,125,125,150})
 
-        vRP.setArea(source,"vRP:garage"..k,x,y,z,1,1.5,garage_enter,garage_leave)
+        vRP.setArea(source,"vRP:garage"..k,x,y,z,5,5,garage_enter,garage_leave)
       end
     end
   end
@@ -417,7 +417,10 @@ local function ch_repair(player,choice)
       vRPclient.playAnim(player,{false,{task="PROP_HUMAN_BUM_BIN"},false})
       SetTimeout(15000, function()
         vRPclient.fixeNearestVehicle(player,{7})
+        vRP.giveInventoryItem({user_id,"metal",1})
+        vRP.giveInventoryItem({user_id,"plastique",1})
         vRPclient.stopAnim(player,{false})
+
       end)
     end
   end
@@ -431,7 +434,8 @@ local function ch_open(player,choice)
     if vRP.tryGetInventoryItem(user_id,"chalumeau",1,true) then
       vRPclient.playAnim(player,{false,{task="WORLD_HUMAN_WELDING"},false})
       SetTimeout(15000, function()
-        vRPclient.vc_toggleLock(player,{7})
+        tvRP.vc_toggleLock(veh)
+        tvRP.playSound("HUD_MINI_GAME_SOUNDSET","5_SEC_WARNING")
         vRPclient.stopAnim(player,{false})
       end)
     end

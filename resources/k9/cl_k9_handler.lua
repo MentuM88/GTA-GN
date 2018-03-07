@@ -282,7 +282,7 @@ Citizen.CreateThread(function()
 		Citizen.Wait(0)
 
 		-- Toggle Menu
-		if IsControlJustPressed(1, 182) then -- LEFTALT + Z
+		if IsControlJustPressed(1, 288) then -- LEFTALT + Z
 			TriggerServerEvent('K9:SendMenuToggle')
 		end
 

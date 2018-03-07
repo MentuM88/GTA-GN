@@ -13,10 +13,10 @@ local currentlocation = nil
 
 local garages = {
     {name="Garage", colour=17, id=357, x=215.124, y=-791.377, z=29.646, h=0.0},
-    {name="Garage", colour=17, id=357, x=-334.685, y=289.773, z=84.705, h=0.0},
-    {name="Garage", colour=17, id=357, x=-55.272, y=-1838.71, z=25.442, h=0.0},
-    {name="Garage", colour=17, id=357, x=126.434, y=6610.04, z=30.750, h=0.0},
-    {name="Garage", colour=17, id=357, x=1712.32, y=3594.61, z=35.41, h=0.0},
+    {name="Garage", colour=17, id=357, x=251.13159179688, y=-751.53112792969, z=34.638336181641, h=0.0},
+    {name="Garage", colour=17, id=357, x=231.78349304199,y=-795.14501953125,z=29.646, h=0.0},
+    {name="Garage", colour=17, id=357, x=237.37539672852,y=-778.44165039063,z=29.646, h=0.0},
+    -- {name="Garage", colour=17, id=357, x=1712.32, y=3594.61, z=35.41, h=0.0},
 }
 
 vehicles = {}
@@ -394,7 +394,7 @@ Citizen.CreateThread(function()
   while true do
     Citizen.Wait(0)
     for _, garage in pairs(garages) do
-      DrawMarker(1, garage.x, garage.y, garage.z, 0, 0, 0, 0, 0, 0, 3.001, 3.0001, 0.5001, 0, 155, 255, 200, 0, 0, 0, 0)
+      DrawMarker(1, garage.x, garage.y, garage.z, 0, 0, 0, 0, 0, 0, 8.001, 8.0001, 0.5001, 0, 155, 255, 200, 0, 0, 0, 0)
       if GetDistanceBetweenCoords(garage.x, garage.y, garage.z, GetEntityCoords(LocalPed())) < 3 and IsPedInAnyVehicle(LocalPed(), true) == false then
         ply_drawTxt(lang_string.menu8,0,1,0.5,0.8,0.6,255,255,255,255)
         if IsControlJustPressed(1, 86) then

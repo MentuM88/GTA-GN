@@ -1,13 +1,13 @@
 INTERIORS = {
     -- HOPITAL
-    [1] = {id = 1, x = 294.58, y = -1447.96, z = 29.97,  name = "Sortir de l'hopital", destination = {2}},
-	[2] = {id = 2, x = 251.32405090332, y = -1367.2664794922, z = 39.534370422363,  name = "Entrer dans l'Hopital", destination = {1}},
+    [1] = {id = 1, x = 240.50773620605, y = -1379.4248046875, z = 33.741641998291,  name = "Sortir de l'hopital", destination = {2}},
+	[2] = {id = 2, x = 275.23, y = -1361.05, z = 24.54,  name = "Entrer dans l'Hopital", destination = {1}},
     
 
 
-   --[[ -- FIB
-    [4] = {id = 4, x = 138.18788146973, y = -764.86633300781, z = 45.75199508667,  name = "Exit FBI", destination = {5}},
-    [5] = {id = 5, x = 136.36924743652, y = -749.36987304688, z = 258.15179443359,  name = "Enter FBI", destination = {4}},
+   -- ARCADIUS 1
+    [4] = {id = 4, x = -115.50345611572,y=-604.49530029297,z=36.280715942383,  name = "Sortie Grand Bureau", destination = {5}},
+    [5] = {id = 5, x = -141.1987, y=-620.913, z=168.8205,  name = "Entree Grand Bureau", destination = {4}},
 
     -- FIB GARAGE
     [6] = {id = 6, x = 142.06883239746, y = -768.97241210938, z = 45.752010345459, h = 72.884956359863, name = "FIB Building", destination = {7}},
@@ -17,10 +17,10 @@ INTERIORS = {
     [8] = {id = 8, x = 929.73, y = 41.8, z = 81.1, h = 35.407787322998, name = "Exit", destination = {9}},
     [9] = {id = 9, x = -1394.5030517578, y = -596.09210205078, z = 30.319562911987, h = 205.4248046875, name = "Enter", destination = {8}},
 
-    -- HOPITAL Dead
+ --[[   -- HOPITAL Dead
     [12] = {id = 12, x = 240.50773620605, y = -1379.4248046875, z = 33.741641998291,  name = "Exit Morgue", destination = {13}},
     [13] = {id = 13,x = 285.69213867188, y = -1351.2567138672, z = 24.534639358521,  name = "Enter Morgue", destination = {12}},
-
+--]]
 --	Police Gun
     [14] = {id = 14, x = 452.10162353516, y = -982.51348876953, z = 30.689580917358,  name = "Exit Armory", destination = {15}},
     [15] = {id = 15, x = 454.17575073242, y = -982.42846679688, z = 30.689605712891,  name = "Enter Armory", destination = {14}},
@@ -39,16 +39,23 @@ INTERIORS = {
     [22] = {id = 22, x =  -262.89254760742, y = -713.45825195313, z = 71.032730102539,  name = "Enter Home", destination = {23}},
     [23] = {id = 23,x = -271.89880371094, y = -693.51745605469, z = 34.276473999023,  name = "Exit Home", destination = {22}},	
     -- MAIRIE
-    [24] = {id = 24, x=134.635, y=-765.831, z=242.152,  name = "Entrée Mairie", destination = {25}},
-    [25] = {id = 25,x = -428.65, y = 1110.58, z = 327.68,  name = "Sortie Mairie", destination = {24}},  
+    --[[[24] = {id = 24, x =134.635, y=-765.831, z=242.152,  name = "Entrée Mairie", destination = {25}},
+    [25] = {id = 25,x = -428.65, y = 1110.58, z = 327.68,  name = "Sortie Mairie", destination = {24}},  --]]
     -- CULTE
     [26] = {id = 26, x= -1003.68, y = -477.99, z = 50.03,  name = "Entrée Etablissement", destination = {27}},
     [27] = {id = 27,x = -724.14, y = 73.94 , z = 55.86,  name = "Sortie Etablissement", destination = {26}},  
---[[     -- TEST
-    [28] = {id = 26, x= 1006.967, y = -3102.079,z = -39.0035,  name = "Entrée Etablissement", destination = {29}},
-    [29] = {id = 27,x = -730.66, y = 93.24 , z = 55.93,  name = "Sortie Etablissement", destination = {28}}, --]]
- -- TEST2
---[[    [30] = {id = 30, x= -8.74, y = 6652.97,z = 31.11,  name = "Entrée Etablissement", destination = {31}},
-    [31] = {id = 31,x = -1908.024, y=-573.4244, z=19.09722,  name = "Sortie Etablissement", destination = {30}}, --]]
+
+     -- MAZE BANK
+    [32] = {id = 32, x = -67.01781463623, y=-801.84991455078, z=44.227294921875,  name = "Entrée Bureau moyen", destination = {33}},
+    [33] = {id = 33,x = -75.44054, y=-827.1487, z=243.3859,  name = "Sortie Bureau moyen", destination = {32}}, 
+--[[    --  NEIGE POL
+    [28] = {id = 26, x= 3220.7004394531, y=-4739.0859375, z=112.07357788086,  name = "Entrée NEIGE Milice", destination = {29}},
+    [29] = {id = 27,x = 454.16171264648, y=-979.42614746094, z=30.689580917358,  name = "Sortie NEIGE milice", destination = {28}},
+    -- NEIGE REB
+   [30] = {id = 30, x= 5347.5791015625, y=-5187.6469726563, z=82.786491394043,  name = "Entrée NEIGE rebel", destination = {31}},
+    [31] = {id = 31,x = -330.17468261719, y=6087.0551757813,z=1.454788208008,  name = "Sortie NEIGE rebel", destination = {30}}, --]]
+        -- NEIGE REB2
+   [34] = {id = 34, x= 5347.5791015625, y=-5187.6469726563, z=82.786491394043,  name = "Entrée NEIGE", destination = {35}},
+[35] = {id = 35, x = -542.10321044922, y=5328.59765625, z=77.14070892334,  name = "Sortie NEIGE", destination = {34}}, 
 
 }

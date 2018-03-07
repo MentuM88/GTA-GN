@@ -14,5 +14,7 @@ files{
   "gui/img/blue.jpg",
   "gui/img/code.jpg",
   "gui/img/grey.jpg",
-  "gui/img/red.jpg"
+  "gui/img/red.jpg",
+  "gui/img/phonegn.jpg"
+
 }

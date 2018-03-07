@@ -41,7 +41,7 @@ end
 ---- permissions (optional)
 ---- not_uniform (optional): if true, the cloakroom will take effect directly on the player, not as a uniform you can remove
 cfg.cloakroom_types = {
-  ["police"] = {
+  --[[["police"] = {
     _config = { permissions = {"police.cloakroom"} },
     ["Male uniform"] = {
       [3] = {30,0},
@@ -59,7 +59,7 @@ cfg.cloakroom_types = {
       [11] = {48,0},
       ["p2"] = {2,0}
     }
-  },
+  },--]]
   --[[["Avocat"] = {
     _config = { permissions = {"Lawyer.cloakroom"} },
     ["Male uniform"] = {
@@ -83,8 +83,8 @@ cfg.cloakroom_types = {
     _config = { not_uniform = true },
     ["Male"] = surgery_male,
     ["Female"] = surgery_female
-  },
-   ["Santa"] = {
+  }
+  --[[ ["Santa"] = {
     _config = { permissions = {"santa.cloakroom"} },
     ["Santa Outfit"] = santa
     },
@@ -99,7 +99,7 @@ cfg.cloakroom_types = {
     ["Militaire"] = military,
 	["Female"] = cop_female
   },
-  --[[["Chef"] = {
+  ["Chef"] = {
     _config = { permissions = {"Chief.cloakroom"} },
     ["Chief"] = chief_male
   },
@@ -107,7 +107,7 @@ cfg.cloakroom_types = {
     _config = { permissions = {"Commander.cloakroom"} },
     ["Trooper"] = hway_male
   },--]]
-  ["Lieutenant"] = {
+--[[  ["Lieutenant"] = {
     _config = { permissions = {"Lieutenant.cloakroom"} },
     ["Lieutenant"] = lieutenant_male,
     ["Militaire"] = military
@@ -146,27 +146,27 @@ cfg.cloakroom_types = {
     ["Male"] = sheriff_male,
     ["Militaire"] = military,
     ["Female"] = sheriff_female
-  }
+  }--]]
 }
 
 cfg.cloakrooms = {
-  {"police", 459.01037597656,-992.32800292969,30.689575195313},
-  {"Officer", 459.01037597656,-992.32800292969,30.689575195313},
+  --{"police", 459.01037597656,-992.32800292969,30.689575195313},
+  --{"Officer", 459.01037597656,-992.32800292969,30.689575195313},
   --{"Chief", 459.01037597656,-992.32800292969,30.689575195313},
   --{"Bounty", 575.40698242188,-3121.94921875,18.768627166748},
   --{"Commander", 459.01037597656,-992.32800292969,30.689575195313},
-  {"Captain", 459.01037597656,-992.32800292969,30.689575195313},
-  {"Lieutenant", 459.01037597656,-992.32800292969,30.689575195313},
-  {"Detective", 459.01037597656,-992.32800292969,30.689575195313},
-  {"Sergeant", 459.01037597656,-992.32800292969,30.689575195313},
+  -- {"Captain", 459.01037597656,-992.32800292969,30.689575195313},
+  -- {"Lieutenant", 459.01037597656,-992.32800292969,30.689575195313},
+  -- {"Detective", 459.01037597656,-992.32800292969,30.689575195313},
+  -- {"Sergeant", 459.01037597656,-992.32800292969,30.689575195313},
   --{"police", 369.9228515625,-1607.12976074219,29.291934967041},
-  {"police", 1848.2177734375,3689.5593261719,34.267040252686}, -- sandy shores
-  {"police", -448.53857421875,6009.2690429688,31.716375350952}, -- paleto
-  {"SWAT", 459.01037597656,-992.32800292969,30.689575195313}, 
-  {"sheriff", 459.01037597656,-992.32800292969,30.689575195313},
+  -- {"police", 1848.2177734375,3689.5593261719,34.267040252686}, -- sandy shores
+  -- {"police", -448.53857421875,6009.2690429688,31.716375350952}, -- paleto
+  -- {"SWAT", 459.01037597656,-992.32800292969,30.689575195313}, 
+  -- {"sheriff", 459.01037597656,-992.32800292969,30.689575195313},
   --{"Deputy", 459.01037597656,-992.32800292969,30.689575195313},
-  {"sheriff", 1849.7268066406,3689.9221191406,34.267040252686}, -- sandy shores
-  {"sheriff", -447.44305419922,6007.9516601563,31.716375350952}, -- paleto
+  -- {"sheriff", 1849.7268066406,3689.9221191406,34.267040252686}, -- sandy shores
+  -- {"sheriff", -447.44305419922,6007.9516601563,31.716375350952}, -- paleto
   --{"Trooper", 459.01037597656,-992.32800292969,30.689575195313},
   --{"Lawyer",105.48087310791,-1088.82177734375,29.3024787902832},
   {"surgery",1849.7425,3686.5759,34.2670},----first spawn change skin
@@ -184,7 +184,7 @@ cfg.cloakrooms = {
   {"surgery",1196.89221191406,2710.220703125,38.2226066589355},
   {"surgery",-3178.01000976563,1043.21044921875,20.8632164001465},
   {"surgery",-1101.15161132813,2710.8203125,19.1078643798828},
-  {"Urgences",244.1099395752,-1382.8720703125,39.534328460693},
+  --{"Urgences",244.1099395752,-1382.8720703125,39.534328460693},
   --{"Santa",-1373.0778808594,-2677.6694335938,13.944942474365} -- Santa's Cloakroom
 }
 

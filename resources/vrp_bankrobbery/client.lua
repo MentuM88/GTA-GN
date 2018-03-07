@@ -24,92 +24,124 @@ function bank_drawTxt(x,y ,width,height,scale, text, r,g,b,a, outline)
     DrawText(x - width/2, y - height/2 + 0.005)
 end
 
-local banks = {
+--[[local banks = {
 	["fleeca"] = {
 		position = { ['x'] = 147.04908752441, ['y'] = -1044.9448242188, ['z'] = 29.36802482605 },
-		reward = 10000 + math.random(200000,400000),
+		reward = 50000 + math.random(200000,800000),
 		nameofbank = "Fleeca centre ville",
 		lastrobbed = 0
 	},
 	["fleeca2"] = {
 		position = { ['x'] = -2957.6674804688, ['y'] = 481.45776367188, ['z'] = 15.697026252747 },
-		reward = 10000 + math.random(200000,400000),
+		reward = 50000 + math.random(200000,300000),
 		nameofbank = "Fleeca Bank (Autoroute)",
 		lastrobbed = 0
 	},
 	["blainecounty"] = {
 		position = { ['x'] = -107.06505584717, ['y'] = 6474.8012695313, ['z'] = 31.62670135498 },
-		reward = 10000 + math.random(200000,400000),
+		reward = 30000 + math.random(200000,500000),
 		nameofbank = "Blaine County Savings (Paleto)",
 		lastrobbed = 0
-	},
+	},--]]
 	["PrincipalBank"] = {
 		position = { ['x'] = 255.001098632813, ['y'] = 225.855895996094, ['z'] = 101.005694274902 },
-		reward = math.random(400000,700000),
+		reward = math.random(800000,1000000),
 		nameofbank = "Principal bank (Centre Ville)",
 		lastrobbed = 0
 	},
-	["Bateau"] = {
-		position = { ['x'] = -2052.54, ['y'] = -1028.92, ['z'] = 8.97 },
-		reward = math.random(250000,400000),
+	--[[["Bateau"] = {
+		position = { ['x'] = -2070.98, ['y'] = -1022.44, ['z'] = 11.91 },
+		reward = math.random(100000,250000),
 		nameofbank = "Bateau",
 		lastrobbed = 0
 	},
 	["ForS"] = {
 		position = { ['x'] = -226.26, ['y'] = -2000.46, ['z'] = 24.69 },
-		reward = math.random(200000,400000),
+		reward = math.random(100000,200000),
 		nameofbank = "Fame or Shame (Stadium)",
 		lastrobbed = 0
 	},
-	["Porte Avion"] = {
-		position = { ['x'] = 3068.54, ['y'] = -4752.05, ['z'] = 6.08 },
+	["Prison"] = {
+		position = { ['x'] = 1719.96, ['y'] = 2649.48, ['z'] = 45.56 },
 		reward = math.random(200000,400000),
-		nameofbank = "Porte Avion",
+		nameofbank = "Prison",
 		lastrobbed = 0
 	},
-	["Cargo"] = {
-		position = { ['x'] = 850.9, ['y'] = -2878.32, ['z'] = 11.27 },
-		reward = math.random(200000,400000),
-		nameofbank = "Cargo",
+	["Unicorn"] = {
+		position = { ['x'] = 96.80, ['y'] = -1290.25, ['z'] = 29.26 },
+		reward = math.random(100000,200000),
+		nameofbank = "Unicorn",
 		lastrobbed = 0
 	},
-	["Labos"] = {
-		position = { ['x'] = -2286.53, ['y'] = 355.54, ['z'] = 174.08 },
-		reward = math.random(200000,400000),
+	["Casino"] = {
+		position = { ['x'] = 1023.58, ['y'] = 143.19, ['z'] = 85.18 },
+		reward = 200000,
 		nameofbank = "Laboratoire",
 		lastrobbed = 0
-	}
-	--["fleeca3"] = {
-		--position = { ['x'] = -1212.2568359375, ['y'] = -336.128295898438, ['z'] = 36.7907638549805 },
-		--reward = 30000 + math.random(100000,200000),
-		--nameofbank = "Fleeca Bank (Vinewood Hills)",
-		--lastrobbed = 0
-	--},
-	--["fleeca4"] = {
-		--position = { ['x'] = -354.452575683594, ['y'] = -53.8204879760742, ['z'] = 48.0463104248047 },
-		--reward = 30000 + math.random(100000,200000),
-		--nameofbank = "Fleeca Bank (Burton)",
-		--lastrobbed = 0
-	--},
-	--["fleeca5"] = {
-		--position = { ['x'] = 309.967376708984, ['y'] = -283.033660888672, ['z'] = 53.1745223999023 },
-		--reward = 30000 + math.random(100000,200000),
-		--nameofbank = "Fleeca Bank (Alta)",
-		--lastrobbed = 0
-	--},
-	--["fleeca6"] = {
-		--position = { ['x'] = 1176.86865234375, ['y'] = 2711.91357421875, ['z'] = 38.097785949707 },
-		--reward = 30000 + math.random(100000,200000),
-		--nameofbank = "Fleeca Bank (Desert)",
-		--lastrobbed = 0
-	--},
-	--["pacific"] = {
-		--position = { ['x'] = 255.001098632813, ['y'] = 225.855895996094, ['z'] = 101.005694274902 },
-		--reward = 60000 + math.random(100000,200000),
-		--nameofbank = "Pacific Standard PDB (Downtown Vinewood)",
-		--lastrobbed = 0
-	--}
+	},
+	["Bar des motards"] = {
+		position = { ['x'] = -561.59, ['y'] = 281.45, ['z'] = 85.67 },
+		reward = 200000,
+		nameofbank = "Bar des motards",
+		lastrobbed = 0
+	},
+	["Secte"] = {
+		position = { ['x'] = -699.31, ['y'] = 47.28, ['z'] = 44.03 },
+		reward = 200000,
+		nameofbank = "Secte",
+		lastrobbed = 0
+	},
+	["Mairie"] = {
+		position = { ['x'] = -442.85, ['y'] = 1061.51, ['z'] = 327.68 },
+		reward = 200000,
+		nameofbank = "Mairie",
+		lastrobbed = 0
+	},
+	["Fabrique d'arme"] = {
+		position = { ['x'] = 821.99, ['y'] = -2161.72, ['z'] = 29.61 },
+		reward = 200000,
+		nameofbank = "Fabrique d'arme",
+		lastrobbed = 0
+	},
+	["LS custom"] = {
+		position = { ['x'] = -344.61, ['y'] = -123.23, ['z'] = 39.00 },
+		reward = 200000,
+		nameofbank = "LS custom",
+		lastrobbed = 0
+	},
+	["Cuisine central"] = {
+		position = { ['x'] = 967.39, ['y'] = -1636.91, ['z'] = 30.11 },
+		reward = 200000,
+		nameofbank = "Cuisine central",
+		lastrobbed = 0
+	},
+	["Sandy"] = {
+		position = { ['x'] = 1536.57, ['y'] = 3798.01, ['z'] = 34.45 },
+		reward = 200000,
+		nameofbank = "Sandy",
+		lastrobbed = 0
+	},
+	["Entrepot agricole"] = {
+		position = { ['x'] =  2488.57, ['y'] = 4962.34, ['z'] = 44.75 },
+		reward = 200000,
+		nameofbank = "Entrepot Agricole",
+		lastrobbed = 0
+	},
+	["Bijouterie"] = {
+		position = { ['x'] =  -620.46, ['y'] = -224.42, ['z'] = 38.05 },
+		reward = 100000,
+		nameofbank = "Bijouterie",
+		lastrobbed = 0
+	},
+	["Hotel de luxe"] = {
+		position = { ['x'] = -563.55, ['y'] = -95.15, ['z'] = 40.33 },
+		reward = 250000,
+		nameofbank = "hotel de luxe",
+		lastrobbed = 0
+	},--]]
+
 }
+
 
 
 RegisterNetEvent('es_bank:currentlyrobbing')
@@ -146,17 +178,6 @@ AddEventHandler('es_bank:robberycomplete', function(reward)
 	secondsRemaining = 0
 	incircle = false
 end)
-
-RegisterNetEvent('es_bank:setblip')
-AddEventHandler('es_bank:setblip', function(position)
-    blipRobbery = AddBlipForCoord(position.x, position.y, position.z)
-    SetBlipSprite(blipRobbery , 161)
-    SetBlipScale(blipRobbery , 2.0)
-    SetBlipColour(blipRobbery, 3)
-    PulseBlip(blipRobbery)
-end)
-
-
 
 Citizen.CreateThread(function()
 	while true do
@@ -195,7 +216,7 @@ Citizen.CreateThread(function()
 		local ve = v.position
 
 		local blip = AddBlipForCoord(ve.x, ve.y, ve.z)
-		SetBlipSprite(blip, 159)
+		SetBlipSprite(blip, 500)
 		SetBlipScale(blip, 0.8)
 		SetBlipAsShortRange(blip, true)
 		BeginTextCommandSetBlipName("STRING")

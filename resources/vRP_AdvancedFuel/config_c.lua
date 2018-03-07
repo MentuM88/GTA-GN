@@ -1,5 +1,5 @@
---lang = "en"
-lang = "fr"
+lang = "en"
+-- lang = "fr"
 
 settings = {}
 settings["en"] = {

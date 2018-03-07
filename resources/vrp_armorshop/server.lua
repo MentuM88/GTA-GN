@@ -44,16 +44,26 @@ for gtype,weapons in pairs(gunshop_types) do
 
     if weapon then
       local user_id = vRP.getUserId({player})
-	  if weapon == "ARMOR" then-- get player weapons to not rebuy the body
+	     if weapon == "ARMOR" then-- get player weapons to not rebuy the body
+        -- payment
+        if user_id ~= nil and vRP.tryFullPayment({user_id,price}) then
+          ASclient.setArmour(player,{50,true})
+          vRPclient.notify(player,{lang.money.paid({price})})
+        else
+          vRPclient.notify(player,{lang.money.not_enough()})
+      end
+    else
+--[[      if weapon == "HEAVYARMOR" then-- get player weapons to not rebuy the body
         -- payment
         if user_id ~= nil and vRP.tryFullPayment({user_id,price}) then
           ASclient.setArmour(player,{100,true})
           vRPclient.notify(player,{lang.money.paid({price})})
         else
           vRPclient.notify(player,{lang.money.not_enough()})
-        end
-	  else
-        -- get player weapons to not rebuy the body
+      end
+    else--]]
+
+           -- get player weapons to not rebuy the body
         vRPclient.getWeapons(player,{},function(weapons)
           -- prompt amount
           vRP.prompt({player,lang.gunshop.prompt_ammo({choice}),"",function(player,amount)

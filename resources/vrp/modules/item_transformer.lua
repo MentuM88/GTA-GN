@@ -134,7 +134,7 @@ function vRP.setItemTransformer(name,itemtr)
   transformers[name] = tr
 
   -- init transformer
-  tr.units = 0
+  tr.units = 500
   tr.players = {}
 
   -- build menu

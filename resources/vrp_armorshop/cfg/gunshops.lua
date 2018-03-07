@@ -11,7 +11,8 @@ local cfg = {}
 cfg.gunshop_types = {
   ["Gilets"] = {
     _config = {blipid=175,blipcolor=75},
-    ["ARMOR"] = {"Body Armor",20000,0,""}
+    ["ARMOR"] = {"Gilet Leger",20000,0,""}
+    --["HEAVYARMOR"] = {"Gilet LOURD",50000,0,""}
   },
 
 --[[  ["sidearms"] = {
@@ -113,6 +114,7 @@ cfg.gunshop_types = {
   ["Gvt"] = {
     _config = {permissions={"police.service"}},
     ["ARMOR"] = {"Body Armor",10000,0,""}
+   
   }
 }
 
@@ -129,7 +131,7 @@ cfg.gunshops = {
   {"heavymachineguns", 2569.62, 294.453, 108.735},
   {"snipers", -3172.60375976563,1085.74816894531,20.8387603759766},
   {"shotguns", 21.70, -1107.41, 29.79},--]]
-  {"Gvt", -418.15,1170.51,325.9}
+  {"Gvt", 457.34243774414,-979.12799072266,30.689584732056}
 }
 
 return cfg

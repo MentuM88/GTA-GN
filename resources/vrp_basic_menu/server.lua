@@ -10,7 +10,7 @@ vRPbsC = Tunnel.getInterface("vRP_barbershop","vRP_basic_menu")
 Tunnel.bindInterface("vrp_basic_menu",vRPbm)
 
 local Lang = module("vrp", "lib/Lang")
-local cfg = module("vrp", "cfg/base")
+local cfg = module("vrp", "cfg/base", "cfg/police")
 local lang = Lang.new(module("vrp", "cfg/lang/"..cfg.lang) or {})
 
 -- LOG FUNCTION
@@ -28,15 +28,15 @@ local choice_service = {function(player,choice)
   local service = "onservice"
   if user_id ~= nil then
     if vRP.hasGroup({user_id,service}) then
-	  vRP.removeUserGroup({user_id,service})
-	  if vRP.hasMission({player}) then
-		vRP.stopMission({player})
-	  end
+    vRP.removeUserGroup({user_id,service})
+    if vRP.hasMission({player}) then
+    vRP.stopMission({player})
+    end
       vRPclient.notify(player,{"~r~Off service"})
-	else
-	  vRP.addUserGroup({user_id,service})
+  else
+    vRP.addUserGroup({user_id,service})
       vRPclient.notify(player,{"~g~On service"})
-	end
+  end
   end
 end, "Go on/off service"}
 
@@ -50,11 +50,11 @@ local ch_fixhair = {function(player,choice)
     local custom = {}
     local user_id = vRP.getUserId({player})
     vRP.getUData({user_id,"vRP:head:overlay",function(value)
-	  if value ~= nil then
-	    custom = json.decode(value)
+    if value ~= nil then
+      custom = json.decode(value)
         vRPbsC.setOverlay(player,{custom,true})
-	  end
-	end})
+    end
+  end})
 end, "Fix the barbershop bug for now."}
 
 --toggle blips
@@ -64,20 +64,20 @@ end, "Toggle blips."}
 
 local spikes = {}
 local ch_spikes = {function(player,choice)
-	local user_id = vRP.getUserId({player})
-	BMclient.isCloseToSpikes(player,{},function(closeby)
-		if closeby and (spikes[player] or vRP.hasPermission({user_id,"admin.spikes"})) then
-		  BMclient.removeSpikes(player,{})
-		  spikes[player] = false
-		elseif closeby and not spikes[player] and not vRP.hasPermission({user_id,"admin.spikes"}) then
-		  vRPclient.notify(player,{"~r~You can carry only one set of spikes!"})
-		elseif not closeby and spikes[player] and not vRP.hasPermission({user_id,"admin.spikes"}) then
-		  vRPclient.notify(player,{"~r~You can deploy only one set of spikes!"})
-		elseif not closeby and (not spikes[player] or vRP.hasPermission({user_id,"admin.spikes"})) then
-		  BMclient.setSpikesOnGround(player,{})
-		  spikes[player] = true
-		end
-	end)
+  local user_id = vRP.getUserId({player})
+  BMclient.isCloseToSpikes(player,{},function(closeby)
+    if closeby and (spikes[player] or vRP.hasPermission({user_id,"admin.spikes"})) then
+      BMclient.removeSpikes(player,{})
+      spikes[player] = false
+    elseif closeby and not spikes[player] and not vRP.hasPermission({user_id,"admin.spikes"}) then
+      vRPclient.notify(player,{"~r~You can carry only one set of spikes!"})
+    elseif not closeby and spikes[player] and not vRP.hasPermission({user_id,"admin.spikes"}) then
+      vRPclient.notify(player,{"~r~You can deploy only one set of spikes!"})
+    elseif not closeby and (not spikes[player] or vRP.hasPermission({user_id,"admin.spikes"})) then
+      BMclient.setSpikesOnGround(player,{})
+      spikes[player] = true
+    end
+  end)
 end, "Toggle spikes."}
 
 local ch_sprites = {function(player,choice)
@@ -92,7 +92,7 @@ end, "Delete nearest car."}
 local ch_crun = {function(player,choice)
   vRP.prompt({player,"Function:","",function(player,stringToRun) 
     stringToRun = stringToRun or ""
-	TriggerClientEvent("RunCode:RunStringLocally", player, stringToRun)
+  TriggerClientEvent("RunCode:RunStringLocally", player, stringToRun)
   end})
 end, "Run client function."}
 
@@ -100,7 +100,7 @@ end, "Run client function."}
 local ch_srun = {function(player,choice)
   vRP.prompt({player,"Function:","",function(player,stringToRun) 
     stringToRun = stringToRun or ""
-	TriggerEvent("RunCode:RunStringRemotelly", stringToRun)
+  TriggerEvent("RunCode:RunStringRemotelly", stringToRun)
   end})
 end, "Run server function."}
 
@@ -108,12 +108,12 @@ end, "Run server function."}
 local police_weapons = {}
 police_weapons["Equip"] = {function(player,choice)
     vRPclient.giveWeapons(player,{{
-	  ["WEAPON_COMBATPISTOL"] = {ammo=200},
-	  ["WEAPON_PUMPSHOTGUN"] = {ammo=200},
-	  ["WEAPON_NIGHTSTICK"] = {ammo=200},
-	  ["WEAPON_STUNGUN"] = {ammo=200}
-	}, true})
-	BMclient.setArmour(player,{100,true})
+    ["WEAPON_COMBATPISTOL"] = {ammo=200},
+    ["WEAPON_PUMPSHOTGUN"] = {ammo=200},
+    ["WEAPON_NIGHTSTICK"] = {ammo=200},
+    ["WEAPON_STUNGUN"] = {ammo=200}
+  }, true})
+  BMclient.setArmour(player,{100,true})
 end}
 
 --store money
@@ -130,16 +130,16 @@ end, "Store your money in your inventory."}
 --medkit storage
 local emergency_medkit = {}
 emergency_medkit["Take"] = {function(player,choice)
-	local user_id = vRP.getUserId({player}) 
-	vRP.giveInventoryItem({user_id,"medkit",25,true})
-	vRP.giveInventoryItem({user_id,"pills",25,true})
+  local user_id = vRP.getUserId({player}) 
+  vRP.giveInventoryItem({user_id,"medkit",25,true})
+  vRP.giveInventoryItem({user_id,"pills",25,true})
 end}
 
 --heal me
 local emergency_heal = {}
 emergency_heal["Heal"] = {function(player,choice)
-	local user_id = vRP.getUserId({player}) 
-	vRPclient.setHealth(player,{1000})
+  local user_id = vRP.getUserId({player}) 
+  vRPclient.setHealth(player,{1000})
 end}
 
 --loot corpse
@@ -151,28 +151,28 @@ local choice_loot = {function(player,choice)
       if nuser_id ~= nil then
         vRPclient.isInComa(nplayer,{}, function(in_coma)
           if in_coma then
-			local revive_seq = {
-			  {"amb@medic@standing@kneel@enter","enter",1},
-			  {"amb@medic@standing@kneel@idle_a","idle_a",1},
-			  {"amb@medic@standing@kneel@exit","exit",1}
-			}
-  			vRPclient.playAnim(player,{false,revive_seq,false}) -- anim
+      local revive_seq = {
+        {"amb@medic@standing@kneel@enter","enter",1},
+        {"amb@medic@standing@kneel@idle_a","idle_a",1},
+        {"amb@medic@standing@kneel@exit","exit",1}
+      }
+        vRPclient.playAnim(player,{false,revive_seq,false}) -- anim
             SetTimeout(15000, function()
               local ndata = vRP.getUserDataTable({nuser_id})
               if ndata ~= nil then
-			    if ndata.inventory ~= nil then -- gives inventory items
-				  vRP.clearInventory({nuser_id})
+          if ndata.inventory ~= nil then -- gives inventory items
+          vRP.clearInventory({nuser_id})
                   for k,v in pairs(ndata.inventory) do 
-			        vRP.giveInventoryItem({user_id,k,v.amount,true})
-	              end
-				end
-			  end
-			  local nmoney = vRP.getMoney({nuser_id})
-			  if vRP.tryPayment({nuser_id,nmoney}) then
-			    vRP.giveMoney({user_id,nmoney})
-			  end
+              vRP.giveInventoryItem({user_id,k,v.amount,true})
+                end
+        end
+        end
+        local nmoney = vRP.getMoney({nuser_id})
+        if vRP.tryPayment({nuser_id,nmoney}) then
+          vRP.giveMoney({user_id,nmoney})
+        end
             end)
-			vRPclient.stopAnim(player,{false})
+      vRPclient.stopAnim(player,{false})
           else
             vRPclient.notify(player,{lang.emergency.menu.revive.not_in_coma()})
           end
@@ -194,17 +194,17 @@ local ch_hack = {function(player,choice)
         local nuser_id = vRP.getUserId({nplayer})
         if nuser_id ~= nil then
           -- prompt number
-		  local nbank = vRP.getBankMoney({nuser_id})
+      local nbank = vRP.getBankMoney({nuser_id})
           local amount = math.floor(nbank*0.01)
-		  local nvalue = nbank - amount
-		  if math.random(1,100) == 1 then
-			vRP.setBankMoney({nuser_id,nvalue})
+      local nvalue = nbank - amount
+      if math.random(1,100) == 1 then
+      vRP.setBankMoney({nuser_id,nvalue})
             vRPclient.notify(nplayer,{"Hacked ~r~".. amount .."$."})
-		    vRP.giveInventoryItem({user_id,"dirty_money",amount,true})
-		  else
+        vRP.giveInventoryItem({user_id,"dirty_money",amount,true})
+      else
             vRPclient.notify(nplayer,{"~g~Hacking attempt failed."})
             vRPclient.notify(player,{"~r~Hacking attempt failed."})
-		  end
+      end
         else
           vRPclient.notify(player,{lang.common.no_player_near()})
         end
@@ -225,19 +225,19 @@ local ch_mug = {function(player,choice)
         local nuser_id = vRP.getUserId({nplayer})
         if nuser_id ~= nil then
           -- prompt number
-		  local nmoney = vRP.getMoney({nuser_id})
+      local nmoney = vRP.getMoney({nuser_id})
           local amount = nmoney
-		  if math.random(1,3) == 1 then
+      if math.random(1,3) == 1 then
             if vRP.tryPayment({nuser_id,amount}) then
               vRPclient.notify(nplayer,{"Mugged ~r~"..amount.."$."})
-		      vRP.giveInventoryItem({user_id,"dirty_money",amount,true})
+          vRP.giveInventoryItem({user_id,"dirty_money",amount,true})
             else
               vRPclient.notify(player,{lang.money.not_enough()})
             end
-		  else
+      else
             vRPclient.notify(nplayer,{"~g~Mugging attempt failed."})
             vRPclient.notify(player,{"~r~Mugging attempt failed."})
-		  end
+      end
         else
           vRPclient.notify(player,{lang.common.no_player_near()})
         end
@@ -257,13 +257,13 @@ local ch_drag = {function(player,choice)
       if nplayer ~= nil then
         local nuser_id = vRP.getUserId({nplayer})
         if nuser_id ~= nil then
-		  vRPclient.isHandcuffed(nplayer,{},function(handcuffed)
-			if handcuffed then
-				TriggerClientEvent("dr:drag", nplayer, player)
-			else
-				vRPclient.notify(player,{"Player is not handcuffed."})
-			end
-		  end)
+      vRPclient.isHandcuffed(nplayer,{},function(handcuffed)
+      if handcuffed then
+        TriggerClientEvent("dr:drag", nplayer, player)
+      else
+        vRPclient.notify(player,{"Player is not handcuffed."})
+      end
+      end)
         else
           vRPclient.notify(player,{lang.common.no_player_near()})
         end
@@ -339,7 +339,7 @@ function(args)
     local user_id = vRP.getUserId({player})
     if user_id ~= nil then
       if vRP.tryGetInventoryItem({user_id, "body_armor", 1, true}) then
-		BMclient.setArmour(player,{100,true})
+    BMclient.setArmour(player,{100,true})
         vRP.closeMenu({player})
       end
     end
@@ -357,9 +357,9 @@ local choice_store_armor = {function(player, choice)
       if armour > 95 then
         vRP.giveInventoryItem({user_id, "body_armor", 1, true})
         -- clear armor
-	    BMclient.setArmour(player,{0,false})
-	  else
-	    vRPclient.notify(player, {"~r~Damaged armor can't be stored!"})
+      BMclient.setArmour(player,{0,false})
+    else
+      vRPclient.notify(player, {"~r~Damaged armor can't be stored!"})
       end
     end)
   end
@@ -371,34 +371,34 @@ function jail_clock(target_id,timer)
   local users = vRP.getUsers({})
   local online = false
   for k,v in pairs(users) do
-	if tonumber(k) == tonumber(target_id) then
-	  online = true
-	end
+  if tonumber(k) == tonumber(target_id) then
+    online = true
+  end
   end
   if online then
     if timer>0 then
-	  vRPclient.notify(target, {"~r~Remaining time: " .. timer .. " minute(s)."})
+    vRPclient.notify(target, {"~r~Remaining time: " .. timer .. " minute(s)."})
       vRP.setUData({tonumber(target_id),"vRP:jail:time",json.encode(timer)})
-	  SetTimeout(60*1000, function()
-		for k,v in pairs(unjailed) do -- check if player has been unjailed by cop or admin
-		  if v == tonumber(target_id) then
-	        unjailed[v] = nil
-		    timer = 0
-		  end
-		end
-		vRP.setHunger({tonumber(target_id), 0})
-		vRP.setThirst({tonumber(target_id), 0})
-	    jail_clock(tonumber(target_id),timer-1)
-	  end) 
+    SetTimeout(60*1000, function()
+    for k,v in pairs(unjailed) do -- check if player has been unjailed by cop or admin
+      if v == tonumber(target_id) then
+          unjailed[v] = nil
+        timer = 0
+      end
+    end
+    vRP.setHunger({tonumber(target_id), 0})
+    vRP.setThirst({tonumber(target_id), 0})
+      jail_clock(tonumber(target_id),timer-1)
+    end) 
     else 
-	  BMclient.loadFreeze(target,{true})
-	  SetTimeout(15000,function()
-		BMclient.loadFreeze(target,{false})
-	  end)
-	  vRPclient.teleport(target,{425.7607421875,-978.73425292969,30.709615707397}) -- teleport to outside jail
-	  vRPclient.setHandcuffed(target,{false})
+    BMclient.loadFreeze(target,{true})
+    SetTimeout(15000,function()
+    BMclient.loadFreeze(target,{false})
+    end)
+    vRPclient.teleport(target,{425.7607421875,-978.73425292969,30.709615707397}) -- teleport to outside jail
+    vRPclient.setHandcuffed(target,{false})
       vRPclient.notify(target,{"~b~You have been set free."})
-	  vRP.setUData({tonumber(target_id),"vRP:jail:time",json.encode(-1)})
+    vRP.setUData({tonumber(target_id),"vRP:jail:time",json.encode(-1)})
     end
   end
 end
@@ -406,53 +406,53 @@ end
 -- dynamic jail
 local ch_jail = {function(player,choice) 
   vRPclient.getNearestPlayers(player,{15},function(nplayers) 
-	local user_list = ""
+  local user_list = ""
     for k,v in pairs(nplayers) do
-	  user_list = user_list .. "[" .. vRP.getUserId({k}) .. "]" .. GetPlayerName(k) .. " | "
+    user_list = user_list .. "[" .. vRP.getUserId({k}) .. "]" .. GetPlayerName(k) .. " | "
     end 
-	if user_list ~= "" then
-	  vRP.prompt({player,"Players Nearby:" .. user_list,"",function(player,target_id) 
-	    if target_id ~= nil and target_id ~= "" then 
-	      vRP.prompt({player,"Jail Time in minutes:","1",function(player,jail_time)
-			if jail_time ~= nil and jail_time ~= "" then 
-	          local target = vRP.getUserSource({tonumber(target_id)})
-			  if target ~= nil then
-		        if tonumber(jail_time) > 30 then
-  			      jail_time = 30
-		        end
-		        if tonumber(jail_time) < 1 then
-		          jail_time = 1
-		        end
-		  
+  if user_list ~= "" then
+    vRP.prompt({player,"Players Nearby:" .. user_list,"",function(player,target_id) 
+      if target_id ~= nil and target_id ~= "" then 
+        vRP.prompt({player,"Jail Time in minutes:","1",function(player,jail_time)
+      if jail_time ~= nil and jail_time ~= "" then 
+            local target = vRP.getUserSource({tonumber(target_id)})
+        if target ~= nil then
+            if tonumber(jail_time) > 30 then
+              jail_time = 30
+            end
+            if tonumber(jail_time) < 1 then
+              jail_time = 1
+            end
+      
                 vRPclient.isHandcuffed(target,{}, function(handcuffed)  
                   if handcuffed then 
-					BMclient.loadFreeze(target,{true})
-					SetTimeout(15000,function()
-					  BMclient.loadFreeze(target,{false})
-					end)
-				    vRPclient.teleport(target,{1641.5477294922,2570.4819335938,45.564788818359}) -- teleport to inside jail
-				    vRPclient.notify(target,{"~r~You have been sent to jail."})
-				    vRPclient.notify(player,{"~b~You sent a player to jail."})
-				    vRP.setHunger({tonumber(target_id),0})
-				    vRP.setThirst({tonumber(target_id),0})
-				    jail_clock(tonumber(target_id),tonumber(jail_time))
-					local user_id = vRP.getUserId({player})
-					vRPbm.logInfoToFile("jailLog.txt",user_id .. " jailed "..target_id.." for " .. jail_time .. " minutes")
-			      else
-				    vRPclient.notify(player,{"~r~That player is not handcuffed."})
-			      end
-			    end)
-			  else
-				vRPclient.notify(player,{"~r~That ID seems invalid."})
-			  end
-			else
-			  vRPclient.notify(player,{"~r~The jail time can't be empty."})
-			end
-	      end})
+          BMclient.loadFreeze(target,{true})
+          SetTimeout(15000,function()
+            BMclient.loadFreeze(target,{false})
+          end)
+            vRPclient.teleport(target,{1641.5477294922,2570.4819335938,45.564788818359}) -- teleport to inside jail
+            vRPclient.notify(target,{"~r~You have been sent to jail."})
+            vRPclient.notify(player,{"~b~You sent a player to jail."})
+            vRP.setHunger({tonumber(target_id),0})
+            vRP.setThirst({tonumber(target_id),0})
+            jail_clock(tonumber(target_id),tonumber(jail_time))
+          local user_id = vRP.getUserId({player})
+          vRPbm.logInfoToFile("jailLog.txt",user_id .. " jailed "..target_id.." for " .. jail_time .. " minutes")
+            else
+            vRPclient.notify(player,{"~r~That player is not handcuffed."})
+            end
+          end)
+        else
+        vRPclient.notify(player,{"~r~That ID seems invalid."})
+        end
+      else
+        vRPclient.notify(player,{"~r~The jail time can't be empty."})
+      end
+        end})
         else
           vRPclient.notify(player,{"~r~No player ID selected."})
         end 
-	  end})
+    end})
     else
       vRPclient.notify(player,{"~r~No player nearby."})
     end 
@@ -461,33 +461,33 @@ end,"Send a nearby player to jail."}
 
 -- dynamic unjail
 local ch_unjail = {function(player,choice) 
-	vRP.prompt({player,"Player ID:","",function(player,target_id) 
-	  if target_id ~= nil and target_id ~= "" then 
-		vRP.getUData({tonumber(target_id),"vRP:jail:time",function(value)
-		  if value ~= nil then
-		  custom = json.decode(value)
-			if custom ~= nil then
-			  local user_id = vRP.getUserId({player})
-			  if tonumber(custom) > 0 or vRP.hasPermission({user_id,"admin.easy_unjail"}) then
-	            local target = vRP.getUserSource({tonumber(target_id)})
-				if target ~= nil then
-	              unjailed[target] = tonumber(target_id)
-				  vRPclient.notify(player,{"~g~Target will be released soon."})
-				  vRPclient.notify(target,{"~g~Someone lowered your sentence."})
-				  vRPbm.logInfoToFile("jailLog.txt",user_id .. " freed "..target_id.." from a " .. custom .. " minutes sentence")
-				else
-				  vRPclient.notify(player,{"~r~That ID seems invalid."})
-				end
-			  else
-				vRPclient.notify(player,{"~r~Target is not jailed."})
-			  end
-			end
-		  end
-		end})
+  vRP.prompt({player,"Player ID:","",function(player,target_id) 
+    if target_id ~= nil and target_id ~= "" then 
+    vRP.getUData({tonumber(target_id),"vRP:jail:time",function(value)
+      if value ~= nil then
+      custom = json.decode(value)
+      if custom ~= nil then
+        local user_id = vRP.getUserId({player})
+        if tonumber(custom) > 0 or vRP.hasPermission({user_id,"admin.easy_unjail"}) then
+              local target = vRP.getUserSource({tonumber(target_id)})
+        if target ~= nil then
+                unjailed[target] = tonumber(target_id)
+          vRPclient.notify(player,{"~g~Target will be released soon."})
+          vRPclient.notify(target,{"~g~Someone lowered your sentence."})
+          vRPbm.logInfoToFile("jailLog.txt",user_id .. " freed "..target_id.." from a " .. custom .. " minutes sentence")
+        else
+          vRPclient.notify(player,{"~r~That ID seems invalid."})
+        end
+        else
+        vRPclient.notify(player,{"~r~Target is not jailed."})
+        end
+      end
+      end
+    end})
       else
         vRPclient.notify(player,{"~r~No player ID selected."})
       end 
-	end})
+  end})
 end,"Frees a jailed player."}
 
 -- (server) called when a logged player spawn to check for vRP:jail in user_data
@@ -496,76 +496,76 @@ AddEventHandler("vRP:playerSpawn", function(user_id, source, first_spawn)
   SetTimeout(35000,function()
     local custom = {}
     vRP.getUData({user_id,"vRP:jail:time",function(value)
-	  if value ~= nil then
-	    custom = json.decode(value)
-	    if custom ~= nil then
-		  if tonumber(custom) > 0 then
-			BMclient.loadFreeze(target,{true})
-			SetTimeout(15000,function()
-			  BMclient.loadFreeze(target,{false})
-			end)
+    if value ~= nil then
+      custom = json.decode(value)
+      if custom ~= nil then
+      if tonumber(custom) > 0 then
+      BMclient.loadFreeze(target,{true})
+      SetTimeout(15000,function()
+        BMclient.loadFreeze(target,{false})
+      end)
             vRPclient.setHandcuffed(target,{true})
             vRPclient.teleport(target,{1641.5477294922,2570.4819335938,45.564788818359}) -- teleport inside jail
             vRPclient.notify(target,{"~r~Finish your sentence."})
-			vRP.setHunger({tonumber(user_id),0})
-			vRP.setThirst({tonumber(user_id),0})
-			vRPbm.logInfoToFile("jailLog.txt",user_id.." has been sent back to jail for " .. custom .. " minutes to complete his sentence")
-		    jail_clock(tonumber(user_id),tonumber(custom))
-		  end
-	    end
-	  end
-	end})
+      vRP.setHunger({tonumber(user_id),0})
+      vRP.setThirst({tonumber(user_id),0})
+      vRPbm.logInfoToFile("jailLog.txt",user_id.." has been sent back to jail for " .. custom .. " minutes to complete his sentence")
+        jail_clock(tonumber(user_id),tonumber(custom))
+      end
+      end
+    end
+  end})
   end)
 end)
 
 -- dynamic fine
 local ch_fine = {function(player,choice) 
   vRPclient.getNearestPlayers(player,{15},function(nplayers) 
-	local user_list = ""
+  local user_list = ""
     for k,v in pairs(nplayers) do
-	  user_list = user_list .. "[" .. vRP.getUserId({k}) .. "]" .. GetPlayerName(k) .. " | "
+    user_list = user_list .. "[" .. vRP.getUserId({k}) .. "]" .. GetPlayerName(k) .. " | "
     end 
-	if user_list ~= "" then
-	  vRP.prompt({player,"Players Nearby:" .. user_list,"",function(player,target_id) 
-	    if target_id ~= nil and target_id ~= "" then 
-	      vRP.prompt({player,"Fine amount:","100",function(player,fine)
-			if fine ~= nil and fine ~= "" then 
-	          vRP.prompt({player,"Fine reason:","",function(player,reason)
-			    if reason ~= nil and reason ~= "" then 
-	              local target = vRP.getUserSource({tonumber(target_id)})
-				  if target ~= nil then
-		            if tonumber(fine) > 100000 then
-  			          fine = 100000
-		            end
-		            if tonumber(fine) < 100 then
-		              fine = 100
-		            end
-			  
-		            if vRP.tryFullPayment({tonumber(target_id), tonumber(fine)}) then
+  if user_list ~= "" then
+    vRP.prompt({player,"Players Nearby:" .. user_list,"",function(player,target_id) 
+      if target_id ~= nil and target_id ~= "" then 
+        vRP.prompt({player,"Fine amount:","100",function(player,fine)
+      if fine ~= nil and fine ~= "" then 
+            vRP.prompt({player,"Fine reason:","",function(player,reason)
+          if reason ~= nil and reason ~= "" then 
+                local target = vRP.getUserSource({tonumber(target_id)})
+          if target ~= nil then
+                if tonumber(fine) > 100000 then
+                  fine = 100000
+                end
+                if tonumber(fine) < 100 then
+                  fine = 100
+                end
+        
+                if vRP.tryFullPayment({tonumber(target_id), tonumber(fine)}) then
                       vRP.insertPoliceRecord({tonumber(target_id), lang.police.menu.fine.record({reason,fine})})
                       vRPclient.notify(player,{lang.police.menu.fine.fined({reason,fine})})
                       vRPclient.notify(target,{lang.police.menu.fine.notify_fined({reason,fine})})
-					  local user_id = vRP.getUserId({player})
-					  vRPbm.logInfoToFile("fineLog.txt",user_id .. " fined "..target_id.." the amount of " .. fine .. " for ".. reason)
+            local user_id = vRP.getUserId({player})
+            vRPbm.logInfoToFile("fineLog.txt",user_id .. " fined "..target_id.." the amount of " .. fine .. " for ".. reason)
                       vRP.closeMenu({player})
                     else
                       vRPclient.notify(player,{lang.money.not_enough()})
                     end
-				  else
-					vRPclient.notify(player,{"~r~That ID seems invalid."})
-				  end
-				else
-				  vRPclient.notify(player,{"~r~You can't fine for no reason."})
-				end
-	          end})
-			else
-			  vRPclient.notify(player,{"~r~Your fine has to have a value."})
-			end
-	      end})
+          else
+          vRPclient.notify(player,{"~r~That ID seems invalid."})
+          end
+        else
+          vRPclient.notify(player,{"~r~You can't fine for no reason."})
+        end
+            end})
+      else
+        vRPclient.notify(player,{"~r~Your fine has to have a value."})
+      end
+        end})
         else
           vRPclient.notify(player,{"~r~No player ID selected."})
         end 
-	  end})
+    end})
     else
       vRPclient.notify(player,{"~r~No player nearby."})
     end 
@@ -578,8 +578,8 @@ local ch_handcuff = {function(player,choice)
     local nuser_id = vRP.getUserId({nplayer})
     if nuser_id ~= nil then
       vRPclient.toggleHandcuff(nplayer,{})
-	  local user_id = vRP.getUserId({player})
-	  vRPbm.logInfoToFile("jailLog.txt",user_id .. " cuffed "..nuser_id)
+    local user_id = vRP.getUserId({player})
+    vRPbm.logInfoToFile("jailLog.txt",user_id .. " cuffed "..nuser_id)
       vRP.closeMenu({nplayer})
     else
       vRPclient.notify(player,{lang.common.no_player_near()})
@@ -608,10 +608,10 @@ local ch_godmode = {function(player,choice)
   local user_id = vRP.getUserId({player})
   if user_id ~= nil then
     if gods[player] then
-	  gods[player] = nil
-	else
-	  gods[player] = user_id
-	end
+    gods[player] = nil
+  else
+    gods[player] = user_id
+  end
   end
 end, "Toggles admin godmode."}
 
@@ -625,18 +625,18 @@ local ch_userlist = {function(player,choice)
     else -- show
       local content = "<span class=\"id\">ID</span><span class=\"pseudo\">NICKNAME</span><span class=\"name\">ROLEPLAY NAME</span><span class=\"job\">PROFESSION</span>"
       local count = 0
-	  local users = vRP.getUsers({})
+    local users = vRP.getUsers({})
       for k,v in pairs(users) do
         count = count+1
         local source = vRP.getUserSource({k})
         vRP.getUserIdentity({k, function(identity)
-		  if source ~= nil then
+      if source ~= nil then
             content = content.."<br /><span class=\"id\">"..k.."</span><span class=\"pseudo\">"..vRP.getPlayerName({source}).."</span>"
             if identity then
               content = content.."<span class=\"name\">"..htmlEntities.encode(identity.firstname).." "..htmlEntities.encode(identity.name).."</span><span class=\"job\">"..vRP.getUserGroupByType({k,"job"}).."</span>"
             end
           end
-		  
+      
           -- check end
           count = count-1
           if count == 0 then
@@ -644,7 +644,7 @@ local ch_userlist = {function(player,choice)
             local css = [[
               .div_user_list{ 
                 margin: auto; 
-				text-align: left;
+        text-align: left;
                 padding: 8px; 
                 width: 650px; 
                 margin-top: 100px; 
@@ -654,8 +654,8 @@ local ch_userlist = {function(player,choice)
                 font-size: 1.1em;
               } 
               .div_user_list span{ 
-				display: inline-block;
-				text-align: center;
+        display: inline-block;
+        text-align: center;
               } 
               .div_user_list .id{ 
                 color: rgb(255, 255, 255);
@@ -669,14 +669,14 @@ local ch_userlist = {function(player,choice)
                 color: rgb(92, 170, 249);
                 width: 295px; 
               }
-			  .div_user_list .job{ 
+        .div_user_list .job{ 
                 color: rgb(247, 193, 93);
                 width: 145px; 
-			  }
+        }
             ]]
             vRPclient.setDiv(player,{"user_list", css, content})
           end
-		end})
+    end})
       end
     end
   end
@@ -686,54 +686,54 @@ function vRPbm.chargePhoneNumber(user_id,phone)
   local player = vRP.getUserSource({user_id})
   local directory_name = vRP.getPhoneDirectoryName({user_id, phone})
   if directory_name == "unknown" then
-	directory_name = phone
+  directory_name = phone
   end
   vRP.prompt({player,"Amount to be charged to "..directory_name..":","0",function(player,charge)
-	if charge ~= nil and charge ~= "" and tonumber(charge)>0 then 
-	  vRP.getUserByPhone({phone, function(target_id)
-		if target_id~=nil then
-			if charge ~= nil and charge ~= "" then 
-	          local target = vRP.getUserSource({target_id})
-			  if target ~= nil then
-				vRP.getUserIdentity({user_id, function(identity)
-				  local my_directory_name = vRP.getPhoneDirectoryName({target_id, identity.phone})
-				  if my_directory_name == "unknown" then
-				    my_directory_name = identity.phone
-				  end
-			      local text = "~b~" .. my_directory_name .. "~w~ is charging you ~r~$" .. charge .. "~w~ for his services."
-				  vRP.request({target,text,600,function(req_player,ok)
-				    if ok then
-					  local target_bank = vRP.getBankMoney({target_id}) - tonumber(charge)
-					  local my_bank = vRP.getBankMoney({user_id}) + tonumber(charge)
-		              if target_bank>0 then
-					    vRP.setBankMoney({user_id,my_bank})
-					    vRP.setBankMoney({target_id,target_bank})
-					    vRPclient.notify(player,{"You charged ~y~$"..charge.." ~w~from ~b~"..directory_name .."~w~ for your services."})
-						vRPclient.notify(target,{"~b~"..my_directory_name.."~w~ charged you ~r~$"..charge.."~w~ for his services."})
-					    --vRPbm.logInfoToFile("mchargeLog.txt",user_id .. " mobile charged "..target_id.." the amount of " .. charge .. ", user bank post-payment for "..user_id.." equals $"..my_bank.." and for "..user_id.." equals $"..target_bank)
-					    vRP.closeMenu({player})
+  if charge ~= nil and charge ~= "" and tonumber(charge)>0 then 
+    vRP.getUserByPhone({phone, function(target_id)
+    if target_id~=nil then
+      if charge ~= nil and charge ~= "" then 
+            local target = vRP.getUserSource({target_id})
+        if target ~= nil then
+        vRP.getUserIdentity({user_id, function(identity)
+          local my_directory_name = vRP.getPhoneDirectoryName({target_id, identity.phone})
+          if my_directory_name == "unknown" then
+            my_directory_name = identity.phone
+          end
+            local text = "~b~" .. my_directory_name .. "~w~ is charging you ~r~$" .. charge .. "~w~ for his services."
+          vRP.request({target,text,600,function(req_player,ok)
+            if ok then
+            local target_bank = vRP.getBankMoney({target_id}) - tonumber(charge)
+            local my_bank = vRP.getBankMoney({user_id}) + tonumber(charge)
+                  if target_bank>0 then
+              vRP.setBankMoney({user_id,my_bank})
+              vRP.setBankMoney({target_id,target_bank})
+              vRPclient.notify(player,{"You charged ~y~$"..charge.." ~w~from ~b~"..directory_name .."~w~ for your services."})
+            vRPclient.notify(target,{"~b~"..my_directory_name.."~w~ charged you ~r~$"..charge.."~w~ for his services."})
+              --vRPbm.logInfoToFile("mchargeLog.txt",user_id .. " mobile charged "..target_id.." the amount of " .. charge .. ", user bank post-payment for "..user_id.." equals $"..my_bank.." and for "..user_id.." equals $"..target_bank)
+              vRP.closeMenu({player})
                       else
                         vRPclient.notify(target,{lang.money.not_enough()})
                         vRPclient.notify(player,{"~b~" .. directory_name .. "~w~ tried to, but~r~ can't~w~ pay for your services."})
                       end
-				    else
+            else
                       vRPclient.notify(player,{"~b~" .. directory_name .. "~r~ refused~w~ to pay for your services."})
-				    end
-				  end})
-				end})
-			  else
-			    vRPclient.notify(player,{"~r~You can't make charges to offline players."})
-			  end
-			else
-			  vRPclient.notify(player,{"~r~Your charge has to have a value."})
-			end
-		else
-		  vRPclient.notify(player,{"~r~That phone number seems invalid."})
-		end
-	  end})
-	else
-	  vRPclient.notify(player,{"~r~The value has to be bigger than 0."})
-	end
+            end
+          end})
+        end})
+        else
+          vRPclient.notify(player,{"~r~You can't make charges to offline players."})
+        end
+      else
+        vRPclient.notify(player,{"~r~Your charge has to have a value."})
+      end
+    else
+      vRPclient.notify(player,{"~r~That phone number seems invalid."})
+    end
+    end})
+  else
+    vRPclient.notify(player,{"~r~The value has to be bigger than 0."})
+  end
   end})
 end
 
@@ -741,119 +741,119 @@ function vRPbm.payPhoneNumber(user_id,phone)
   local player = vRP.getUserSource({user_id})
   local directory_name = vRP.getPhoneDirectoryName({user_id, phone})
   if directory_name == "unknown" then
-	directory_name = phone
+  directory_name = phone
   end
   vRP.prompt({player,"Amount to be sent to "..directory_name..":","0",function(player,transfer)
-	if transfer ~= nil and transfer ~= "" and tonumber(transfer)>0 then 
-	  vRP.getUserByPhone({phone, function(target_id)
-	    local my_bank = vRP.getBankMoney({user_id}) - tonumber(transfer)
-		if target_id~=nil then
+  if transfer ~= nil and transfer ~= "" and tonumber(transfer)>0 then 
+    vRP.getUserByPhone({phone, function(target_id)
+      local my_bank = vRP.getBankMoney({user_id}) - tonumber(transfer)
+    if target_id~=nil then
           if my_bank >= 0 then
-		    local target = vRP.getUserSource({target_id})
-			if target ~= nil then
-			  vRP.setBankMoney({user_id,my_bank})
+        local target = vRP.getUserSource({target_id})
+      if target ~= nil then
+        vRP.setBankMoney({user_id,my_bank})
               vRPclient.notify(player,{"~g~You tranfered ~r~$"..transfer.." ~g~to ~b~"..directory_name})
-			  local target_bank = vRP.getBankMoney({target_id}) + tonumber(transfer)
-			  vRP.setBankMoney({target_id,target_bank})
-			  vRPbm.logInfoToFile("mpayLog.txt",user_id .. " mobile paid "..target_id.." the amount of " .. transfer .. ", user bank post-payment for "..user_id.." equals $"..my_bank.." and for "..user_id.." equals $"..target_bank)
-			  vRP.getUserIdentity({user_id, function(identity)
-		        local my_directory_name = vRP.getPhoneDirectoryName({target_id, identity.phone})
-			    if my_directory_name == "unknown" then
-		          my_directory_name = identity.phone
-			    end
+        local target_bank = vRP.getBankMoney({target_id}) + tonumber(transfer)
+        vRP.setBankMoney({target_id,target_bank})
+        vRPbm.logInfoToFile("mpayLog.txt",user_id .. " mobile paid "..target_id.." the amount of " .. transfer .. ", user bank post-payment for "..user_id.." equals $"..my_bank.." and for "..user_id.." equals $"..target_bank)
+        vRP.getUserIdentity({user_id, function(identity)
+            local my_directory_name = vRP.getPhoneDirectoryName({target_id, identity.phone})
+          if my_directory_name == "unknown" then
+              my_directory_name = identity.phone
+          end
                 vRPclient.notify(target,{"~g~You received ~y~$"..transfer.." ~g~from ~b~"..my_directory_name})
-			  end})
+        end})
               vRP.closeMenu({player})
-			else
-			  vRPclient.notify(player,{"~r~You can't make payments to offline players."})
-			end
+      else
+        vRPclient.notify(player,{"~r~You can't make payments to offline players."})
+      end
           else
             vRPclient.notify(player,{lang.money.not_enough()})
           end
-		else
-		  vRPclient.notify(player,{"~r~That phone number seems invalid."})
-		end
-	  end})
-	else
-	  vRPclient.notify(player,{"~r~The value has to be bigger than 0."})
-	end
+    else
+      vRPclient.notify(player,{"~r~That phone number seems invalid."})
+    end
+    end})
+  else
+    vRPclient.notify(player,{"~r~The value has to be bigger than 0."})
+  end
   end})
 end
 
 -- mobilepay
 local ch_mobilepay = {function(player,choice) 
-	local user_id = vRP.getUserId({player})
-	local menu = {}
-	menu.name = lang.phone.directory.title()
-	menu.css = {top = "75px", header_color = "rgba(0,0,255,0.75)"}
+  local user_id = vRP.getUserId({player})
+  local menu = {}
+  menu.name = lang.phone.directory.title()
+  menu.css = {top = "75px", header_color = "rgba(0,0,255,0.75)"}
     menu.onclose = function(player) vRP.openMainMenu({player}) end -- nest menu
-	menu[">Type Number"] = {
-	  -- payment function
-	  function(player,choice) 
-	    vRP.prompt({player,"Phone Number:","000-0000",function(player,phone)
-	      if phone ~= nil and phone ~= "" then 
-		    vRPbm.payPhoneNumber(user_id,phone)
-		  else
-		    vRPclient.notify(player,{"~r~You have to digit a phone number."})
-		  end
-	    end})
-	  end,"Type the phone number manually."}
-	local directory = vRP.getPhoneDirectory({user_id})
-	for k,v in pairs(directory) do
-	  menu[k] = {
-	    -- payment function
-	    function(player,choice) 
-		  vRPbm.payPhoneNumber(user_id,v)
-	    end
-	  ,v} -- number as description
-	end
-	vRP.openMenu({player, menu})
+  menu[">Type Number"] = {
+    -- payment function
+    function(player,choice) 
+      vRP.prompt({player,"Phone Number:","000-0000",function(player,phone)
+        if phone ~= nil and phone ~= "" then 
+        vRPbm.payPhoneNumber(user_id,phone)
+      else
+        vRPclient.notify(player,{"~r~You have to digit a phone number."})
+      end
+      end})
+    end,"Type the phone number manually."}
+  local directory = vRP.getPhoneDirectory({user_id})
+  for k,v in pairs(directory) do
+    menu[k] = {
+      -- payment function
+      function(player,choice) 
+      vRPbm.payPhoneNumber(user_id,v)
+      end
+    ,v} -- number as description
+  end
+  vRP.openMenu({player, menu})
 end,"Transfer money trough phone."}
 
 -- mobilecharge
 local ch_mobilecharge = {function(player,choice) 
-	local user_id = vRP.getUserId({player})
-	local menu = {}
-	menu.name = lang.phone.directory.title()
-	menu.css = {top = "75px", header_color = "rgba(0,0,255,0.75)"}
+  local user_id = vRP.getUserId({player})
+  local menu = {}
+  menu.name = lang.phone.directory.title()
+  menu.css = {top = "75px", header_color = "rgba(0,0,255,0.75)"}
     menu.onclose = function(player) vRP.openMainMenu({player}) end -- nest menu
-	menu[">Type Number"] = {
-	  -- payment function
-	  function(player,choice) 
-	    vRP.prompt({player,"Phone Number:","000-0000",function(player,phone)
-	      if phone ~= nil and phone ~= "" then 
-		    vRPbm.chargePhoneNumber(user_id,phone)
-		  else
-		    vRPclient.notify(player,{"~r~You have to digit a phone number."})
-		  end
-	    end})
-	  end,"Type the phone number manually."}
-	local directory = vRP.getPhoneDirectory({user_id})
-	for k,v in pairs(directory) do
-	  menu[k] = {
-	    -- payment function
-	    function(player,choice) 
-		  vRPbm.chargePhoneNumber(user_id,v)
-	    end
-	  ,v} -- number as description
-	end
-	vRP.openMenu({player, menu})
+  menu[">Type Number"] = {
+    -- payment function
+    function(player,choice) 
+      vRP.prompt({player,"Phone Number:","000-0000",function(player,phone)
+        if phone ~= nil and phone ~= "" then 
+        vRPbm.chargePhoneNumber(user_id,phone)
+      else
+        vRPclient.notify(player,{"~r~You have to digit a phone number."})
+      end
+      end})
+    end,"Type the phone number manually."}
+  local directory = vRP.getPhoneDirectory({user_id})
+  for k,v in pairs(directory) do
+    menu[k] = {
+      -- payment function
+      function(player,choice) 
+      vRPbm.chargePhoneNumber(user_id,v)
+      end
+    ,v} -- number as description
+  end
+  vRP.openMenu({player, menu})
 end,"Charge money trough phone."}
 
 -- spawn vehicle
 local ch_spawnveh = {function(player,choice) 
-	vRP.prompt({player,"Vehicle Model:","",function(player,model)
-	  if model ~= nil and model ~= "" then 
-	    BMclient.spawnVehicle(player,{model})
-	  else
-		vRPclient.notify(player,{"~r~You have to type a vehicle model."})
-	  end
-	end})
+  vRP.prompt({player,"Vehicle Model:","",function(player,model)
+    if model ~= nil and model ~= "" then 
+      BMclient.spawnVehicle(player,{model})
+    else
+    vRPclient.notify(player,{"~r~You have to type a vehicle model."})
+    end
+  end})
 end,"Spawn a vehicle model."}
 
 -- lockpick vehicle
 local ch_lockpickveh = {function(player,choice) 
-	BMclient.lockpickVehicle(player,{20,false}) -- 20s to lockpick, allow to carjack unlocked vehicles (has to be true for NoCarJack Compatibility)
+  BMclient.lockpickVehicle(player,{60,true}) -- 20s to lockpick, allow to carjack unlocked vehicles (has to be true for NoCarJack Compatibility)
 end,"Lockpick closest vehicle."}
 
 
@@ -866,7 +866,7 @@ function(args)
     local user_id = vRP.getUserId({player})
     if user_id ~= nil then
       if vRP.tryGetInventoryItem({user_id, "lockpicking_kit", 1, true}) then
-		BMclient.lockpickVehicle(player,{20,false}) -- 20s to lockpick, allow to carjack unlocked vehicles (has to be true for NoCarJack Compatibility)
+    BMclient.lockpickVehicle(player,{60,true}) -- 20s to lockpick, allow to carjack unlocked vehicles (has to be true for NoCarJack Compatibility)
         vRP.closeMenu({player})
       end
     end
@@ -878,33 +878,184 @@ end,
 
 -- dynamic freeze
 local ch_freeze = {function(player,choice) 
-	local user_id = vRP.getUserId({player})
-	if vRP.hasPermission({user_id,"admin.bm_freeze"}) then
-	  vRP.prompt({player,"Player ID:","",function(player,target_id) 
-	    if target_id ~= nil and target_id ~= "" then 
-	      local target = vRP.getUserSource({tonumber(target_id)})
-		  if target ~= nil then
-		    vRPclient.notify(player,{"~g~You un/froze that player."})
-		    BMclient.loadFreeze(target,{true,true,true})
-		  else
-		    vRPclient.notify(player,{"~r~That ID seems invalid."})
-		  end
+  local user_id = vRP.getUserId({player})
+  if vRP.hasPermission({user_id,"admin.bm_freeze"}) then
+    vRP.prompt({player,"Player ID:","",function(player,target_id) 
+      if target_id ~= nil and target_id ~= "" then 
+        local target = vRP.getUserSource({tonumber(target_id)})
+      if target ~= nil then
+        vRPclient.notify(player,{"~g~You un/froze that player."})
+        BMclient.loadFreeze(target,{true,true,true})
+      else
+        vRPclient.notify(player,{"~r~That ID seems invalid."})
+      end
         else
           vRPclient.notify(player,{"~r~No player ID selected."})
         end 
-	  end})
-	else
-	  vRPclient.getNearestPlayer(player,{10},function(nplayer)
+    end})
+  else
+    vRPclient.getNearestPlayer(player,{10},function(nplayer)
         local nuser_id = vRP.getUserId({nplayer})
         if nuser_id ~= nil then
-		  vRPclient.notify(player,{"~g~You un/froze that player."})
-		  BMclient.loadFreeze(nplayer,{true,false,false})
+      vRPclient.notify(player,{"~g~You un/froze that player."})
+      BMclient.loadFreeze(nplayer,{true,false,false})
         else
           vRPclient.notify(player,{lang.common.no_player_near()})
         end
       end)
-	end
+  end
 end,"Freezes a player."}
+
+-- police PC
+
+function vRP.insertPoliceRecord(user_id, line)
+  if user_id ~= nil then
+    vRP.getUData(user_id, "vRP:police_records", function(data)
+      local records = data..line.."<br />"
+      vRP.setUData(user_id, "vRP:police_records", records)
+    end)
+  end
+end
+
+-- search identity by registration
+local ch_searchreg = {function(player,choice) 
+  local user_id = vRP.getUserId({player})
+  local player = vRP.getUserSource({user_id})
+  vRP.prompt(player,lang.police.pc.searchreg.prompt(),"",function(player, reg)
+    vRP.getUserByRegistration(reg, function(user_id)
+      if user_id ~= nil then
+        vRP.getUserIdentity(user_id, function(identity)
+          if identity then
+            -- display identity and business
+            local name = identity.name
+            local firstname = identity.firstname
+            local age = identity.age
+            local phone = identity.phone
+            local registration = identity.registration
+            local bname = ""
+            local bcapital = 0
+            local home = ""
+            local number = ""
+
+            vRP.getUserBusiness(user_id, function(business)
+              if business then
+                bname = business.name
+                bcapital = business.capital
+              end
+
+              vRP.getUserAddress(user_id, function(address)
+                if address then
+                  home = address.home
+                  number = address.number
+                end
+
+                local content = lang.police.identity.info({name,firstname,age,registration,phone,bname,bcapital,home,number})
+                vRPclient.setDiv(player,{"police_pc",".div_police_pc{ background-color: rgba(0,0,0,0.75); color: white; font-weight: bold; width: 500px; padding: 10px; margin: auto; margin-top: 150px; }",content})
+              end)
+            end)
+          else
+            vRPclient.notify(player,{lang.common.not_found()})
+          end
+        end)
+      else
+        vRPclient.notify(player,{lang.common.not_found()})
+      end
+    end)
+  end)
+end, lang.police.pc.searchreg.description()}
+
+-- show police records by registration
+local ch_show_police_records = {function(player,choice) 
+  local user_id = vRP.getUserId({player})
+  local player = vRP.getUserSource({user_id})
+  vRP.prompt(player,lang.police.pc.searchreg.prompt(),"",function(player, reg)
+    vRP.getUserByRegistration(reg, function(user_id)
+      if user_id ~= nil then
+        vRP.getUData(user_id, "vRP:police_records", function(content)
+          vRPclient.setDiv(player,{"police_pc",".div_police_pc{ background-color: rgba(0,0,0,0.75); color: white; font-weight: bold; width: 500px; padding: 10px; margin: auto; margin-top: 150px; }",content})
+        end)
+      else
+        vRPclient.notify(player,{lang.common.not_found()})
+      end
+    end)
+  end)
+end, lang.police.pc.records.show.description()}
+  
+-- delete police records by registration
+local ch_delete_police_records = {function(player,choice) 
+  local user_id = vRP.getUserId({player})
+  local player = vRP.getUserSource({user_id})
+  vRP.prompt(player,lang.police.pc.searchreg.prompt(),"",function(player, reg)
+    vRP.getUserByRegistration(reg, function(user_id)
+      if user_id ~= nil then
+        vRP.setUData(user_id, "vRP:police_records", "")
+        vRPclient.notify(player,{lang.police.pc.records.delete.deleted()})
+      else
+        vRPclient.notify(player,{lang.common.not_found()})
+      end
+    end)
+  end)
+end, lang.police.pc.records.delete.description()}
+
+-- close business of an arrested owner
+-- local function ch_closebusiness(player,choice)
+  -- local user_id = vRP.getUserId({player})
+  -- local player = vRP.getUserSource({user_id})
+  -- vRPclient.getNearestPlayer(player,{5},function(nplayer)
+    -- local nuser_id = vRP.getUserId(nplayer)
+    -- if nuser_id ~= nil then
+      -- vRP.getUserIdentity(nuser_id, function(identity)
+        -- vRP.getUserBusiness(nuser_id, function(business)
+          -- if identity and business then
+            -- vRP.request(player,lang.police.pc.closebusiness.request({identity.name,identity.firstname,business.name}),15,function(player,ok)
+              -- if ok then
+                -- vRP.closeBusiness(nuser_id)
+                -- vRPclient.notify(player,{lang.police.pc.closebusiness.closed()})
+              -- end
+            -- end)
+          -- else
+            -- vRPclient.notify(player,{lang.common.no_player_near()})
+          -- end
+        -- end)
+      -- end)
+    -- else
+      -- vRPclient.notify(player,{lang.common.no_player_near()})
+    -- end
+  -- end)
+-- end, lang.police.pc.closebusiness.description()}
+
+-- track vehicle
+-- local function ch_trackveh(player,choice)
+  -- local user_id = vRP.getUserId({player})
+  -- local player = vRP.getUserSource({user_id})
+  -- vRP.prompt(player,lang.police.pc.trackveh.prompt_reg(),"",function(player, reg) -- ask reg
+    -- vRP.getUserByRegistration(reg, function(user_id)
+      -- if user_id ~= nil then
+        -- vRP.prompt(player,lang.police.pc.trackveh.prompt_note(),"",function(player, note) -- ask note
+          -- begin veh tracking
+          -- vRPclient.notify(player,{lang.police.pc.trackveh.tracking()})
+          -- local seconds = math.random(cfg.trackveh.min_time,cfg.trackveh.max_time)
+          -- SetTimeout(seconds*1000,function()
+            -- local tplayer = vRP.getUserSource(user_id)
+            -- if tplayer ~= nil then
+              -- vRPclient.getAnyOwnedVehiclePosition(tplayer,{},function(ok,x,y,z)
+                -- if ok then -- track success
+                  -- vRP.sendServiceAlert(nil, cfg.trackveh.service,x,y,z,lang.police.pc.trackveh.tracked({reg,note}))
+                -- else
+                  -- vRPclient.notify(player,{lang.police.pc.trackveh.track_failed({reg,note})}) -- failed
+                -- end
+              -- end)
+            -- else
+              -- vRPclient.notify(player,{lang.police.pc.trackveh.track_failed({reg,note})}) -- failed
+            -- end
+          -- end)
+        -- end)
+      -- else
+        -- vRPclient.notify(player,{lang.common.not_found()})
+      -- end
+    -- end)
+  -- end)
+-- end, lang.police.pc.trackveh.description()}
 
 -- ADD STATIC MENU CHOICES // STATIC MENUS NEED TO BE ADDED AT vRP/cfg/gui.lua
 vRP.addStaticMenuChoices({"police_weapons", police_weapons}) -- police gear
@@ -914,69 +1065,103 @@ vRP.addStaticMenuChoices({"emergency_heal", emergency_heal}) -- heal button
 -- REMEMBER TO ADD THE PERMISSIONS FOR WHAT YOU WANT TO USE
 -- CREATES PLAYER SUBMENU AND ADD CHOICES
 local ch_player_menu = {function(player,choice)
-	local user_id = vRP.getUserId({player})
-	local menu = {}
-	menu.name = "Player"
-	menu.css = {top = "75px", header_color = "rgba(0,0,255,0.75)"}
+  local user_id = vRP.getUserId({player})
+  local menu = {}
+  menu.name = "Player"
+  menu.css = {top = "75px", header_color = "rgba(0,0,255,0.75)"}
     menu.onclose = function(player) vRP.openMainMenu({player}) end -- nest menu
-	
+  
     if vRP.hasPermission({user_id,"player.store_money"}) then
       menu["Store money"] = choice_store_money -- transforms money in wallet to money in inventory to be stored in houses and cars
     end
-	
+  
     if vRP.hasPermission({user_id,"player.fix_haircut"}) then
       menu["Fix Haircut"] = ch_fixhair -- just a work around for barbershop green hair bug while I am busy
     end
-	
+  
     if vRP.hasPermission({user_id,"player.userlist"}) then
       menu["User List"] = ch_userlist -- a user list for players with vRP ids, player name and identity names only.
     end
-	
+  
     if vRP.hasPermission({user_id,"player.store_weapons"}) then
       menu["Store weapons"] = choice_store_weapons -- store player weapons, like police store weapons from vrp
     end
-	
+  
     if vRP.hasPermission({user_id,"player.store_armor"}) then
       menu["Store armor"] = choice_store_armor -- store player armor
     end
-	
+  
     if vRP.hasPermission({user_id,"player.check"}) then
       menu["Inspect"] = choice_player_check -- checks nearest player inventory, like police check from vrp
     end
-	
-	vRP.openMenu({player, menu})
+  
+  vRP.openMenu({player, menu})
 end}
+
+local ch_police_pc = {function(player,choice)
+  local user_id = vRP.getUserId({player})
+  local menu = {}
+  menu.name = "Police PC"
+  menu.css = {top = "75px", header_color = "rgba(0,0,255,0.75)"}
+    menu.onclose = function(player) vRP.openMainMenu({player}) end -- nest menu
+  
+  if vRP.hasPermission({user_id,"police.pc"}) then
+      menu[lang.police.pc.searchreg.title()] = ch_searchreg -- Search Reg
+    end
+  
+  if vRP.hasPermission({user_id,"police.pc"}) then
+      menu[lang.police.pc.records.show.title()] = ch_show_police_records -- Show Police Records
+    end
+  
+  if vRP.hasPermission({user_id,"police.pc"}) then
+      menu[lang.police.pc.records.delete.title()] = ch_delete_police_records -- Delete Police Records
+    end
+  
+  if vRP.hasPermission({user_id,"police.pc"}) then
+      menu[lang.police.pc.closebusiness.title()] = ch_closebusiness -- Close Business
+    end
+  
+  if vRP.hasPermission({user_id,"police.pc"}) then
+      menu[lang.police.pc.trackveh.title()] = ch_trackveh -- Track a Vehicle
+    end
+    
+  vRP.openMenu({player, menu})
+end}  
 
 -- REGISTER MAIN MENU CHOICES
 vRP.registerMenuBuilder({"main", function(add, data)
   local user_id = vRP.getUserId({data.player})
   if user_id ~= nil then
     local choices = {}
-	
+  
+    if vRP.hasPermission({user_id,"police.pc"}) then
+      choices["Police PC"] = ch_police_pc -- opens police pc
+    end
+  
     if vRP.hasPermission({user_id,"player.player_menu"}) then
       choices["Player"] = ch_player_menu -- opens player submenu
     end
-	
+  
     if vRP.hasPermission({user_id,"toggle.service"}) then
       choices["Service"] = choice_service -- toggle the receiving of missions
     end
-	
+  
     if vRP.hasPermission({user_id,"player.loot"}) then
       choices["Loot"] = choice_loot -- take the items of nearest player in coma
     end
-	
+  
     if vRP.hasPermission({user_id,"mugger.mug"}) then
       choices["Mug"] = ch_mug -- steal nearest player wallet
     end
-	
+  
     if vRP.hasPermission({user_id,"hacker.hack"}) then
       choices["Hack"] = ch_hack --  1 in 100 chance of stealing 1% of nearest player bank
     end
-	
+  
     if vRP.hasPermission({user_id,"carjacker.lockpick"}) then
       choices["Lockpick"] = ch_lockpickveh -- opens a locked vehicle
     end
-	
+  
     add(choices)
   end
 end})
@@ -986,47 +1171,47 @@ vRP.registerMenuBuilder({"admin", function(add, data)
   local user_id = vRP.getUserId({data.player})
   if user_id ~= nil then
     local choices = {}
-	
-	if vRP.hasPermission({user_id,"admin.deleteveh"}) then
+  
+  if vRP.hasPermission({user_id,"admin.deleteveh"}) then
       choices["DeleteVeh"] = ch_deleteveh -- Delete nearest vehicle (Fixed pull request https://github.com/Sighmir/vrp_basic_menu/pull/11/files/419405349ca0ad2a215df90cfcf656e7aa0f5e9c from benjatw)
-	end
-	
-	if vRP.hasPermission({user_id,"admin.spawnveh"}) then
+  end
+  
+  if vRP.hasPermission({user_id,"admin.spawnveh"}) then
       choices["SpawnVeh"] = ch_spawnveh -- Spawn a vehicle model
-	end
-	
-	if vRP.hasPermission({user_id,"admin.godmode"}) then
+  end
+  
+  if vRP.hasPermission({user_id,"admin.godmode"}) then
       choices["Godmode"] = ch_godmode -- Toggles admin godmode (Disable the default admin.god permission to use this!) 
-	end
-	
+  end
+  
     if vRP.hasPermission({user_id,"player.blips"}) then
       choices["Blips"] = ch_blips -- turn on map blips and sprites
     end
-	
+  
     if vRP.hasPermission({user_id,"player.sprites"}) then
       choices["Sprites"] = ch_sprites -- turn on only name sprites
     end
-	
+  
     if vRP.hasPermission({user_id,"admin.crun"}) then
       choices["Crun"] = ch_crun -- run any client command, any GTA V client native http://www.dev-c.com/nativedb/
     end
-	
+  
     if vRP.hasPermission({user_id,"admin.srun"}) then
       choices["Srun"] = ch_srun -- run any server command, any GTA V server native http://www.dev-c.com/nativedb/
     end
 
-	if vRP.hasPermission({user_id,"player.tptowaypoint"}) then
+  if vRP.hasPermission({user_id,"player.tptowaypoint"}) then
       choices["TpToWaypoint"] = choice_tptowaypoint -- teleport user to map blip
-	end
-	
-	if vRP.hasPermission({user_id,"admin.easy_unjail"}) then
+  end
+  
+  if vRP.hasPermission({user_id,"admin.easy_unjail"}) then
       choices["UnJail"] = ch_unjail -- Un jails chosen player if he is jailed (Use admin.easy_unjail as permission to have this in admin menu working in non jailed players)
     end
-	
-	if vRP.hasPermission({user_id,"admin.spikes"}) then
+  
+  if vRP.hasPermission({user_id,"admin.spikes"}) then
       choices["Spikes"] = ch_spikes -- Toggle spikes
     end
-	
+  
     add(choices)
   end
 end})
@@ -1036,39 +1221,39 @@ vRP.registerMenuBuilder({"police", function(add, data)
   local user_id = vRP.getUserId({data.player})
   if user_id ~= nil then
     local choices = {}
-	
+  
     if vRP.hasPermission({user_id,"police.store_money"}) then
       choices["Store money"] = choice_store_money -- transforms money in wallet to money in inventory to be stored in houses and cars
     end
-	
-	if vRP.hasPermission({user_id,"police.easy_jail"}) then
+    
+  if vRP.hasPermission({user_id,"police.easy_jail"}) then
       choices["Easy Jail"] = ch_jail -- Send a nearby handcuffed player to jail with prompt for choice and user_list
     end
-	
-	if vRP.hasPermission({user_id,"police.easy_unjail"}) then
+  
+  if vRP.hasPermission({user_id,"police.easy_unjail"}) then
       choices["Easy UnJail"] = ch_unjail -- Un jails chosen player if he is jailed (Use admin.easy_unjail as permission to have this in admin menu working in non jailed players)
     end
-	
-	if vRP.hasPermission({user_id,"police.easy_fine"}) then
+  
+  if vRP.hasPermission({user_id,"police.easy_fine"}) then
       choices["Easy Fine"] = ch_fine -- Fines closeby player
     end
-	
-	if vRP.hasPermission({user_id,"police.easy_cuff"}) then
+  
+  if vRP.hasPermission({user_id,"police.easy_cuff"}) then
       choices["Easy Cuff"] = ch_handcuff -- Toggle cuffs AND CLOSE MENU for nearby player
     end
-	
-	if vRP.hasPermission({user_id,"police.spikes"}) then
+  
+  if vRP.hasPermission({user_id,"police.spikes"}) then
       choices["Spikes"] = ch_spikes -- Toggle spikes
     end
-	
-	if vRP.hasPermission({user_id,"police.freeze"}) then -- Freezes a player in position
+  
+  if vRP.hasPermission({user_id,"police.freeze"}) then -- Freezes a player in position
       choices["Freeze"] = choice_freeze
     end
-	
+  
     if vRP.hasPermission({user_id,"police.drag"}) then
       choices["Drag"] = ch_drag -- Drags closest handcuffed player
     end
-	
+  
     add(choices)
   end
 end})
@@ -1077,9 +1262,9 @@ end})
 -- TO USE THIS FUNCTION YOU NEED TO HAVE THE ORIGINAL vRP UPDATED TO THE LASTEST VERSION
 vRP.registerMenuBuilder({"phone", function(add) -- phone menu is created on server start, so it has no permissions.
     local choices = {} -- Comment the choices you want to disable by adding -- in front of them.
-	
+  
     choices["MPay"] = ch_mobilepay -- transfer money through phone
     choices["MCharge"] = ch_mobilecharge -- charge money through phone
-	
+  
     add(choices)
 end})

@@ -60,8 +60,8 @@ ProgressBar.prototype.frame = function(time)
         this.div_label.style.fontSize = "0.5em";
 
         //set position
-        this.div.style.right = (document.body.offsetWidth-this.div.offsetWidth-19)+"px";
-        this.div.style.top = (document.body.offsetHeight-190-anchor_index*15)+"px";
+        this.div.style.right = (document.body.offsetWidth-this.div.offsetWidth-30)+"px";
+        this.div.style.top = (document.body.offsetHeight-250-anchor_index*15)+"px";
       }
       else if(anchor_name == "botright"){ //BOTRIGHT
         //set size

@@ -64,8 +64,8 @@ end
 
 -- DRINKS --
 
-items["eau"] = {"Eau","", gen("drink",0,-8),0.2}
-items["lait"] = {"Lait","", gen("drink",-5,-5),0.2}
+items["eau"] = {"Bidon d'eau","", gen("drink",0,0),0.2}
+items["lait"] = {"Lait","", gen("drink",0,0),0.2}
 items["icetea"] = {"Ice-Tea","", gen("drink",0,-40), 0.2}
 items["orangejuice"] = {"Orange Juice","", gen("drink",0,-25),0.2}
 items["gocagola"] = {"Coca Cola","", gen("drink",0,-35),0.2}
@@ -73,18 +73,25 @@ items["redbull"] = {"Red Bull","", gen("drink",0,-40),0.2}
 items["lemonlimonad"] = {"Limonade","", gen("drink",0,-45),0.2}
 items["vodka"] = {"Vodka","", gen("drink",15,-65),0.2}
 items["vodkarb"] = {"Vodka Redbull","", gen("drink",0,-65),0.2}
-items["cappucino"] = {"Cappuccino","", gen("drink",-20,-35),0.2}
-items["thelait"] = {"Thé au lait","", gen("drink",-20,-35),0.2}
+items["cappucino"] = {"Cappuccino","", gen("drink",0,-25),0.2}
+items["thelait"] = {"Thé au lait","", gen("drink",-0,-25),0.2}
 items["biere"] = {"Biere","", gen("drink",15,-65),0.2}
+items["vin"] = {"Bouteille de Vin","", gen("drink",5,-65),0.2}
+items["champagne"] = {"Champagne","", gen("drink",0,-85),0.2}
+items["jraisin"] = {"Jus de Raisin","", gen("drink",0,-35),0.2}
+items["raisin"] = {"Raisin","", gen("drink",0,-0),0.1}
+items["rationb"] = {"Ration d'eau","", gen("drink",0,-50),1}
 
 
 --FOOD
 
 -- create Breed item
-items["poulet"] = {"Blanc de Poulet cru","", gen("eat",0,0),0.2}
-items["bnugget"] = {"Boite de nuggets surgelé","", gen("eat",0,0),0.5}
-items["nugget"] = {"Nuggets cuits","", gen("eat",-20,0),0.5}
-items["bread"] = {"Pain","", gen("eat",-10,0),0.2}
+items["poulet"] = {"Poulet cru","", gen("eat",0,0),0.2}
+items["boeuf"] = {"Boeuf cru","", gen("eat",0,0),0.2}
+items["chicken"] = {"Burger Poulet","", gen("eat",-35,0),0.2}
+items["cheeseburger"] = {"Burger Boeuf","", gen("eat",-65,0),0.3}
+items["milkshake"] = {"Milkshake","", gen("eat",-15,-5),0.2}
+items["bread"] = {"Vieu Pain","", gen("eat", 0,0),0.2}
 items["donut"] = {"Donut","", gen("eat",-20,0),0.2}
 items["tacos"] = {"Tacos","", gen("eat",-65,0),0.2}
 items["sandwich"] = {"Sandwich Saumon","", gen("eat",-25,0),0.2}
@@ -92,9 +99,12 @@ items["kebab"] = {"Kebab","", gen("eat",-35,10),0.5}
 items["sushi"] = {"Shushi","", gen("eat",-35,10),0.2}
 items["catfish"] = {"Catfish","", gen("eat",10,15),0.2}
 items["bass"] = {"Bass","", gen("eat",10,15),0.2}
-items["cafe"] = {"Grain de Café","", gen("eat",5,5),0.2}
+items["cafe"] = {"Grain de Café","", gen("eat",0,0),0.2}
 items["the"] = {"Feuille de Thé","", gen("eat",0,0),0.2}
-items["ble"] = {"Grain de Blé","", gen("eat",0,-5),0.2}
-items["saumon"] = {"Saumon","", gen("eat",0,-5),0.2}
+items["ble"] = {"Grain de Blé","", gen("eat",0,0),0.2}
+items["saumon"] = {"Saumon","", gen("eat",0,0),0.2}
+items["rationn"] = {"Ration Nourriture","", gen("eat",-50,0),1}
+items["apero"] = {"Melange Apero","", gen("eat",-15,2),0.3}
+items["nuggets"] = {"Nuggets","", gen("eat",-15,0),1}
 
 return items

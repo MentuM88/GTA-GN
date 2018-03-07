@@ -19,6 +19,8 @@ AddEventHandler('ply_garages:CheckForAptGarages', function()
       if address then
 		if address.home == "Rich Housing" then
 			TriggerClientEvent("ply_garages:addAptGarage", player, -751.5107421875,365.883117675781,86.9666687011719,267.344543457031)
+		elseif address.home == "Downtown Mansion" then
+			TriggerClientEvent("ply_garages:addAptGarage", player, -751.5107421875,365.883117675781,86.9666687011719,267.344543457031)
 		elseif address.home == "Basic Housing 1" then
 			TriggerClientEvent("ply_garages:addAptGarage", player, -635.4501953125,57.4368324279785,43.8587303161621,88.8649536132813)
 		elseif address.home == "Basic Housing 2" then

@@ -10,16 +10,31 @@ function vRPas.setArmour(armour,vest)
   local player = GetPlayerPed(-1)
   if vest then
 	if(GetEntityModel(player) == GetHashKey("mp_m_freemode_01")) then
-	  SetPedComponentVariation(player, 9, 10, 1, 2)  --Bulletproof Vest
+	  SetPedComponentVariation(player, 9, 15, 1, 2)  --Bulletproof Vest
 	else 
 	  if(GetEntityModel(player) == GetHashKey("mp_f_freemode_01")) then
-	    SetPedComponentVariation(player, 9, 6, 1, 2)
+	    SetPedComponentVariation(player, 9, 17, 1, 2)
 	  end
 	end
   end
   local n = math.floor(armour)
   SetPedArmour(player,n)
 end
+
+--[[function vRPas.setHeavyArmour(armour,vest)
+  local player = GetPlayerPed(-1)
+  if vest then
+  if(GetEntityModel(player) == GetHashKey("mp_m_freemode_01")) then
+    SetPedComponentVariation(player, 9, 15, 1, 2)  --Bulletproof Vest
+  else 
+    if(GetEntityModel(player) == GetHashKey("mp_f_freemode_01")) then
+      SetPedComponentVariation(player, 9, 17, 1, 2)
+    end
+  end
+  end
+  local n = math.floor(armour)
+  SetPedArmour(player,n)
+end--]]
 
 local state_ready = false
 

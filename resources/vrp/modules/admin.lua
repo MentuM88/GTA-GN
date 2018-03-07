@@ -319,6 +319,19 @@ local function ch_noclip(player, choice)
   vRPclient.toggleNoclip(player, {})
 end
 
+-- Hotkey Open Admin Menu 1/2
+function vRP.openAdminMenu(source)
+  vRP.buildMenu("admin", {player = source}, function(menudata)
+    menudata.name = "Admin"
+    menudata.css = {top="75px",header_color="rgba(0,125,255,0.75)"}
+    vRP.openMenu(source,menudata)
+  end)
+end
+
+-- Hotkey Open Admin Menu 2/2
+function tvRP.openAdminMenu()
+  vRP.openAdminMenu(source)
+end
 
 vRP.registerMenuBuilder("main", function(add, data)
   local user_id = vRP.getUserId(data.player)
@@ -326,7 +339,7 @@ vRP.registerMenuBuilder("main", function(add, data)
     local choices = {}
 
     -- build admin menu
-    choices["xX ADMIN Xx"] = {function(player,choice)
+    choices["Admin"] = {function(player,choice)
       vRP.buildMenu("admin", {player = player}, function(menu)
         menu.name = "Admin"
         menu.css={top="75px",header_color="rgba(200,0,0,0.75)"}
@@ -399,18 +412,18 @@ vRP.registerMenuBuilder("main", function(add, data)
 end)
 
 -- admin god mode
-function task_god()
-  SetTimeout(10000, task_god)
+-- function task_god()
+  -- SetTimeout(10000, task_god)
 
-  for k,v in pairs(vRP.getUsersByPermission("admin.god")) do
-    vRP.setHunger(v, 0)
-    vRP.setThirst(v, 0)
+  -- for k,v in pairs(vRP.getUsersByPermission("admin.god")) do
+    -- vRP.setHunger(v, 0)
+    -- vRP.setThirst(v, 0)
 
-    local player = vRP.getUserSource(v)
-    if player ~= nil then
-      vRPclient.setHealth(player, {200})
-    end
-  end
-end
+    -- local player = vRP.getUserSource(v)
+    -- if player ~= nil then
+      -- vRPclient.setHealth(player, {200})
+    -- end
+  -- end
+-- end
 
-task_god()
+-- task_god()

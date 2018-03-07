@@ -73,32 +73,32 @@ cfg.item_transformers = {
  
  {
     name="Grossiste", -- menu name
-  permissions = {"craft.food"}, -- job drug dealer required to use
+    permissions = {}, -- job drug dealer required to use
     r=0,g=255,b=0, -- color
     max_units=1000000,
     units_per_minute=6,
     x=-70.23, y=6262.43, z=31.09, -- pos (needed for public use lab tools)
     radius=3, height=1.5, -- area
     recipes = {
-      ["Boites de Nuggets"] = { -- action name
-        description="Achat boite de nuggets surgelé", -- action description
-        in_money=50, -- money taken per unit
+      ["Viande hachée"] = { -- action name
+        description="Achat de viande hachée", -- action description
+        in_money=10, -- money taken per unit
         out_money=0, -- money earned per unit
         reagents={ -- items taken per unit
                   },
         products={ -- items given per unit
-          ["bnugget"] = 1
+        ["boeuf"] = 1
         },
         aptitudes={}
       },
 
         ["Blancs de poulet"] = { -- action name
         description="Achats de rebuts de poulets", -- action description
-        in_money=100, -- money taken per unit
+        in_money=10, -- money taken per unit
         out_money=0, -- money earned per unit
         reagents={        },
         products={ -- items given per unit
-          ["poulet"] = 1
+        ["poulet"] = 1
         },
         aptitudes={ -- optional
         ["strength"] = 1
@@ -109,36 +109,38 @@ cfg.item_transformers = {
 
    {
     name="Cuisine", -- menu name
-  permissions = {"craft.food"}, -- job drug dealer required to use
+    permissions = {"craft.food"}, -- job drug dealer required to use
     r=0,g=255,b=0, -- color
     max_units=1000000,
     units_per_minute=6,
-    x=-70.23, y=6262.43, z=31.09, -- pos (needed for public use lab tools)
+    x=970.05, y=-1635.54, z=30.11, -- pos (needed for public use lab tools)
     radius=3, height=1.5, -- area
     recipes = {
-      ["Nuggets"] = { -- action name
-        description="Cuisson des Nuggets", -- action description
+      ["Cheeseburger"] = { -- action name
+        description="Conception de Cheeseburger", -- action description
         in_money=0, -- money taken per unit
         out_money=0, -- money earned per unit
         reagents={ 
-        ["bnugget"] = 1-- items taken per unit
+        ["boeuf"] = 1,
+        ["bread"] = 2,
+        ["lait"] = 1-- items taken per unit
                   },
         products={ -- items given per unit
-        ["nugget"] = 2
+        ["cheeseburger"] = 1
         },
         aptitudes={}
       },
         
-        ["sushi"] = { -- action name
-        description="Preparer sushi", -- action description
+        ["Chicken"] = { -- action name
+        description="Preparation du Chicken", -- action description
         in_money=0, -- money taken per unit
         out_money=0, -- money earned per unit
         reagents={ -- items taken per unit
-          ["saumon"] = 1,
-          ["ble"] = 1           
+          ["poulet"] = 1,
+          ["bread"] = 2           
         },
         products={ -- items given per unit
-          ["sushi"] = 2
+          ["chicken"] = 1
         },
         aptitudes={ -- optional
         ["strength"] = 1
@@ -146,17 +148,15 @@ cfg.item_transformers = {
       },
         
 
-        ["Tacos"] = { -- action name
-        description="Conception des tacos", -- action description
+        ["Milkshake"] = { -- action name
+        description="Conception du milkshake", -- action description
         in_money=0, -- money taken per unit
         out_money=0, -- money earned per unit
         reagents={
-          ["poulet"] = 1,
-          ["ble"] = 3,
-          ["plastique"] = 1
+          ["lait"] = 2
           },
         products={ -- items given per unit
-          ["tacos"] = 1
+          ["milkshake"] = 1
           
         },
         aptitudes={}
@@ -165,10 +165,135 @@ cfg.item_transformers = {
     }
   },
 
+-- TRESORS
+
+--[[{
+    name="diamant", -- menu name
+    r=0,g=255,b=0, -- color
+    max_units=5,
+    units_per_minute=1,
+    x=3066.52,y=2208.76,z=3.35, -- pos (needed for public use lab tools)
+    radius=1.1, height=1.5, -- area
+    recipes = {
+      ["Diamant recolte"] = { -- action name
+        description="recolte diamant", -- action description
+        in_money=0, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={ },
+        products={ -- items given per unit
+          ["diamant"] = 1
+                 }      
+                            }
+              }
+},        
+{
+    name="meteorite", -- menu name
+    r=0,g=255,b=0, -- color
+    max_units=5,
+    units_per_minute=1,
+    x=499.33,y=5620.08,z=791.39, -- pos (needed for public use lab tools)
+    radius=1.1, height=1.5, -- area
+    recipes = {
+      ["Meteorite recolte"] = { -- action name
+        description="recolte Meteorite", -- action description
+        in_money=0, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={ },
+        products={ -- items given per unit
+          ["meteorite"] = 1         
+                 }      
+                              }
+              }
+},
+{
+    name="sel", -- menu name
+    r=0,g=255,b=0, -- color
+    max_units=5,
+    units_per_minute=1,
+    x=3673.1,y=5648.12,z=10.78, -- pos (needed for public use lab tools)
+    radius=1.1, height=1.5, -- area
+    recipes = {
+      ["Sel recolte"] = { -- action name
+        description="recolte Sel", -- action description
+        in_money=0, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={ },
+        products={ -- items given per unit
+          ["sel"] = 1
+                 }      
+                        }
+              }
+},  ]]--      
+{
+    name="Fabrication Produits", -- menu name
+    r=0,g=255,b=0, -- color
+    max_units=5,
+    units_per_minute=1,
+    x=-1149.62,y=4940.55,z=222.27, -- pos (needed for public use lab tools)
+    radius=1.1, height=1.5, -- area
+    recipes = {
+      ["Moonshine"] = { -- action name
+        description="fabrication moonshine", -- action description
+        in_money=10000, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={ -- items taken per unit
+          ["ble"] = 10,
+          ["cafe"] = 10,
+          ["lait"] = 10,
+          ["the"] = 10,
+          ["raisin"] = 5,
+          ["lsd"] = 3
+
+                 },
+        products={ -- items given per unit
+          ["moonshine"] = 1
+                 }
+                   },
+
+       ["SpaceCake"] = { -- action name
+        description="fabrication Spacecake", -- action description
+        in_money=10000, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={ -- items taken per unit
+          ["ble"] = 10,
+          ["cafe"] = 10,
+          ["lait"] = 10,
+          ["the"] = 10,
+          ["raisin"] = 5,
+          ["cocaine"] = 3
+
+                 },
+        products={ -- items given per unit
+          ["spacecake"] = 1
+                 }
+                   },
+               }
+},         
+--]]
+--[[{
+    name="vente tresor", -- menu name
+    description="craft.casino",
+    r=0,g=255,b=0, -- color
+    max_units=10,
+    units_per_minute=1,
+    x=-1636.15,y=180.5,z=61.76, -- pos (needed for public use lab tools)
+    radius=1.1, height=1.5, -- area
+    recipes = {
+      ["vente tresor"] = { -- action name
+        description="vendre tresor", -- action description
+        in_money=0, -- money taken per unit
+        out_money=300000, -- money earned per unit
+        reagents={ -- items taken per unit
+          ["tresor"] = 1 },
+        products={ }
+       }
+     }
+},--]]
+
  -- BAR DES MOTARDS
 {
     name="Sandyshore", -- menu name
-  permissions = {"craft.sandy"}, -- job drug dealer required to use
+    permissions = {"craft.sandy"}, -- job drug dealer required to use
     r=0,g=255,b=0, -- color
     max_units=1000000,
     units_per_minute=6,
@@ -212,7 +337,7 @@ cfg.item_transformers = {
  -- BAR DES MOTARDS
 {
     name="Brasserie", -- menu name
-	permissions = {"craft.motards"}, -- job drug dealer required to use
+	   permissions = {"craft.motards"}, -- job drug dealer required to use
     r=0,g=255,b=0, -- color
     max_units=1000000,
     units_per_minute=6,
@@ -315,73 +440,42 @@ cfg.item_transformers = {
 -- UNICORN
 {
     name="Unicorn", -- menu name
-	permissions = {"craft.unicorn"}, -- job drug dealer required to use
+	 permissions = {"craft.unicorn"}, -- job drug dealer required to use
     r=0,g=255,b=0, -- color
     max_units=1000000,
     units_per_minute=6,
-    x=-77.722381591797,y=6223.626953125,z=31.089864730835, -- pos (needed for public use lab tools)
+    x=940.47,y=-1785.95,z=35.48, -- pos (needed for public use lab tools)
     radius=1.1, height=1.5, -- area
     recipes = {
-      ["Redbull"] = { -- action name
-        description="Creer redbull", -- action description
+      ["Vodka"] = { -- action name
+        description="Creer vodka", -- action description
         in_money=0, -- money taken per unit
         out_money=10, -- money earned per unit
         reagents={ -- items taken per unit
-          ["cafe"] = 3,
-          ["icetea"] = 1
+          ["ble"] = 2,
+          ["eau"] = 1
         },
         products={ -- items given per unit
-          ["redbull"] = 5
+          ["vodka"] = 3
         },
         aptitudes={ -- optional
           ["science.chemicals"] = 6
         }
       },
-      ["icetea"] = { -- action name
+      ["Vodka Redbull"] = { -- action name
         description="infuser le the", -- action description
         in_money=0, -- money taken per unit
         out_money=10, -- money earned per unit
         reagents={ -- items taken per unit
-          ["the"] = 3,
-          ["eau"] = 2           
+          ["vodka"] = 1,
+          ["redbull"] = 1           
         },
         products={ -- items given per unit
-          ["icetea"] = 5
+          ["vodkarb"] = 1
         },
         aptitudes={ -- optional
-          ["science.chemicals"] = 6
-        }
-      },
-      ["sushi"] = { -- action name
-        description="preparer sushi", -- action description
-        in_money=0, -- money taken per unit
-        out_money=10, -- money earned per unit
-        reagents={ -- items taken per unit
-          ["saumon"] = 1,
-          ["ble"] = 1           
-        },
-        products={ -- items given per unit
-          ["sushi"] = 5
-        },
-        aptitudes={ -- optional
-          ["science.chemicals"] = 3,
-		  ["strength"] = 3
-        }
-      },
-      ["Thé au lait"] = { -- action name
-          description="Faire un the au lait", -- action description
-          in_money=0, -- money taken per unit
-          out_money=0, -- money earned per unit
-          reagents={ -- items taken per unit
-            ["the"] = 2,
-			["lait"] = 1
-          },
-          products={ -- items given per unit
-            ["thelait"] = 5
-          },
-          aptitudes={ -- optional
-            ["science.chemicals"] = 6
-          }
+          ["science.chemicals"] = 5
+         }
         }
       }
 },
@@ -445,7 +539,7 @@ cfg.item_transformers = {
 
 {
     name="BAZZAR", -- menu name
-    --permissions = {"mission.delivery.fish"}, -- you can add permissions
+    permissions = {"craft.casino"}, -- you can add permissions
     r=0,g=125,b=255, -- color
     max_units=1000000,
     units_per_minute=20,
@@ -456,16 +550,16 @@ cfg.item_transformers = {
       ["Vente Saumon"] = { -- action name
         description="VENDRE", -- action description
         in_money=0, -- money taken per unit
-        out_money=90, -- money earned per unit
-        reagents={ ["saumon"] = 1 }, -- items taken per unit
+        out_money=1500, -- money earned per unit
+        reagents={ ["saumon"] = 10 }, -- items taken per unit
         products={}
       
     },    
       ["Vente Bass"] = { -- action name
         description="VENDRE", -- action description
         in_money=0, -- money taken per unit
-        out_money=30, -- money earned per unit
-        reagents={ ["bass"] = 1 }, -- items taken per unit
+        out_money=1500, -- money earned per unit
+        reagents={ ["bass"] = 10 }, -- items taken per unit
         products={}
        
     
@@ -473,8 +567,8 @@ cfg.item_transformers = {
       ["Vente Metal"] = { -- action name
         description="VENDRE", -- action description
         in_money=0, -- money taken per unit
-        out_money=90, -- money earned per unit
-        reagents={ ["metal"] = 1 }, -- items taken per unit
+        out_money=1500, -- money earned per unit
+        reagents={ ["metal"] = 10 }, -- items taken per unit
         products={}
        
     
@@ -482,8 +576,8 @@ cfg.item_transformers = {
       ["Vente Plastique"] = { -- action name
         description="VENDRE", -- action description
         in_money=0, -- money taken per unit
-        out_money=90, -- money earned per unit
-        reagents={ ["plastique"] = 1 }, -- items taken per unit
+        out_money=1500, -- money earned per unit
+        reagents={ ["plastique"] = 10 }, -- items taken per unit
         products={}
        
     
@@ -491,8 +585,8 @@ cfg.item_transformers = {
       ["Vente Café"] = { -- action name
         description="VENDRE", -- action description
         in_money=0, -- money taken per unit
-        out_money=30, -- money earned per unit
-        reagents={ ["cafe"] = 1 }, -- items taken per unit
+        out_money=1500, -- money earned per unit
+        reagents={ ["cafe"] = 10 }, -- items taken per unit
         products={}
        
     
@@ -500,8 +594,8 @@ cfg.item_transformers = {
       ["Vente Thé"] = { -- action name
         description="VENDRE", -- action description
         in_money=0, -- money taken per unit
-        out_money=30, -- money earned per unit
-        reagents={ ["the"] = 1 }, -- items taken per unit
+        out_money=1500, -- money earned per unit
+        reagents={ ["the"] = 10 }, -- items taken per unit
         products={}
        
     
@@ -509,8 +603,8 @@ cfg.item_transformers = {
       ["Vente Lait"] = { -- action name
         description="VENDRE", -- action description
         in_money=0, -- money taken per unit
-        out_money=30, -- money earned per unit
-        reagents={ ["lait"] = 1 }, -- items taken per unit
+        out_money=1500, -- money earned per unit
+        reagents={ ["lait"] = 10 }, -- items taken per unit
         products={}
        
     
@@ -518,8 +612,8 @@ cfg.item_transformers = {
       ["Vente Blé"] = { -- action name
         description="VENDRE", -- action description
         in_money=0, -- money taken per unit
-        out_money=30, -- money earned per unit
-        reagents={ ["ble"] = 1 }, -- items taken per unit
+        out_money=1500, -- money earned per unit
+        reagents={ ["ble"] = 10 }, -- items taken per unit
         products={}
        
     
@@ -531,10 +625,10 @@ cfg.item_transformers = {
 -- EXPORT
 {
     name="EXPORT", -- menu name
-    --permissions = {"mission.delivery.fish"}, -- you can add permissions
+    permissions = {"craft.casino"}, -- you can add permissions
     r=0,g=125,b=255, -- color
     max_units=1000000,
-    units_per_minute=8,
+    units_per_minute=20,
     x=915.6083, y=-2918.35669, z=4.88864136, 
     radius=10, height=1.5, -- area
     recipes = {
@@ -542,8 +636,8 @@ cfg.item_transformers = {
       ["Export Sushis"] = { -- action name
         description="Exporter des Sushis", -- action description
         in_money=0, -- money taken per unit
-        out_money=100, -- money earned per unit
-        reagents={ ["sushi"] = 1 }, -- items taken per unit
+        out_money=2000, -- money earned per unit
+        reagents={ ["sushi"] = 10 }, -- items taken per unit
         products={}
        
     
@@ -551,25 +645,41 @@ cfg.item_transformers = {
       ["Export Sandwichs"] = { -- action name
         description="Exporter des Sandwichs", -- action description
         in_money=0, -- money taken per unit
-        out_money=100, -- money earned per unit
-        reagents={ ["sandwich"] = 1 }, -- items taken per unit
+        out_money=2000, -- money earned per unit
+        reagents={ ["sandwich"] = 10 }, -- items taken per unit
         products={}
     
     }, 
       ["Export Redbull"] = { -- action name
         description="Exporter Pack de Redbull", -- action description
         in_money=0, -- money taken per unit
-        out_money=1500, -- money earned per unit
-        reagents={ ["redbull"] = 6 }, -- items taken per unit
+        out_money=15000, -- money earned per unit
+        reagents={ ["redbull"] = 30 }, -- items taken per unit
         products={}
        
-     
-    }, 
+      }, 
+
+      ["Export Pneu"] = { -- action name
+        description="Exporter pneus 2eme main", -- action description
+        in_money=0, -- money taken per unit
+        out_money=20000, -- money earned per unit
+        reagents={ ["pneu"] = 30 },
+        products={}
+      },
+
        ["Export Bière"] = { -- action name
         description="Exporter Pack de Bières", -- action description
         in_money=0, -- money taken per unit
-        out_money=2000, -- money earned per unit
-        reagents={ ["biere"] = 6 }, -- items taken per unit
+        out_money=10000, -- money earned per unit
+        reagents={ ["biere"] = 30 }, -- items taken per unit
+        products={}
+    
+     },
+       ["Export Vodka"] = { -- action name
+        description="Exporter caisse de Vodka", -- action description
+        in_money=0, -- money taken per unit
+        out_money=10000, -- money earned per unit
+        reagents={ ["vodka"] = 30 }, -- items taken per unit
         products={}
     
      },
@@ -583,11 +693,21 @@ cfg.item_transformers = {
 
     },
 
-      ["Export Caisses d'armement"] = { -- action name
-        description="Exporter des caisses de pièces d'armement", -- action description
+    ["Export Vin"] = { -- action name
+        description="Exporter des caisse de vin", -- action description
         in_money=0, -- money taken per unit
-        out_money=3500, -- money earned per unit
-        reagents={ ["caissearme"] = 1 }, -- items taken per unit
+        out_money=30000, -- money earned per unit
+        reagents={ ["vin"] = 30 }, -- items taken per unit
+        products={}
+
+    },
+
+
+      ["Export Cubes"] = { -- action name
+        description="Exporter des Bagnoles compressées", -- action description
+        in_money=0, -- money taken per unit
+        out_money=10000, -- money earned per unit
+        reagents={ ["cube"] = 1 }, -- items taken per unit
         products={}
     
      },
@@ -606,12 +726,12 @@ cfg.item_transformers = {
 
 -- VENTE DROGUE
 
-{
+--[[{
     name="Dealer d'Herbe", -- menu name
     --permissions = {"mission.delivery.fish"}, -- you can add permissions
     r=0,g=125,b=255, -- color
-    max_units=1000000,
-    units_per_minute=10,
+    max_units=5000,
+    units_per_minute=3,
     x=-61.56,y=-1217.83,z=28.74, 
     radius=5, height=1.5, -- area
     recipes = {
@@ -630,8 +750,8 @@ cfg.item_transformers = {
     name="Dealer de Coke", -- menu name
     --permissions = {"mission.delivery.fish"}, -- you can add permissions
     r=0,g=125,b=255, -- color
-    max_units=1000000,
-    units_per_minute=10,
+    max_units=5000,
+    units_per_minute=3,
     x=-1055.04,y=-506.33,z=35.32, 
     radius=5, height=1.5, -- area
     recipes = {
@@ -649,8 +769,8 @@ cfg.item_transformers = {
       name="Dealer de LSD", -- menu name
     --permissions = {"mission.delivery.fish"}, -- you can add permissions
     r=0,g=125,b=255, -- color
-    max_units=1000000,
-    units_per_minute=10,
+    max_units=5000,
+    units_per_minute=4,
     x=-282.15,y=-2030.93,z=30.15, 
     radius=5, height=1.5, -- area
     recipes = {
@@ -663,7 +783,7 @@ cfg.item_transformers = {
                         }
                }
     
-  },
+  },--]]
 -- Trafiquant    
 --[[
 	{
@@ -771,7 +891,7 @@ cfg.item_transformers = {
         }
       },
 
-    ["sniper"] = { -- action name
+    ["sniper"] = { -- action nametresor
         description="forger", -- action description
         in_money=1000, -- money taken per unit
         out_money=0, -- money earned per unit
@@ -867,6 +987,7 @@ cfg.item_transformers = {
           ["strength"] = 1
         }
       },
+
 
 
 --MUN
@@ -983,6 +1104,23 @@ cfg.item_transformers = {
         }
       },
 
+       ["MUN smg classic"] = { -- action name
+        description="forger", -- action description
+        in_money=1000, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={ -- items taken per unit
+          ["plastique"] = 5,
+          ["metal"] = 5
+        },
+        products={ -- items given per unit
+          ["wammo|WEAPON_SMG"] = 50
+      
+       },
+      aptitudes={ -- optional
+          ["strength"] = 1
+        }
+      },
+
 
     ["MUN micro smg"] = { -- action name
         description="forger", -- action description
@@ -1069,6 +1207,18 @@ cfg.item_transformers = {
           ["repairkit"] = 1
            }
          },
+        ["pneu"] = { -- action name
+        description="Rechapper pneu", -- action description
+        in_money=0, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={ -- items taken per unit
+          ["plastique"] = 2,
+          ["metal"] = 1
+        },
+        products={ -- items given per unit
+          ["pneu"] = 1
+        }
+      },
         ["Fabriquer Chalumeau"] = { -- action name
         description="Création de Chalumeau", -- action description
         in_money=0, -- money taken per unit
@@ -1085,6 +1235,79 @@ cfg.item_transformers = {
     }
   },
 
+-- EXPORT
+
+{
+    name="Cubes de ferraille", -- menu name
+    permissions = {"craft.export"},
+    r=0,g=255,b=0, -- color
+    max_units=100000,
+    units_per_minute=6,
+    x=122.16756439209, y=-3103.0808105469, z=5.9962339401245, -- pos (needed for public use lab tools)
+    radius=15, height=3.0, -- area
+    recipes = {
+      ["Fabrication Cube ferraille"] = { -- action name
+        description="Compression d'une bagnole", -- action description
+        in_money=0, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={ -- items taken per unit
+          ["metal"] = 5,
+          ["plastique"] = 5
+        },
+        products={ 
+          ["cube"] = 1
+           }
+      }
+    }
+    },
+
+-- TRANSPORTS
+
+{
+    name="Fonderie", -- menu name
+    permissions = {"craft.trans"},
+    r=0,g=255,b=0, -- color
+    max_units=100000,
+    units_per_minute=6,
+    x=1109.1716308594, y=-2008.5230712891, z=31.034673690796, -- pos (needed for public use lab tools)
+    radius=15, height=3.0, -- area
+    recipes = {
+      ["Fabrication lingot"] = { -- action name
+        description="fabrication d'un lingot", -- action description
+        in_money=50000, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={ -- items taken per unit
+          ["metal"] = 5,
+          ["plastique"] = 5
+        },
+        products={ 
+          ["lingot"] = 1
+           }
+      }
+    }
+    },
+
+   {
+    name="Vente Lingots", -- menu name
+    r=0,g=255,b=0, -- color
+    max_units=100000,
+    units_per_minute=6,
+    x=252.40670776367, y=221.41265869141, z=106.28657531738, -- pos (needed for public use lab tools)
+    radius=8, height=1.5, -- area
+    recipes = {
+      ["Vente de lingots"] = { -- action name
+        description="fabrication d'un lingot", -- action description
+        in_money=0, -- money taken per unit
+        out_money=100000, -- money earned per unit
+        reagents={ -- items taken per unit
+          ["lingot"] = 1        
+        },
+        products={  }
+      }
+    }
+    }, 
+
+--CHAMPS
  {
     name="Champ de blé", -- menu name
     --permissions = {"mission.delivery.medical"}, -- you can add permissions
@@ -1150,7 +1373,7 @@ cfg.item_transformers = {
     --permissions = {"mission.delivery.medical"}, -- you can add permissions
     r=255,g=242,b=0, -- color
     max_units=1000000,
-    units_per_minute=6	,
+    units_per_minute=10	,
     x=2623.59, y=2786.91,z=33.16,
     radius=10, height=1.5, -- area
     recipes = {
@@ -1170,7 +1393,7 @@ cfg.item_transformers = {
     --permissions = {"mission.delivery.medical"}, -- you can add permissions
     r=255,g=242,b=0, -- color
     max_units=1000000,
-    units_per_minute=6	,
+    units_per_minute=10	,
     x=-2197.223,y=238.051,z=174.602,
     radius=6, height=1.5, -- area
     recipes = {
@@ -1231,7 +1454,7 @@ cfg.item_transformers = {
     permissions = {"harvest.delivery"}, -- you can add permissions
     r=0,g=125,b=255, -- color
     max_units=1000000,
-    units_per_minute=5,
+    units_per_minute=8,
     x=68.42,y=125.62,z=79.19, -- UPDATE THIS
     radius=3, height=1.5, -- area
     recipes = {
@@ -1350,6 +1573,164 @@ cfg.item_transformers = {
       }
    }
   },
+-- VIGNOBLE
+
+ {
+    name="Chais", -- menu name
+    permissions = {"craft.vigne"}, -- you can add permissions
+    r=0,g=125,b=255, -- color
+    max_units=1000000,
+    units_per_minute=6,
+    x=-1855.89, y=2061.55, z=141.04, -- UPDATE THIS
+    radius=2, height=1.5, -- area
+    recipes = {
+      ["champagne"] = { -- action name
+        description="Affinage du Champagne", -- action description
+        in_money=0, -- money taken per unit
+        out_money=50, -- money earned per unit
+        reagents={
+        ["raisin"] = 1,
+        ["vin"] = 1
+
+        }, -- items taken per unit
+        products={ -- items given per unit
+          ["champagne"] = 1
+        }
+      },
+      ["vin"] = { -- action name
+        description="Affinage du Vin", -- action description
+        in_money=0, -- money taken per unit
+        out_money=20, -- money earned per unit
+        reagents={ ["raisin"] = 5 }, -- items taken per unit
+        products={ -- items given per unit
+          ["vin"] = 1
+        }
+      },
+
+       ["jus de raisin"] = { -- action name
+        description="presser du jus", -- action description
+        in_money=0, -- money taken per unit
+        out_money=20, -- money earned per unit
+        reagents={ ["raisin"] = 3,
+        ["plastique"] = 1,
+
+         }, -- items taken per unit
+        products={ -- items given per unit
+          ["jraisin"] = 5
+        }
+      },
+
+        ["Melange Apero"] = { -- action name
+        description="Conception melange a grignoter", -- action description
+        in_money=0, -- money taken per unit
+        out_money=10, -- money earned per unit
+        reagents={
+        ["raisin"] = 1,
+        ["ble"] = 1
+        }, -- items taken per unit
+        products={ -- items given per unit
+          ["apero"] = 1
+        }
+      }
+
+   }
+  },  
+
+  {
+    name="Vigne", -- menu name
+    r=0,g=255,b=0, -- color
+    max_units=100000,
+    units_per_minute=5,
+    x=-1845.8, y=2151.63, z=117.96, -- pos (needed for public use lab tools)
+    radius=5, height=1.5, -- area
+    recipes = {
+      ["Vendange"] = { -- action name
+        description="recolte du raisin", -- action description
+        in_money=0, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={ },
+        products={ -- items given per unit
+          ["raisin"] = 1
+                 }      
+                            }
+              }
+},  
+
+--CRAFT MAISON
+
+{
+    name="Craft Maison", -- menu name
+    permissions = {}, -- you can add permissions
+    r=0,g=125,b=255, -- color
+    max_units=1000000,
+    units_per_minute=6,
+    x=-377.54867553711, y=297.44076538086,z=84.891914367676, -- UPDATE THIS
+    radius=8, height=1.5, -- area
+    recipes = {
+      ["Cappuccino"] = { -- action name
+        description="Couler un cappuccino", -- action description
+        in_money=0, -- money taken per unit
+        out_money=10, -- money earned per unit
+        reagents={
+        ["cafe"] = 2,
+        ["eau"] = 1,
+        ["lait"] = 1
+
+        }, -- items taken per unit
+        products={ -- items given per unit
+          ["cappucino"] = 1
+        }
+      },
+
+      ["Thé au lait"] = { -- action name
+        description="Infuser du thé au lait", -- action description
+        in_money=0, -- money taken per unit
+        out_money=10, -- money earned per unit
+        reagents={ 
+        ["the"] = 2,
+        ["eau"] = 1,
+        ["lait"] = 1
+         }, -- items taken per unit
+        products={ -- items given per unit
+        ["thelait"] = 1        
+        }
+      },
+
+      ["nuggets"] = { -- action name
+        description="faire des nuggets", -- action description
+        in_money=0, -- money taken per unit
+        out_money=10, -- money earned per unit
+        reagents={
+        ["poulet"] = 2,
+        ["ble"] = 5
+        
+        }, -- items taken per unit
+        products={ -- items given per unit
+          ["nuggets"] = 1
+        }
+      }
+   }
+  },  
+--[[    {
+    name="Recolte du raisin", -- menu name
+    r=0,g=255,b=0, -- color
+    max_units=50000,
+    units_per_minute=5,
+    x=-1845.8, y=2151.63, z=117.96, -- pos (needed for public use lab tools)
+    radius=1.1, height=1.5, -- area
+    recipes = {
+      ["Vendange"] = { -- action name
+        description="Récolte du raisin", -- action description
+        in_money=0, -- money taken per unit
+        out_money=0, -- money earned per unit
+        },
+        products={ -- items given per unit
+          ["raisin"] = 1
+         }       
+        }
+       }
+      },--]]
+
 
   --[[{
     name="eau bottles/tacos tree", -- menu name
@@ -1491,13 +1872,13 @@ cfg.item_transformers = {
    -- }
  -- },
   {
-    name="Labo de drogues", -- menu name
+    name="Labo de coke", -- menu name
 	--permissions = {"harvest.weed"}, -- job drug dealer required to use
     r=0,g=255,b=0, -- color
     max_units=1000000,
     units_per_minute=15,
-    x=-77.722381591797,y=6223.626953125,z=31.089864730835, -- pos (needed for public use lab tools)
-    radius=1.1, height=1.5, -- area
+    x=1095.8940429688,y=-3197.453125,z=-38.993461608887, -- pos (needed for public use lab tools)
+    radius=20, height=1.5, -- area
     recipes = {
       ["cocaine emballée"] = { -- action name
         description="Fabrication de cocaine, emballage", -- action description
@@ -1514,8 +1895,21 @@ cfg.item_transformers = {
           ["laboratory.cocaine"] = 3, -- "group.aptitude", give 1 exp per unit
           ["science.chemicals"] = 6
         }
-      },
-      ["weed emballée"] = { -- action name
+      }
+  }
+},
+
+
+{
+    name="Labo Weed", -- menu name
+  --permissions = {"harvest.weed"}, -- job drug dealer required to use
+    r=0,g=255,b=0, -- color
+    max_units=1000000,
+    units_per_minute=15,
+    x=1057.7453613281, y=-3194.3061523438,z=-39.161334991455, -- pos (needed for public use lab tools)
+    radius=20, height=1.5, -- area
+    recipes = {
+        ["weed emballée"] = { -- action name
         description="fabrication de weed, emballage", -- action description
         in_money=50, -- money taken per unit
         out_money=0, -- money earned per unit
@@ -1530,7 +1924,20 @@ cfg.item_transformers = {
           ["laboratory.weed"] = 3, -- "group.aptitude", give 1 exp per unit
           ["science.chemicals"] = 6
         }
-      },
+      }
+      
+      }
+     },
+
+{
+    name="Labo LSD", -- menu name
+  --permissions = {"harvest.weed"}, -- job drug dealer required to use
+    r=0,g=255,b=0, -- color
+    max_units=1000000,
+    units_per_minute=15,
+    x=1006.8201904297,y=-3196.6950683594,z=-38.993118286133, -- pos (needed for public use lab tools)
+    radius=20, height=1.5, -- area
+    recipes = {
       ["lsd emballé"] = { -- action name
           description="fabrication de lsd, emballage", -- action description
           in_money=50, -- money taken per unit
@@ -1550,7 +1957,6 @@ cfg.item_transformers = {
         }
       }
      }
-
 
 	}
 -- define transformers randomly placed on the map

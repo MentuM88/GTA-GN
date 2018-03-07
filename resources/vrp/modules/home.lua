@@ -1,4 +1,3 @@
-
 -- this module describe the home system (experimental, a lot can happen and not being handled)
 
 local lang = vRP.lang
@@ -9,7 +8,7 @@ local cfg = module("cfg/homes")
 MySQL.createCommand("vRP/home_tables", [[
 CREATE TABLE IF NOT EXISTS vrp_user_homes(
   user_id INTEGER,
-  home VARCHAR(255),
+  home VARCHAR(100),
   number INTEGER,
   CONSTRAINT pk_user_homes PRIMARY KEY(user_id),
   CONSTRAINT fk_user_homes_users FOREIGN KEY(user_id) REFERENCES vrp_users(id) ON DELETE CASCADE,
@@ -424,5 +423,4 @@ AddEventHandler("vRP:playerLeave",function(user_id, player)
     leave_slot(user_id, player, tmp.home_stype, tmp.home_sid)
   end
 end)
-
 

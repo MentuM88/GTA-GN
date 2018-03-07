@@ -15,6 +15,7 @@ cfg.groups = {
     "player.group.add",
     "player.group.remove",
     "player.givemoney",
+    "owner.chattitle",
     "player.giveitem"
   },
   ["admin"] = {
@@ -26,6 +27,7 @@ cfg.groups = {
 	"admin.godmode",
 	"admin.spawnveh",
 	"admin.deleteveh",
+  "player.giveitem",
 	"player.blips",
 	"player.tptowaypoint",
     "player.list",
@@ -42,6 +44,7 @@ cfg.groups = {
     "player.tptome",
 	"emergency.revive",
 	"emergency.shop",
+  "admin.chattitle",
     "player.tpto"
   },
      ["god"] = {
@@ -69,6 +72,7 @@ cfg.groups = {
     "player.calladmin",
 	"player.fix_haircut",
 	"player.check",
+  "HRP.chattitle",
 	--"mugger.mug",
     "police.askid",
     "police.store_weapons",
@@ -114,6 +118,16 @@ cfg.groups = {
   "delivery.paycheck",
 	"medical.vehicle"
     },
+
+  ["Transporteur"] = {
+    _config = { gtype = "job",
+  onspawn = function(player) vRPclient.notify(player,{"Vous êtes le responsable de l'entreprise de transport."}) end
+  },
+  "craft.trans",
+  "trans.vehicle",
+  "motards.paycheck"
+    },
+
   ["Weapons Smuggler"] = {
     _config = { gtype = "job",
 	onspawn = function(player) vRPclient.notify(player,{"You are a Weapons Smuggler."}) end
@@ -161,48 +175,48 @@ cfg.groups = {
 	"emergency.shop",
 	"player.list",
 	"police.menu_interaction",
-	"police.paycheck"
+	"officier.paycheck"
   },
-  ["Police Detective"] = {  
+  ["Detective"] = {  
     _config = { 
       gtype = "job",
       onjoin = function(player) vRPclient.setCop(player,{true}) end,
       onspawn = function(player) vRPclient.setCop(player,{true}) end,
       onleave = function(player) vRPclient.setCop(player,{true}) end
     },
-    "Detective.cloakroom",
-	"highway.cloakroom",
-    "police.pc",
+    --"Detective.cloakroom",
+	--"highway.cloakroom",
+   -- "police.pc",
     --"police.handcuff",
-    "police.putinveh",
-    "police.getoutveh",
-    "police.service",
-    "police.wanted",
-    "police.seize.weapons",
-    "police.seize.items",
+   -- "police.putinveh",
+   -- "police.getoutveh",
+   -- "police.service",
+   -- "police.wanted",
+   -- "police.seize.weapons",
+   -- "police.seize.items",
     --"police.jail",
     --"police.fine",
-	"police.drag",
-	"police.easy_cuff",
-	"police.easy_fine",
-	"police.easy_jail",
-	"police.easy_unjail",
-	"police.spikes",
-	"police.menu",
-    "police.check",
-	"toggle.service",
-	"police.freeze",
-    "police.announce",
+	--"police.drag",
+	--"police.easy_cuff",
+	--"police.easy_fine",
+	--"police.easy_jail",
+	--"police.easy_unjail",
+	--"police.spikes",
+	--"police.menu",
+    --"police.check",
+	--"toggle.service",
+	--"police.freeze",
+    --"police.announce",
    -- "-police.store_weapons",
-    "-police.seizable",	-- negative permission, police can't seize itself, even if another group add the permission
-	"police.vehicle",
-	"police.loadshop",
-	"cop.whitelisted",
+   -- "-police.seizable",	-- negative permission, police can't seize itself, even if another group add the permission
+	--"police.vehicle",
+	--"police.loadshop",
+	--"cop.whitelisted",
 	--"emergency.market",
-	"emergency.revive",
-	"emergency.shop",
+	--"emergency.revive",
+	--"emergency.shop",
 	"player.list",
-	"police.menu_interaction",
+	--"police.menu_interaction",
 	"Detective.paycheck"
   },
   ["Secours"] = {
@@ -215,15 +229,39 @@ cfg.groups = {
 	--"police.wanted",
     "emergency.shop",
     "emergency.service",
+    "emergency.doc",
 	"emergency.cloakroom",
 	"emergency.vehicle",
 	"emergency.market",
 	"ems.whitelisted",
 	"ems.loadshop",
+  --"ems.mission",
   "craft.medkits",
 	"player.list",
 	"police.menu_interaction",
 	"emergency.paycheck"
+  },
+
+  ["Medecin"] = {
+    _config = { gtype = "job",
+  onspawn = function(player) vRPclient.notify(player,{"Vous êtes Medecin"}) end
+  },
+    "emergency.revive",
+    "emergency.heal",
+  "police.pc",
+  --"police.wanted",
+    "emergency.shop",
+    "emergency.service",
+    "emergency.doc",
+  "emergency.cloakroom",
+  "emergency.vehicle",
+  "emergency.market",
+  "ems.whitelisted",
+  "ems.loadshop",
+  "craft.medkits",
+  "player.list",
+  "police.menu_interaction",
+  "emergency.paycheck"
   },
 
     ["Adepte"] = {
@@ -298,6 +336,23 @@ cfg.groups = {
 	"uber.vehicle",
 	"uber.paycheck"
   },
+
+  ["Patron Taxi"] = {
+    _config = { gtype = "job",
+  onspawn = function(player) vRPclient.notify(player,{"Vous êtes le patron des Taxi."}) end
+  },
+  "taxi.service",
+  "taxi.vehicle",
+  "motards.paycheck"
+  },
+  ["Taxi"] = {
+    _config = { gtype = "job",
+  onspawn = function(player) vRPclient.notify(player,{"Vous êtes un Taxi."}) end
+  },
+  "taxi.service",
+  "taxi.vehicle",
+  "motards.paycheck"
+  },
  -- ["Gunrunning"] = {
    -- _config = { gtype = "job",
 	--onspawn = function(player) vRPclient.notify(player,{"Coming soon, Please wait!"}) end
@@ -318,6 +373,22 @@ cfg.groups = {
 	"delivery.paycheck",
   "harvest.delivery"
   },
+["Eboueur"] = {
+    _config = { gtype = "job",
+  onspawn = function(player) vRPclient.notify(player,{"You are Trash Collector"}) end
+  },
+  "mission.collect.trash", -- mission permission
+  "trash.vehicle", -- garage permission
+  "delivery.paycheck" -- paycheck permission
+  },
+
+  ["Journaliste"] = {
+    _config = { gtype = "job",
+  onspawn = function(player) vRPclient.notify(player,{"Vous êtes une fouine, et vous êtes payé pour ça."}) end
+  },
+  "Captain.paycheck"
+  },
+
   ["Lawyer"] = {
     _config = { gtype = "job",
 	onspawn = function(player) vRPclient.notify(player,{"You are a Lawyer, Salary : $2000."}) end
@@ -391,7 +462,7 @@ cfg.groups = {
 	"police.loadshop",
 	"cop.whitelisted",
 	"police.menu_interaction",
-	"Cadet.paycheck"
+	"Sergeant.paycheck"
   },
   ["SWAT"] = {
     _config = { gtype = "job",
@@ -835,7 +906,8 @@ cfg.groups = {
   -- whitelist group for police, emergency and president jobs / add player to this group and user can view the job selection / search in the map
   -- moderator=president / president is guy from the server give a player group cop ems moderator when admin is offline / sallary : $10.000
   ["cop"] = {
-    "cop.whitelisted"
+    "cop.whitelisted",
+    "cop.chattitle"
   },
   ["Exotic Car Dealer"] = {
    	_config = { gtype = "job",
@@ -868,6 +940,27 @@ cfg.groups = {
    "unicorn.paycheck"
   },
 
+  ["Aigle Americain"] = { 
+  _config = { gtype = "job",    
+  onspawn = function(player) vRPclient.notify(player,{"JPP Enterprise"}) end
+  },
+   "jpp.vehicle",
+   "craft.jpp",
+   "vehicle.repair",
+   "vehicle.replace",
+   "unicorn.paycheck"
+  },
+
+["Foodtruck"] = {
+  _config = { gtype = "job",
+  onspawn = function(player) vRPclient.notify(player,{"Propietaire d'un Foodtruck"}) end
+  },
+     "foodtruck.whitelisted",
+     "motards.paycheck",
+     "garage.foodtruck",
+     "craft.food"
+  },
+
 
   ["Bar des Motards"] = {
   _config = { gtype = "job",
@@ -884,6 +977,37 @@ cfg.groups = {
      "motards.whitelisted",
      "motards.paycheck",
      "craft.motards"
+  },
+
+  ["Vigneron"] = {
+  _config = { gtype = "job",
+  onspawn = function(player) vRPclient.notify(player,{"Propietaire du Vignoble"}) end
+  },
+     "motards.paycheck",
+     "craft.vigne",
+     "vigne.vehicle"
+  },
+
+  ["Viticulteur"] = {
+  _config = { gtype = "job",
+  onspawn = function(player) vRPclient.notify(player,{"Employé du vignoble"}) end
+  },
+     "motards.paycheck",
+     "craft.vigne",
+     "vigne.vehicle"
+  },
+
+   ["Export"] = {
+  _config = { gtype = "job",
+  onspawn = function(player) vRPclient.notify(player,{"Patron de l'Export"}) end
+  },
+     "motards.paycheck",
+     "craft.export",
+     "repair.service",
+     "vehicle.repair",
+     "vehicle.replace",
+     "repair.market",
+     "export.vehicle"
   },
 
   ["Gourou"] = {
@@ -928,6 +1052,7 @@ cfg.groups = {
     "police.getoutveh",
     "police.service",
     "police.loadshop",
+  --"police.mission",
   "police.drag",
   "police.easy_cuff",
   "police.easy_fine",
@@ -972,10 +1097,28 @@ cfg.groups = {
 
   ["Casino"] = {
     _config = { gtype = "job",
-  onspawn = function(player) vRPclient.notify(player,{"Vous êtes gérant du Casino."}) end
+  onspawn = function(player) vRPclient.notify(player,{"Vous êtes gérant du Groupe Gambretti."}) end
   },
     "motards.paycheck",
+    "casino.vehicle",
     "craft.casino"
+  },
+
+    ["Groupe Gambretti"] = {
+    _config = { gtype = "job",
+  onspawn = function(player) vRPclient.notify(player,{"Vous êtes employé du Groupe Gambretti."}) end
+  },
+    "motards.paycheck",
+    "casino.vehicle",
+    "craft.casino"
+  },
+
+    ["Justice"] = {
+    _config = { gtype = "job",
+  onspawn = function(player) vRPclient.notify(player,{"Vous êtes un justicier en col blanc."}) end
+  },
+    "justice.garage",
+    "justice.paycheck"
   },
 
   ["Foodtruck"] = {
@@ -998,8 +1141,41 @@ cfg.groups = {
   --"mission.repair.wind_turbines",
   "craft.outils",
   "repair.vehicle",
-  "vehicle.open",
+  --"vehicle.open",
   "repair.market",
+  "garage.vehicle",
+  "repair.paycheck"
+  },
+
+  ["Exploitant Agricole"] = {
+  _config = { gtype = "job",
+  onspawn = function(player) vRPclient.notify(player,{"Vous êtes un pays.... AGRICULTEUR."}) end
+  },
+    "vehicle.repair",
+    "vehicle.replace",
+   -- "repair.service",
+    "craft.motards",
+  --"mission.repair.satellite_dishes",
+  --"mission.repair.wind_turbines",
+  "craft.outils",
+  "repair.vehicle",
+  "repair.market",
+  "garage.vehicle",
+  "repair.paycheck"
+  },
+
+  ["Agriculteur"] = {
+  _config = { gtype = "job",
+  onspawn = function(player) vRPclient.notify(player,{"Vous êtes un pays.... AGRICULTEUR."}) end
+  },
+  --"vehicle.repair",
+  --"vehicle.replace",
+  -- "repair.service",
+  --"mission.repair.satellite_dishes",
+  --"mission.repair.wind_turbines",
+  --"craft.outils",
+  --"repair.vehicle",
+  --"repair.market",
   "garage.vehicle",
   "repair.paycheck"
   },
@@ -1011,13 +1187,13 @@ cfg.groups = {
       onleave = function(player) vRPclient.setCop(player,{false}) end
   },
   "police.cloakroom",
-    --"police.putinveh",
-    --"police.getoutveh",
+    "police.putinveh",
+    "police.getoutveh",
     "police.service",
-        --"police.seize.weapons",
+        "police.seize.weapons",
   --"police.drag",
-  --"police.easy_cuff",
-  --"police.easy_fine",
+  "police.easy_cuff",
+  "police.easy_fine",
   "police.easy_jail",
   "police.easy_unjail",
   --"police.spikes",
@@ -1046,6 +1222,8 @@ cfg.groups = {
     "police.check",
     "police.service",
     "police.loadshop",
+    "police.putinveh",
+    "police.getoutveh",
   "police.drag",
   "police.easy_cuff",
   "police.easy_fine",
@@ -1057,15 +1235,19 @@ cfg.groups = {
   "toggle.service",
   "police.freeze",
     "police.wanted",
+    "police.seize.weapons",
+    "police.seize.items",
+    "police.wanted",
     "police.announce",
     "police.cloakroom",
    -- "-police.store_weapons",
     "-police.seizable", -- negative permission, police can't seize itself, even if another group add the permission
   "emergency.heal",
-  "emergency.service",
+  --"emergency.service",
   "emergency.market",
   "emergency.revive",
   "emergency.shop",
+  "emergency.doc",
   "cop.whitelisted",
   "police.vehicle",
   "craft.medkits",
@@ -1084,6 +1266,8 @@ cfg.groups = {
     "police.service",
     "police.cloakroom",
     "police.loadshop",
+    "police.putinveh",
+    "police.getoutveh",
   "police.drag",
   "police.easy_cuff",
   "police.easy_fine",
@@ -1091,14 +1275,17 @@ cfg.groups = {
   "police.easy_unjail",
   "police.spikes",
   "police.menu",
-    "police.check",
+      "police.check",
   "toggle.service",
   "police.freeze",
+    "police.wanted",
+    "police.seize.weapons",
+    "police.seize.items",
     "police.wanted",
     "police.announce",
     "vehicle.repair",
     "vehicle.replace",
-    "repair.service",
+    --"repair.service",
   "repair.vehicle",
   "repair.market",
   "vehicle.open",
@@ -1112,6 +1299,53 @@ cfg.groups = {
   "police.menu_interaction",
   "Captain.paycheck"
   },
+
+  ["Officier"] = {
+    _config = { gtype = "job",
+    onjoin = function(player) vRPclient.setCop(player,{true}) end,
+      onspawn = function(player) vRPclient.setCop(player,{true}) end,
+      onleave = function(player) vRPclient.setCop(player,{false}) end
+  },
+    "police.pc",
+    "police.check",
+    "police.service",
+    "police.loadshop",
+    "police.putinveh",
+    "police.getoutveh",
+  "police.drag",
+  "police.easy_cuff",
+  "police.easy_fine",
+  "police.easy_jail",
+  "police.easy_unjail",
+  "police.spikes",
+  "police.menu",
+    "police.check",
+  "toggle.service",
+  "police.freeze",
+    "police.wanted",
+    "police.seize.weapons",
+    "police.seize.items",
+    "police.wanted",
+    "police.announce",
+    "police.cloakroom",
+   -- "-police.store_weapons",
+    "-police.seizable", -- negative permission, police can't seize itself, even if another group add the permission
+  "emergency.heal",
+  --"emergency.service",
+  "emergency.market",
+  "emergency.revive",
+  "emergency.shop",
+  "emergency.doc",
+  "cop.whitelisted",
+  "police.vehicle",
+  "craft.medkits",
+  "police.menu_interaction",
+  "officier.paycheck"
+  },
+
+
+
+
 
 ["Agent Municipal"] = {
     _config = { gtype = "job",
@@ -1149,10 +1383,16 @@ onspawn = function(player) vRPclient.notify(player,{"Vous êtes maintenant Agent
   --"emergency.market",
   "emergency.revive",
   "emergency.shop",
-  "cop.whitelisted",
+  --"cop.whitelisted",
+  "achat.armes",
   "craft.sandy",
   "car.sandy",
-  "police.menu_interaction",
+  "police.putinveh",
+    "police.getoutveh",
+  "police.drag",
+  "police.easy_cuff",
+  "police.easy_fine",
+  --"police.menu_interaction",
   "motards.paycheck"
   },
 
@@ -1162,7 +1402,7 @@ cfg.users = {
   [1] = { -- give superadmin and admin group to the first created user on the database
     "superadmin",
     "admin",
-	"recruiter"
+    "recruiter"
   }
 }
 
@@ -1177,41 +1417,28 @@ cfg.users = {
   "Mecanicien",
   "Transport Médical",
   "Convoyeur",
+  "UBER",
+  "Eboueur",
   "Pêcheur",
   "chomeur"
   },
-  ["Police job"] = { -- Alta Street
+  --[[["Police job"] = { -- Alta Street
     _config = {x = 447.35137939453, y = -975.57592773438, z = 30.689584732056, blipid = 351, blipcolor = 38, permissions = {"cop.whitelisted"} },
-  "Sheriff",
   "Soldat",
-  "Mecano",
-  "Medic",
-  "Cadet",
-  "SWAT",
   "chomeur"
     },
   ["Police job 2"] = { -- Sandy Shores
     _config = {x = 1857.5961914063, y = 3688.8952636719, z = 34.267040252686, blipid = 351, blipcolor = 38, permissions = {"cop.whitelisted"} },
-  "Sheriff",
   "Soldat",
-  "Mecano",
-  "Medic",
-  "Cadet",
-  "SWAT",
   "chomeur"
     },
   ["Police job 3"] = { -- Paleto Bay
     _config = {x = -449.00927734375, y = 6017.1953125, z = 31.716377258301, blipid = 351, blipcolor = 38, permissions = {"cop.whitelisted"} },
-	"Sheriff",
-  "Soldat",
-  "Mecano",
-  "Medic",
-  "Cadet",
-  "SWAT",
+	"Soldat",
   "chomeur"
-    },
+    },--]]
   ["Emergency job"] = { -- Spawn Hospital
-    _config = {x =  249.50639343262, y = -1375.0694580078, z = 39.534378051758, blipid = 351, blipcolor = 3, permissions = {"ems.whitelisted"} },
+    _config = {x =  268.46, y = -1364.48, z = 24.54, blipid = 351, blipcolor = 3, permissions = {"ems.whitelisted"} },
 	"Secours"
   }
 --[[  ["Lawyer"] = {

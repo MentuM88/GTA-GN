@@ -5,6 +5,7 @@ MenuCanBeOpenByAllPlayers = false ---- If you set it to true, all players will a
 
 MenuWhiteList = { --- List of poeple who can open the menu
 	"steam:1100001014304e8",
+	"steam:1100001041fef0b"
 }
 
 

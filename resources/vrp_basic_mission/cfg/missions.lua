@@ -225,7 +225,10 @@ cfg.weapons_smuggler = {
 }
 
 local common_medical_positions = {
-  {326.83486938477,-1473.7293701172,29.795280456543}
+  {326.83486938477,-1473.7293701172,29.795280456543},
+  { 866.393,  17.635,  78.654},
+  { 318.985,  167.41,  103.335},
+  { 88.836,  254.054,  108.236}
 }
 
 cfg.medical_driver = {
@@ -233,7 +236,7 @@ cfg.medical_driver = {
 	title = "Transports médicaux",
     positions = common_medical_positions,
     items = {
-      ["Medical Weed"] = {1,20,240}
+      ["Medical Weed"] = {1,20,170}
     }
   }
 }
@@ -285,5 +288,67 @@ cfg.hacker = {
     }
   }
 }
+
+-- Trash Collector
+local common_trash_positions = {
+  {711.07678222656,-1408.1213378906,26.35417175293} -- Add more positions
+}
+
+cfg.trash = {
+  ["mission.collect.trash"] = {
+    positions = common_trash_positions,
+    items = {
+      ["trash"] = {1,10,400}
+    }
+  }
+}
+
+-- Forger
+local common_forger_positions = {
+  {-1061.9360351563,-243.80813598633,44.021057128906}
+}
+
+cfg.forger = {
+  ["forger.mission"] = {
+    positions = common_forger_positions,
+    items = {
+      ["fake_id"] = {1,10,600}
+    }
+  }
+}
+
+-- Police
+local common_police_positions = {
+  {145.04643249512,-1044.4276123047,29.367944717407}, -- Vespucci
+  {-2957.4338378906,479.3232421875,15.696963310242}, -- Highway
+  {-104.5299987793,6470.8251953125,31.626712799072} -- Blaine County
+}
+
+cfg.police = {
+  ["police.mission"] = {
+    positions = common_police_positions,
+    items = {
+      ["police_report"] = {1,1,600}
+    }
+  }
+}
+
+-- EMS
+local common_ems_positions = {
+  {341.70108032227,-1396.8901367188,32.509250640869}, -- Central
+  {356.31234741211,-597.83703613281,28.779567718506}, -- Pillbox Hill
+  {1839.1788330078,3672.5698242188,34.276737213135}, -- Sandy Shores
+  {-244.23054504395,6328.3413085938,32.426177978516} -- Paleto
+}
+
+cfg.ems = {
+  ["ems.mission"] = {
+    positions = common_ems_positions,
+    items = {
+      ["ems_report"] = {1,1,600}
+    }
+  }
+}
+
 
 return cfg

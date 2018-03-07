@@ -6,7 +6,7 @@ Citizen.CreateThread(function()
 	-- Trevor: 1985.48132, 3828.76757, 32.5
 	-- Trash or Tidy. Only choose one.
 		RequestIpl("TrevorsTrailerTrash")
-		RequestIpl("trevorstrailertidy")
+		--RequestIpl("trevorstrailertidy")
 	
 	-- Heist Jewel: -637.20159 -239.16250 38.1
 		RequestIpl("post_hiest_unload")
@@ -141,22 +141,22 @@ Citizen.CreateThread(function()
 			RequestIpl("gr_case10_bunkerclosed")
 			RequestIpl("gr_case11_bunkerclosed")
 			
-		-- Bunkers - Interior: 892.6384, -3245.8664, -98.2645
+		 --Bunkers - Interior: 892.6384, -3245.8664, -98.2645
 			RequestIpl("gr_entrance_placement")
 			RequestIpl("gr_grdlc_interior_placement")
 			RequestIpl("gr_grdlc_interior_placement_interior_0_grdlc_int_01_milo_")
 			RequestIpl("gr_grdlc_interior_placement_interior_1_grdlc_int_02_milo_")
 			
-		-- Bahama Mamas: -1388.0013, -618.41967, 30.819599
+		 --Bahama Mamas: -1388.0013, -618.41967, 30.819599
 			RequestIpl("hei_sm_16_interior_v_bahama_milo_")
 		
 		-- Red Carpet: 300.5927, 199.7589, 104.3776
 			RequestIpl("redCarpet") 
 
 		-- UFO
-		-- Zancudo: -2051.99463, 3237.05835, 1456.97021
-		-- Hippie base: 2490.47729, 3774.84351, 2414.035
-		-- Chiliad: 501.52880000, 5593.86500000, 796.23250000
+		 --Zancudo: -2051.99463, 3237.05835, 1456.97021
+		 --Hippie base: 2490.47729, 3774.84351, 2414.035
+		 --Chiliad: 501.52880000, 5593.86500000, 796.23250000
 			RequestIpl("ufo")
 			RequestIpl("ufo_eye")
 			RequestIpl("ufo_lod")
@@ -191,48 +191,48 @@ Citizen.CreateThread(function()
 			
 		-- CEO Offices :
 			-- Arcadius Business Centre
-				RequestIpl("ex_dt1_02_office_02b")	-- Executive Rich
-				RequestIpl("ex_dt1_02_office_02c")	-- Executive Cool
-				RequestIpl("ex_dt1_02_office_02a")	-- Executive Contrast
-				RequestIpl("ex_dt1_02_office_01a")	-- Old Spice Warm
-				RequestIpl("ex_dt1_02_office_01b")	-- Old Spice Classical
-				RequestIpl("ex_dt1_02_office_01c")	-- Old Spice Vintage
-				RequestIpl("ex_dt1_02_office_03a")	-- Power Broker Ice
-				RequestIpl("ex_dt1_02_office_03b")	-- Power Broker Conservative
-				RequestIpl("ex_dt1_02_office_03c")	-- Power Broker Polished
+				--RequestIpl("ex_dt1_02_office_02b")	-- Executive Rich
+				--RequestIpl("ex_dt1_02_office_02c")	-- Executive Cool
+				-- RequestIpl("ex_dt1_02_office_02a")	-- Executive Contrast
+				-- RequestIpl("ex_dt1_02_office_01a")	-- Old Spice Warm
+				-- RequestIpl("ex_dt1_02_office_01b")	-- Old Spice Classical
+				-- RequestIpl("ex_dt1_02_office_01c")	-- Old Spice Vintage
+				-- RequestIpl("ex_dt1_02_office_03a")	-- Power Broker Ice
+				-- RequestIpl("ex_dt1_02_office_03b")	-- Power Broker Conservative
+				 RequestIpl("ex_dt1_02_office_03c")	-- Power Broker Polished
 				
 			-- Maze Bank Building
-				RequestIpl("ex_dt1_11_office_02b")	-- Executive Rich
-				RequestIpl("ex_dt1_11_office_02c")	-- Executive Cool
-				RequestIpl("ex_dt1_11_office_02a")	-- Executive Contrast
+				-- RequestIpl("ex_dt1_11_office_02b")	-- Executive Rich
+				-- RequestIpl("ex_dt1_11_office_02c")	-- Executive Cool
+				-- RequestIpl("ex_dt1_11_office_02a")	-- Executive Contrast
 				RequestIpl("ex_dt1_11_office_01a")	-- Old Spice Warm
-				RequestIpl("ex_dt1_11_office_01b")	-- Old Spice Classical
-				RequestIpl("ex_dt1_11_office_01c")	-- Old Spice Vintage
-				RequestIpl("ex_dt1_11_office_03a")	-- Power Broker Ice
-				RequestIpl("ex_dt1_11_office_03b")	-- Power Broker Conservative
-				RequestIpl("ex_dt1_11_office_03c")	-- Power Broker Polished
+				-- RequestIpl("ex_dt1_11_office_01b")	-- Old Spice Classical
+				-- RequestIpl("ex_dt1_11_office_01c")	-- Old Spice Vintage
+				-- RequestIpl("ex_dt1_11_office_03a")	-- Power Broker Ice
+				-- RequestIpl("ex_dt1_11_office_03b")	-- Power Broker Conservative
+				-- RequestIpl("ex_dt1_11_office_03c")	-- Power Broker Polished
 				
 			-- Lom Bank
-				RequestIpl("ex_sm_13_office_02b")	-- Executive Rich
-				RequestIpl("ex_sm_13_office_02c")	-- Executive Cool
-				RequestIpl("ex_sm_13_office_02a")	-- Executive Contrast
-				RequestIpl("ex_sm_13_office_01a")	-- Old Spice Warm
+				-- RequestIpl("ex_sm_13_office_02b")	-- Executive Rich
+				-- RequestIpl("ex_sm_13_office_02c")	-- Executive Cool
+				-- RequestIpl("ex_sm_13_office_02a")	-- Executive Contrast
+				-- RequestIpl("ex_sm_13_office_01a")	-- Old Spice Warm
 				RequestIpl("ex_sm_13_office_01b")	-- Old Spice Classical
-				RequestIpl("ex_sm_13_office_01c")	-- Old Spice Vintage
-				RequestIpl("ex_sm_13_office_03a")	-- Power Broker Ice
-				RequestIpl("ex_sm_13_office_03b")	-- Power Broker Conservative
-				RequestIpl("ex_sm_13_office_03c")	-- Power Broker Polished
+				-- RequestIpl("ex_sm_13_office_01c")	-- Old Spice Vintage
+				-- RequestIpl("ex_sm_13_office_03a")	-- Power Broker Ice
+				-- RequestIpl("ex_sm_13_office_03b")	-- Power Broker Conservative
+				-- RequestIpl("ex_sm_13_office_03c")	-- Power Broker Polished
 				
 			-- Maze Bank West
-				RequestIpl("ex_sm_15_office_02b")	-- Executive Rich
-				RequestIpl("ex_sm_15_office_02c")	-- Executive Cool
-				RequestIpl("ex_sm_15_office_02a")	-- Executive Contrast
-				RequestIpl("ex_sm_15_office_01a")	-- Old Spice Warm
-				RequestIpl("ex_sm_15_office_01b")	-- Old Spice Classical
-				RequestIpl("ex_sm_15_office_01c")	-- Old Spice Vintage
-				RequestIpl("ex_sm_15_office_03a")	-- Power Broker Ice
-				RequestIpl("ex_sm_15_office_03b")	-- Power Broker Convservative
-				RequestIpl("ex_sm_15_office_03c")	-- Power Broker Polished
+				-- RequestIpl("ex_sm_15_office_02b")	 --Executive Rich
+				-- RequestIpl("ex_sm_15_office_02c")	 --Executive Cool
+				 RequestIpl("ex_sm_15_office_02a")	-- Executive Contrast
+				-- RequestIpl("ex_sm_15_office_01a")	-- Old Spice Warm
+				-- RequestIpl("ex_sm_15_office_01b")	-- Old Spice Classical
+				-- RequestIpl("ex_sm_15_office_01c")	-- Old Spice Vintage
+				-- RequestIpl("ex_sm_15_office_03a")	-- Power Broker Ice
+				--RequestIpl("ex_sm_15_office_03b")	-- Power Broker Convservative
+				--RequestIpl("ex_sm_15_office_03c")	-- Power Broker Polished
 
 		-- Biker
 			RequestIpl("bkr_biker_interior_placement_interior_0_biker_dlc_int_01_milo")
@@ -274,5 +274,12 @@ Citizen.CreateThread(function()
 			RequestIpl("imp_impexp_interior_placement_interior_3_impexp_int_02_milo_")
 			RequestIpl("imp_impexp_interior_placement_interior_1_impexp_intwaremed_milo_")
 			RequestIpl("imp_impexp_interior_placement_interior_2_imptexp_mod_int_01_milo_")
+
+			RequestIpl("gr_heist_yacht2")
+			RequestIpl("gr_heist_yacht2_bar")
+			RequestIpl("gr_heist_yacht2_bedrm")
+			RequestIpl("gr_heist_yacht2_bridge")
+			RequestIpl("gr_heist_yacht2_enginrm")
+			RequestIpl("gr_heist_yacht2_lounge")
 			
 end)

@@ -45,7 +45,7 @@ smoke_choices["Consommer"] = {function(player,choice)
   local user_id = vRP.getUserId(player)
   if user_id ~= nil then
     if vRP.tryGetInventoryItem(user_id,"weed",1) then
-	  vRP.varyHunger(user_id,(20))
+    vRP.varyHunger(user_id,(20))
       vRPclient.notify(player,{"~g~ smoking weed."})
       play_smoke(player)
       vRP.closeMenu(player)
@@ -68,7 +68,7 @@ smell_choices["Consommer"] = {function(player,choice)
   local user_id = vRP.getUserId(player)
   if user_id ~= nil then
     if vRP.tryGetInventoryItem(user_id,"cocaine",1) then
-	  vRP.varyThirst(user_id,(20))
+    vRP.varyThirst(user_id,(20))
       vRPclient.notify(player,{"~g~ sniffe la cocaine."})
       play_smell(player)
       vRP.closeMenu(player)
@@ -91,7 +91,7 @@ lsd_choices["Consommer"] = {function(player,choice)
   local user_id = vRP.getUserId(player)
   if user_id ~= nil then
     if vRP.tryGetInventoryItem(user_id,"lsd",1) then
-	  vRP.varyThirst(user_id,(20))
+    vRP.varyThirst(user_id,(20))
 
       vRPclient.notify(player,{"~g~ prend le lsd."})
       play_lsd(player)
@@ -135,7 +135,7 @@ end}
 
 local function play_donut(player)
   local seq6 = {
-    {"mp_player_inteat@burger", "mp_player_int_eat_burger_enter",1},
+        {"mp_player_inteat@burger", "mp_player_int_eat_burger_enter",1},
     {"mp_player_inteat@burger", "mp_player_int_eat_burger",1},
     {"mp_player_inteat@burger", "mp_player_int_eat_burger_fp",1},
     {"mp_player_inteat@burger", "mp_player_int_eat_exit_burger",1},
@@ -159,7 +159,39 @@ donut_choices["Consommer"] = {function(player,choice)
     if vRP.tryGetInventoryItem(user_id,"pdonut",1) then
     vRP.varyHunger(user_id,(-100))
       vRPclient.notify(player,{"~g~ Gobe le donut...drôle de goût !."})
+      tvRP.playScreenEffect(cfg.drug_effect,-1)
       play_donut(player)
+      tvRP.stopScreenEffect(cfg.drug_effect)
+      vRP.closeMenu(player)
+    end
+  end
+end}
+
+local space_choices = {}
+space_choices["Consommer"] = {function(player,choice)
+  local user_id = vRP.getUserId(player)
+  if user_id ~= nil then
+    if vRP.tryGetInventoryItem(user_id,"spacecake",1) then
+    vRP.varyHunger(user_id,(-100))
+      vRPclient.notify(player,{"~g~ Gobe le gateau...drôle de goût !."})
+      --tvRP.playScreenEffect(cfg.drug_effect,-1)
+      play_donut(player)
+      --tvRP.stopScreenEffect(cfg.drug_effect)
+      vRP.closeMenu(player)
+    end
+  end
+end}
+
+local moon_choices = {}
+moon_choices["Consommer"] = {function(player,choice)
+  local user_id = vRP.getUserId(player)
+  if user_id ~= nil then
+    if vRP.tryGetInventoryItem(user_id,"moonshine",1) then
+    vRP.varyThirst(user_id,(-100))
+      vRPclient.notify(player,{"~g~ Boit la bouteille!"})
+      --tvRP.playScreenEffect(cfg.drug_effect,-1)
+      play_donut(player)
+      --tvRP.stopScreenEffect(cfg.drug_effect)
       vRP.closeMenu(player)
     end
   end
@@ -174,6 +206,7 @@ items["lsd"] = {"Lsd","Some LSD.",function(args) return lsd_choices end,0.1}
 items["Medical Weed"] = {"Medical Weed","Used by Doctors.",0.1}
 items["Presents"] = {"Presents","Given to Children."}
 items["pdonut"] = {"Premium Donut","Premium Donut", function(args) return donut_choices end,0.2}
+items["spacecake"] = {"SpaceCake","Space Cake", function(args) return space_choices end,0.5}
+items["moonshine"] = {"Moonshine","Alcool frelate", function(args) return moon_choices end,0.5}
 return items
-
 

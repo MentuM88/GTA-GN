@@ -13,18 +13,10 @@ cfg.trackveh = {
   min_time = 300, -- min time in seconds
   max_time = 600, -- max time in seconds
   service = "police",  -- service to alert when the tracking is successful
-  "SWAT",
-  "sheriff",
-  "highway",
-  "trafficguard",
-  "Chief",
-  "Commander",
-  "Lieutenant",
-  "Detective",
-  "Sergeant",
-  "Deputy",
-  "Bounty",
-  "Dispatch"
+  "Soldat",
+  "Maire",
+  "Medic",
+  "Mecano"
 }
 
 -- wanted display
@@ -32,18 +24,10 @@ cfg.wanted = {
   blipid = 458,
   blipcolor = 38,
   service = "police",
-  "SWAT",
-  "sheriff",
-  "highway",
-  "trafficguard",
-  "Chief",
-  "Dispatch",
-  "Commander",
-  "Lieutenant",
-  "Detective",
-  "Deputy",
-  "Bounty",
-  "Sergeant"
+  "Soldat",
+  "Maire",
+  "Medic",
+  "Mecano"
 }
 
 -- illegal items (seize)

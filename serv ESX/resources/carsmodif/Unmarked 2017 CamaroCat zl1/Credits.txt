@@ -1,0 +1,34 @@
+- NAME: Unmarked 2017 CamaroCat ZL1
+- VERSION: 1.0
+- OPTIMIZED FOR: FBI2
+- MOD STATUS: Complete - 100%
+
+Model credits:
+
+Model ripped by DMN
+Converted to GTAV by MrPotato
+
+Light Credits:
+
+- Dominator by tomcat8492.
+- Whelen Inner Edge XLP scratch modeled and converted by Hilth0.
+- Whelen Vertex Super LED Hide-A-Way by Solo.
+- Whelen Lin3 Module by Five0.
+- Hg2 Side Runners by EVI.
+
+Features:
+
+HD Engine
+Shit interior
+Working Mirrors
+Working Retared wheels
+Shitty Lods
+Cute Reflections
+
+
+Installation: 
+
+Place fbi in your latest patchday. If you do not know where to install the model, pls do not use it and save yourself time.
+Place fbi.xml in els folder.
+
+Potato Discord: https://discord.gg/8mJe5Yh

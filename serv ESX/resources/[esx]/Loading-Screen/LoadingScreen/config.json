@@ -1,0 +1,42 @@
+[
+	{
+		"useBackgroundColour" : "true",
+		"backgroundColour" : "63,63,63",
+		"useBackgroundImage" : "false",
+		"backgroundImagePath" : "images/backgroundImg7.jpg",
+		"useTextColour" : "false",
+		"textColour" : "233,230,202",
+		"useBoldText" : "false",
+		"serverTitle" : "[FR] Garde Noire - RP",
+		"playAudioInBackground" : "true",
+		"audioPath" : "audio/gtavthemesong.ogg",
+		"audioVolume" : "0"
+	},
+	{
+		"rule1" : "Choisir un Nom RP",
+		"rule2" : "Pas de spawnkill / Freekill / Tir à vue",
+		"rule3" : "Favoriser les interactions",
+		"rule4" : "Annoncez TOUJOURS vos intentions",
+		"rule5" : "Configurer le volume des voix !",
+		"rule6" : "Essayer d'être le + RP",
+		"rule7" : "Pas d'abuse/glitch/hack"
+	},
+	{
+		"servers1" : "Le site : http://gardenoire.fr",
+		"servers2" : "DISCORD : https://discord.me/GardeNoire",
+		"servers3" : "",
+		"servers4" : "",
+		"servers5" : "",
+		"servers6" : "",
+		"servers7" : ""
+	},
+	{
+		"content1" : "Jobs / Pole Emploi",
+		"content2" : "Police/Ambu/Taxi",
+		"content3" : "Survie : Boisson/Bouffe",
+		"content4" : "Braquages Banques/shops",
+		"content5" : "Garage / Concession",
+		"content6" : "Dégats réalistes / Réparations",
+		"content7" : "ATM / Illegal ..."
+	}
+]

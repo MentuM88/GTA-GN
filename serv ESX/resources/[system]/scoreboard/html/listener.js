@@ -4,7 +4,18 @@ $(function()
     {
         var item = event.data;
         var buf = $('#wrap');
-        buf.find('table').append("<tr class=\"heading\"><th>ID</th><th>Name</th><th>Wanted level</th></tr>");
+        
+				$('#ems').html(event.data.ems);
+		$('#police').html(event.data.police);
+		$('#taxi').html(event.data.taxi);
+		$('#mecano').html(event.data.mek);
+		$('#bil').html(event.data.bil);
+		$('#maklare').html(event.data.maklare);
+		$('#ica').html(event.data.ica);
+		$('#spelare').html(event.data.spelare);
+	//	$('#ptbl').html(event.data.text);
+		
+        buf.find('table').append("<tr class=\"heading\"><th>ID</th><th>Name</th></tr>");
         if (item.meta && item.meta == 'close')
         {
             document.getElementById("ptbl").innerHTML = "";
@@ -14,4 +25,7 @@ $(function()
         buf.find('table').append(item.text);
         $('#wrap').show();
     }, false);
+	
 });
+
+

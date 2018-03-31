@@ -29,7 +29,7 @@ Config.Zones = {
   },
 
   OfficeActions = {
-    Pos   = { x = -124.786, y = -641.486, z = 167.820 },
+    Pos   = { x = 263.48, y = 211.47, z = 11.29 },
     Size  = { x = 1.5, y = 1.5, z = 1.0 },
     Type  = -1,
   },

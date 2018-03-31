@@ -6,8 +6,8 @@ local groupsRequired = {
 	noclip = "admin",
 	crash = "superadmin",
 	freeze = "mod",
-	bring = "admin",
-	["goto"] = "admin",
+	bring = "mod",
+	["goto"] = "mod",
 	slap = "mod",
 	slay = "mod",
 	kick = "mod",
@@ -313,7 +313,6 @@ end, {help = "Shows what admin level you are and what group you're in"})
 
 -- Default commands
 TriggerEvent('es:addCommand', 'report', function(source, args, user)
-	table.remove(args, 1)
 	TriggerClientEvent('chatMessage', source, "REPORT", {255, 0, 0}, " (^2" .. GetPlayerName(source) .." | "..source.."^0) " .. table.concat(args, " "))
 
 	TriggerEvent("es:getPlayers", function(pl)
@@ -327,31 +326,6 @@ TriggerEvent('es:addCommand', 'report', function(source, args, user)
 	end)
 end, {help = "Report a player or an issue", params = {{name = "report", help = "What you want to report"}}})
 
--- Append a message
-function appendNewPos(msg)
-	local file = io.open('resources/[essential]/es_admin/positions.txt', "a")
-	newFile = msg
-	file:write(newFile)
-	file:flush()
-	file:close()
-end
-
--- Do them hashes
-function doHashes()
-  lines = {}
-  for line in io.lines("resources/[essential]/es_admin/input.txt") do
-  	lines[#lines + 1] = line
-  end
-
-  return lines
-end
-
-
-RegisterServerEvent('es_admin:givePos')
-AddEventHandler('es_admin:givePos', function(str)
-	appendNewPos(str)
-end)
-
 -- Noclip
 TriggerEvent('es:addGroupCommand', 'noclip', "admin", function(source, args, user)
 	TriggerClientEvent("es_admin:noclip", source)
@@ -361,15 +335,14 @@ end, {help = "Enable or disable noclip"})
 
 -- Kicking
 TriggerEvent('es:addGroupCommand', 'kick', "mod", function(source, args, user)
-	if args[2] then
-		if(GetPlayerName(tonumber(args[2])))then
-			local player = tonumber(args[2])
+	if args[1] then
+		if(GetPlayerName(tonumber(args[1])))then
+			local player = tonumber(args[1])
 
 			-- User permission check
 			TriggerEvent("es:getPlayerFromId", player, function(target)
 
 				local reason = args
-				table.remove(reason, 1)
 				table.remove(reason, 1)
 				if(#reason == 0)then
 					reason = "Kicked: You have been kicked from the server"
@@ -392,7 +365,6 @@ end, {help = "Kick a user with the specified reason or no reason", params = {{na
 
 -- Announcing
 TriggerEvent('es:addGroupCommand', 'announce', "admin", function(source, args, user)
-	table.remove(args, 1)
 	TriggerClientEvent('chatMessage', -1, "ANNOUNCEMENT", {255, 0, 0}, "" .. table.concat(args, " "))
 end, function(source, args, user)
 	TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Insufficienct permissions!")
@@ -401,9 +373,9 @@ end, {help = "Announce a message to the entire server", params = {{name = "annou
 -- Freezing
 local frozen = {}
 TriggerEvent('es:addGroupCommand', 'freeze', "mod", function(source, args, user)
-	if args[2] then
-		if(GetPlayerName(tonumber(args[2])))then
-			local player = tonumber(args[2])
+	if args[1] then
+		if(GetPlayerName(tonumber(args[1])))then
+			local player = tonumber(args[1])
 
 			-- User permission check
 			TriggerEvent("es:getPlayerFromId", player, function(target)
@@ -437,9 +409,9 @@ end, {help = "Freeze or unfreeze a user", params = {{name = "userid", help = "Th
 -- Bring
 local frozen = {}
 TriggerEvent('es:addGroupCommand', 'bring', "mod", function(source, args, user)
-	if args[2] then
-		if(GetPlayerName(tonumber(args[2])))then
-			local player = tonumber(args[2])
+	if args[1] then
+		if(GetPlayerName(tonumber(args[1])))then
+			local player = tonumber(args[1])
 
 			-- User permission check
 			TriggerEvent("es:getPlayerFromId", player, function(target)
@@ -462,9 +434,9 @@ end, {help = "Teleport a user to you", params = {{name = "userid", help = "The I
 -- Bring
 local frozen = {}
 TriggerEvent('es:addGroupCommand', 'slap', "admin", function(source, args, user)
-	if args[2] then
-		if(GetPlayerName(tonumber(args[2])))then
-			local player = tonumber(args[2])
+	if args[1] then
+		if(GetPlayerName(tonumber(args[1])))then
+			local player = tonumber(args[1])
 
 			-- User permission check
 			TriggerEvent("es:getPlayerFromId", player, function(target)
@@ -487,9 +459,9 @@ end, {help = "Slap a user", params = {{name = "userid", help = "The ID of the pl
 -- Freezing
 local frozen = {}
 TriggerEvent('es:addGroupCommand', 'goto', "mod", function(source, args, user)
-	if args[2] then
-		if(GetPlayerName(tonumber(args[2])))then
-			local player = tonumber(args[2])
+	if args[1] then
+		if(GetPlayerName(tonumber(args[1])))then
+			local player = tonumber(args[1])
 
 			-- User permission check
 			TriggerEvent("es:getPlayerFromId", player, function(target)
@@ -519,9 +491,9 @@ end, {help = "Suicide"})
 
 -- Killing
 TriggerEvent('es:addGroupCommand', 'slay', "admin", function(source, args, user)
-	if args[2] then
-		if(GetPlayerName(tonumber(args[2])))then
-			local player = tonumber(args[2])
+	if args[1] then
+		if(GetPlayerName(tonumber(args[1])))then
+			local player = tonumber(args[1])
 
 			-- User permission check
 			TriggerEvent("es:getPlayerFromId", player, function(target)
@@ -543,9 +515,9 @@ end, {help = "Slay a user", params = {{name = "userid", help = "The ID of the pl
 
 -- Crashing
 TriggerEvent('es:addGroupCommand', 'crash', "superadmin", function(source, args, user)
-	if args[2] then
-		if(GetPlayerName(tonumber(args[2])))then
-			local player = tonumber(args[2])
+	if args[1] then
+		if(GetPlayerName(tonumber(args[1])))then
+			local player = tonumber(args[1])
 
 			-- User permission check
 			TriggerEvent("es:getPlayerFromId", player, function(target)
@@ -566,9 +538,9 @@ end, {help = "Crash a user, no idea why this still exists", params = {{name = "u
 
 -- Position
 TriggerEvent('es:addGroupCommand', 'pos', "owner", function(source, args, user)
-	TriggerClientEvent('es_admin:givePosition', source)
+	TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "This command was removed")
 end, function(source, args, user)
-	TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Insufficienct permissions!")
+	TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "This command was removed")
 end, {help = "Save position to file"})
 
 function stringsplit(inputstr, sep)

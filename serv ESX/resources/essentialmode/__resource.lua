@@ -29,7 +29,8 @@ client_scripts {
 -- NUI Files
 files {
 	'ui.html',
-	'pdown.ttf'
+	'pdown.ttf',
+	'coolveticarg.ttf'
 }
 
 exports {

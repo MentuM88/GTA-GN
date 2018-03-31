@@ -43,7 +43,7 @@ end
 Citizen.CreateThread(function()
 	while true do
 		Wait(0)
-		if IsControlJustReleased(0, 182) then
+		if IsControlJustReleased(0, 303) then
 			OpenCloseVehicle()
 		end
 	end

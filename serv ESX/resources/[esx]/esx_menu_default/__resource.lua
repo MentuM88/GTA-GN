@@ -19,6 +19,8 @@ files {
 	'html/js/app.js',
 	'html/fonts/pdown.ttf',
 	'html/fonts/bankgothic.ttf',
+	'html/fonts/TheBlacklist.ttf',
+	'html/fonts/coolveticarg.ttf',
 	'html/img/cursor.png',
 	'html/img/keys/enter.png',
 	'html/img/keys/return.png',

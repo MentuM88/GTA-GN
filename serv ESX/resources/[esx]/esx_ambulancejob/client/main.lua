@@ -307,10 +307,36 @@ function OpenMobileAmbulanceActionsMenu()
       title    = _U('ambulance'),
       elements = {
         {label = _U('ems_menu'), value = 'citizen_interaction'},
+        {label = _U('billing'),    value = 'billing'},
       }
     },
     function(data, menu)
 
+if data.current.value == 'billing' then
+        ESX.UI.Menu.Open(
+          'dialog', GetCurrentResourceName(), 'billing',
+          {
+            title = _U('invoice_amount')
+          },
+          function(data, menu)
+            local amount = tonumber(data.value)
+            if amount == nil then
+              ESX.ShowNotification(_U('amount_invalid'))
+            else
+              menu.close()
+              local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
+              if closestPlayer == -1 or closestDistance > 3.0 then
+                ESX.ShowNotification(_U('no_players_nearby'))
+              else
+                TriggerServerEvent('esx_billing:sendBill', GetPlayerServerId(closestPlayer), 'society_ambulance', _U('ambulance'), amount)
+              end
+            end
+          end,
+        function(data, menu)
+          menu.close()
+        end
+        )
+      end
       if data.current.value == 'citizen_interaction' then
 
         ESX.UI.Menu.Open(
@@ -539,7 +565,8 @@ function OpenVehicleSpawnerMenu()
         title    = _U('veh_menu'),
         align    = 'top-left',
         elements = {
-          {label = _U('ambulance'),  value = 'ambulance'}
+          {label = _U('ambulance'),  value = 'ambulance'},
+          {label = _U('hwaycar4'),  value = 'hwaycar4'}
         },
       },
       function(data, menu)

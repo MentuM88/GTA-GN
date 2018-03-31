@@ -2,6 +2,7 @@ ESX                 = nil
 Jobs                = {}
 RegisteredSocieties = {}
 
+
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 function stringsplit(inputstr, sep)
@@ -142,6 +143,7 @@ AddEventHandler('esx_society:washMoney', function(society, amount)
         },
         function(rowsChanged)
           TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have') .. amount .. '~s~ en attente de ~r~blanchiement~s~ (24h)')
+          TriggerEvent("esx:washingmoneyalert",xPlayer.name,amount)
         end
       )
 

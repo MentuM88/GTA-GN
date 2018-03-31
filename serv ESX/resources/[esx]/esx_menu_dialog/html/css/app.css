@@ -4,6 +4,16 @@
 }
 
 @font-face {
+  font-family: coolvetica;
+  src: url('../fonts/coolveticarg.ttf');
+}
+
+@font-face {
+  font-family: blacklist;
+  src: url('../fonts/TheBlacklist.ttf');
+}
+
+@font-face {
   font-family: pcdown;
   src: url('../fonts/pdown.ttf');
 }
@@ -15,7 +25,7 @@
 }
 
 #controls {
-  font-family   : pcdown;
+  font-family   : 'coolvetica';
   font-size     : 3em;
   color         : #FFF;
   position      : absolute;
@@ -36,7 +46,7 @@
 
 .dialog {
 
-  font-family     : bankgothic;  
+  font-family     : 'coolvetica';  
   background-color: #fff;
   color           : #fff;
   box-shadow      : 0px 0px 50px 0px #000;
@@ -54,7 +64,7 @@
 }
 
 .dialog .head {
-  background-color: #506be6;
+  background-color: #4f4f4f;
   text-align      : center;
   height          : 40px;
 }

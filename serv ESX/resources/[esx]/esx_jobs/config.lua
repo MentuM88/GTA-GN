@@ -25,7 +25,7 @@ Config.PublicZones = {
     Color     = { r = 204, g = 204, b = 0 },
     Marker    = 1,
     Blip      = true,
-    Name      = "L'Habitat Dudule",
+    Name      = "LS News",
     Type      = "teleport",
     Hint      = "Appuyez sur ~INPUT_PICKUP~ pour entrer dans l'immeuble.",
     Teleport  = { x = -139.098, y = -620.748, z = 167.820 }
@@ -37,7 +37,7 @@ Config.PublicZones = {
     Color     = { r = 204, g = 204, b = 0 },
     Marker    = 1,
     Blip      = false,
-    Name      = "L'Habitat Dudule",
+    Name      = "LS News",
     Type      = "teleport",
     Hint      = "Appuyez sur ~INPUT_PICKUP~ pour aller à l'entrée de l'immeuble.",
     Teleport  = { x = -113.07, y = -604.93, z = 35.28 },

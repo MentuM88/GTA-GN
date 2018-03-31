@@ -8,6 +8,16 @@
   src: url('../fonts/bankgothic.ttf') /* TTF file for CSS3 browsers */
 }
 
+@font-face {
+  font-family: 'coolvetica';
+  src: url('../fonts/coolveticarg.ttf');
+}
+
+@font-face {
+  font-family: 'blacklist';
+  src: url('../fonts/TheBlacklist.ttf');
+}
+
 html {
   overflow: hidden;
 }
@@ -20,7 +30,7 @@ html {
 
 #hud {
   position   : absolute;
-  font-family: 'Pricedown';
+  font-family: 'coolvetica';
   font-size  : 35px;
   color      : white;
   padding    : 4px;
@@ -36,7 +46,7 @@ html {
 }
 
 #inventory_notifications {
-  font-family: bankgothic; 
+  font-family: 'coolvetica'; 
   position   : absolute; 
   right      : 40;
   bottom     : 40;
@@ -51,7 +61,7 @@ html {
 }
 
 .menu {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'coolvetica', sans-serif;
     min-width       : 400px;
     min-height:     : 250px;
     color           : #fff;
@@ -61,7 +71,7 @@ html {
 }
 
 .menu .head {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'coolvetica', sans-serif;
   font-size: 28px;
   padding: 10px;
   background: #1A1A1A;
@@ -77,7 +87,7 @@ html {
   box-shadow: 1px 1px 10px 4px rgba(0, 0, 0, 0.4);
 }
 .menu .head span {
-  font-family: 'Pricedown';
+  font-family: 'blacklist';
   font-size: 28px;
   padding-left: 15px; 
   padding-top: 6px; 

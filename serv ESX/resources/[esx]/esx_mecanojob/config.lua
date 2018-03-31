@@ -10,41 +10,41 @@ Config.Locale                     = 'fr'
 
 Config.Zones = {
   MecanoActions = {
-    Pos   = { x = -347.291, y = -133.370, z = 38.009 },
+    Pos   = { x = -227.82, y = -1328.01, z = 30.89 },
     Size  = { x = 1.5, y = 1.5, z = 1.0 },
     Color = { r = 204, g = 204, b = 0 },
     Type  = 1,
   },
 
   Garage = {
-    Pos   = { x = -97.5797576904297, y = 6496.11376953125, z = 30.4909038543701 },
+    Pos   = { x = -223.24, y = -1329.92, z = 30.89 },
     Size  = { x = 1.5, y = 1.5, z = 1.0 },
     Color = { r = 204, g = 204, b = 0 },
     Type  = 1,
   },
 
   Craft = {
-    Pos   = { x = -323.140, y = -129.882, z = 37.999 },
+    Pos   = { x = -197.29, y = -1317.75, z = 31.09 },
     Size  = { x = 1.5, y = 1.5, z = 1.0 },
     Color = { r = 204, g = 204, b = 0 },
     Type  = 1,
   },
 
   VehicleSpawnPoint = {
-    Pos   = { x = -366.354, y = -110.766, z = 37.696 },
+    Pos   = { x = -211.22, y = -1307.66, z = 31.27 },
     Size  = { x = 1.5, y = 1.5, z = 1.0 },
     Type  = -1,
   },
 
   VehicleDeleter = {
-    Pos   = { x = -386.899, y = -105.675, z = 37.683 },
+    Pos   = { x = -183.11, y = -1318.28, z = 31.3 },
     Size  = { x = 3.0, y = 3.0, z = 1.0 },
     Color = { r = 204, g = 204, b = 0 },
     Type  = 1,
   },
 
   VehicleDelivery = {
-    Pos   = { x = -382.925, y = -133.748, z = 37.685 },
+    Pos   = { x = -22.84, y = -1294.67, z = 31.3 },
     Size  = { x = 20.0, y = 20.0, z = 3.0 },
     Color = { r = 204, g = 204, b = 0 },
     Type  = -1,
@@ -104,9 +104,8 @@ for i=1, #Config.Towables, 1 do
 end
 
 Config.Vehicles = {
-  'adder',
-  'asea',
-  'asterope',
-  'banshee',
-  'buffalo'
+  'towtruck',
+  'towtruck2',
+  'bulldozer',
+
 }

@@ -129,4 +129,4 @@ function CalculateBankSavings (d, h, m)
   )
 end
 
-TriggerEvent('cron:runAt', 22, 0, CalculateBankSavings)
+TriggerEvent('cron:runAt', 6, 0, CalculateBankSavings)

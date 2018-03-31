@@ -2,6 +2,10 @@
   font-family: bankgothic;
   src: url('../fonts/bankgothic.ttf');
 }
+@font-face {
+  font-family: coolvetica;
+  src: url('../fonts/coolveticarg.ttf');
+}
 
 @font-face {
   font-family: pcdown;
@@ -9,7 +13,7 @@
 }
 
 .menu {
-  font-family: bankgothic;  
+  font-family: coolvetica;  
   position   : absolute;
   left       : 50%;
   top        : 50%;
@@ -20,7 +24,7 @@
 }
 
 .menu button {
-  font-family: bankgothic; 
+  font-family: coolvetica; 
 }
 
 .menu > table {
@@ -31,7 +35,7 @@
 }
 
 .menu > table > thead {
-  background-color: #506be6;
+  background-color: #282828;
   text-align      : center;
   height          : 40px;
   line-height     : 40px;

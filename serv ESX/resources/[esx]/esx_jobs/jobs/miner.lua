@@ -97,14 +97,14 @@ Config.Jobs.miner = {
         {
           name   = _U('m_iron'),
           db_name= "iron",
-          max    = 100,
+          max    = 42,
           add    = 6,
           drop   = 100
         },
         {
           name   = _U('m_gold'),
           db_name= "gold",
-          max    = 50,
+          max    = 21,
           add    = 3,
           drop   = 100
         },
@@ -130,7 +130,7 @@ Config.Jobs.miner = {
       Type  = "vehspawner",
       Spawner = 1,
       Hint  = _U('spawn_veh_button'),
-      Caution = 500,
+      Caution = 2000,
       GPS = {x = 2962.4, y = 2746.2, z = 42.398}
     },
 
@@ -156,7 +156,7 @@ Config.Jobs.miner = {
       Type  = "vehdelete",
       Hint  = _U('return_vh_button'),
       Spawner = 1,
-      Caution = 50,
+      Caution = 2000,
       GPS = 0,
       Teleport = 0
     },
@@ -175,8 +175,8 @@ Config.Jobs.miner = {
           name   = _U('delivery'),
           time   = 500,
           remove = 1,
-          max    = 156, -- if not present, probably an error at itemQtty >= item.max in esx_jobs_sv.lua
-          price  = 90,
+          max    = 56, -- if not present, probably an error at itemQtty >= item.max in esx_jobs_sv.lua
+          price  = 5,
           requires = "copper",
           requires_name = _U('m_copper'),
           drop   = 100
@@ -201,8 +201,8 @@ Config.Jobs.miner = {
           name   = _U('delivery'),
           time   = 500,
           remove = 1,
-          max    = 142, -- if not present, probably an error at itemQtty >= item.max in esx_jobs_sv.lua
-          price  = 80,
+          max    = 42, -- if not present, probably an error at itemQtty >= item.max in esx_jobs_sv.lua
+          price  = 9,
           requires = "iron",
           requires_name = _U('m_iron'),
           drop   = 100
@@ -227,8 +227,8 @@ Config.Jobs.miner = {
           name   = _U('delivery'),
           time   = 500,
           remove = 1,
-          max    = 121, -- if not present, probably an error at itemQtty >= item.max in esx_jobs_sv.lua
-          price  = 350,
+          max    = 21, -- if not present, probably an error at itemQtty >= item.max in esx_jobs_sv.lua
+          price  = 25,
           requires = "gold",
           requires_name = _U('m_gold'),
           drop   = 100
@@ -253,8 +253,8 @@ Config.Jobs.miner = {
           name   = _U('delivery'),
           time   = 500,
           remove = 1,
-          max    = 8zd0, -- if not present, probably an error at itemQtty >= item.max in esx_jobs_sv.lua
-          price  = 1250,
+          max    = 50, -- if not present, probably an error at itemQtty >= item.max in esx_jobs_sv.lua
+          price  = 250,
           requires = "diamond",
           requires_name = _U('m_diamond'),
           drop   = 100

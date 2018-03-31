@@ -170,6 +170,7 @@ AddEventHandler('esx:addWeapon', function(weaponName, ammo)
   local weaponHash = GetHashKey(weaponName)
 
   GiveWeaponToPed(playerPed, weaponHash, ammo, false, false)
+  SetPedAmmo(playerPed, weaponHash, ammo) -- remove leftover ammo
 end)
 
 RegisterNetEvent('esx:removeWeapon')
@@ -178,6 +179,7 @@ AddEventHandler('esx:removeWeapon', function(weaponName)
   local weaponHash = GetHashKey(weaponName)
 
   RemoveWeaponFromPed(playerPed,  weaponHash)
+  SetPedAmmo(playerPed, weaponHash, 0) -- remove leftover ammo
 end)
 
 -- Commands
@@ -333,13 +335,12 @@ AddEventHandler('esx:removePickup', function(id)
 end)
 
 RegisterNetEvent('esx:pickupWeapon')
-AddEventHandler('esx:pickupWeapon', function(weaponPickup, weaponName)
+AddEventHandler('esx:pickupWeapon', function(weaponPickup, weaponName,ammo)
 
   local ped          = GetPlayerPed(-1)
   local playerPedPos = GetEntityCoords(ped, true)
-
-  CreateAmbientPickup(GetHashKey(weaponPickup), playerPedPos.x + 2.0, playerPedPos.y, playerPedPos.z + 0.5, 0, 1000, 1, false, true)
-
+  CreateAmbientPickup(GetHashKey(weaponPickup), playerPedPos.x + 2.0, playerPedPos.y, playerPedPos.z + 0.5, 0, ammo, 1, false, true)
+  
 end)
 
 RegisterNetEvent('esx:spawnPed')
@@ -463,7 +464,7 @@ Citizen.CreateThread(function()
 
     Wait(0)
 
-    if IsControlPressed(0, Keys["F2"]) and not ESX.UI.Menu.IsOpen('default', 'es_extended', 'inventory') and (GetGameTimer() - GUI.Time) > 150 then
+    if IsControlPressed(0, Keys["F2"]) and GetLastInputMethod(2) and not ESX.UI.Menu.IsOpen('default', 'es_extended', 'inventory') and (GetGameTimer() - GUI.Time) > 150 then
       ESX.ShowInventory()
       GUI.Time  = GetGameTimer()
     end
@@ -536,7 +537,7 @@ Citizen.CreateThread(function()
 
       end
 
-      if distance <= 1.0 and not v.inRange then
+      if distance <= 1.0 and not v.inRange and not IsPedSittingInAnyVehicle(playerPed) then
         TriggerServerEvent('esx:onPickup', v.id)
         v.inRange = true
       end

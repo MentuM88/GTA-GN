@@ -25,17 +25,14 @@ Config.PoliceStations = {
     },
 
     AuthorizedWeapons = {
-      { name = 'WEAPON_NIGHTSTICK',       price = 200 },
-      { name = 'WEAPON_COMBATPISTOL',     price = 300 },
-      { name = 'WEAPON_ASSAULTSMG',       price = 1250 },
-      { name = 'WEAPON_SPECIALCARBINE',     price = 1500 },
-      { name = 'WEAPON_PUMPSHOTGUN',      price = 600 },
-      { name = 'WEAPON_STUNGUN',          price = 500 },
-      { name = 'WEAPON_FLASHLIGHT',       price = 80 },
-      { name = 'WEAPON_FIREEXTINGUISHER', price = 120 },
-      { name = 'WEAPON_FLAREGUN',         price = 60 },
-      { name = 'WEAPON_STICKYBOMB',       price = 250 },
-      { name = 'GADGET_PARACHUTE',        price = 300 },
+      { name = 'WEAPON_NIGHTSTICK',       price = 60 },
+      { name = 'WEAPON_COMBATPISTOL',     price = 200 },
+      { name = 'WEAPON_PUMPSHOTGUN',      price = 800 },
+      { name = 'WEAPON_STUNGUN',          price = 200 },
+      { name = 'WEAPON_FLASHLIGHT',       price = 60 },
+      { name = 'WEAPON_FIREEXTINGUISHER', price = 80 },
+      { name = 'WEAPON_FLAREGUN',         price = 80 },
+      { name = 'GADGET_PARACHUTE',        price = 500 },
     },
 
     AuthorizedVehicles = {
@@ -45,9 +42,8 @@ Config.PoliceStations = {
       { name = 'police4', label = 'Véhicule civil' },
       { name = 'policeb', label = 'Moto' },
       { name = 'policet', label = 'Van de transport' },
-	  { name = 'insurgent2', label = 'Blindé' },
-	  { name = 'fbi', label = 'FBI berline' },
-	  { name = 'fbi2', label = 'FBI suv' },
+    { name = 'fbi', label = 'FBI berline' },
+    { name = 'fbi2', label = 'FBI suv' },
     },
 
     Cloakrooms = {

@@ -109,7 +109,7 @@ Config.Jobs.fuel = {
       Type  = "vehspawner",
       Spawner = 1,
       Hint  = _U('spawn_truck_button'),
-      Caution = 500,
+      Caution = 2000,
       GPS = {x = 602.254, y = 2926.62, z = 39.6898}
     },
 
@@ -135,7 +135,7 @@ Config.Jobs.fuel = {
       Type  = "vehdelete",
       Hint  = _U('return_vh_button'),
       Spawner = 1,
-      Caution = 500,
+      Caution = 2000,
       GPS = 0,
       Teleport = 0
     },
@@ -155,7 +155,7 @@ Config.Jobs.fuel = {
           time   = 500,
           remove = 1,
           max    = 100, -- if not present, probably an error at itemQtty >= item.max in esx_jobs_sv.lua
-          price  = 171,
+          price  = 61,
           requires = "essence",
           requires_name = _U('f_gas'),
           drop   = 100

@@ -105,7 +105,7 @@ Config.Jobs.slaughterer = {
       Type  = "vehspawner",
       Spawner = 1,
       Hint  = _U('spawn_veh_button'),
-      Caution = 500
+      Caution = 2000
     },
 
     VehicleSpawnPoint = {
@@ -149,7 +149,7 @@ Config.Jobs.slaughterer = {
           time   = 500,
           remove = 1,
           max    = 100, -- if not present, probably an error at itemQtty >= item.max in esx_jobs_sv.lua
-          price  = 110,
+          price  = 11,
           requires = "packaged_chicken",
           requires_name = _U('s_packagechicken'),
           drop   = 100

@@ -188,9 +188,9 @@ function OpenCloakroomMenu()
                     ['torso_1'] = 55, ['torso_2'] = 0,
                     ['decals_1'] = 0, ['decals_2'] = 0,
                     ['arms'] = 41,
-                    ['pants_1'] = 25, ['pants_2'] = 0,
-                    ['shoes_1'] = 25, ['shoes_2'] = 0,
-                    ['helmet_1'] = -1, ['helmet_2'] = 0,
+                    ['pants_1'] = 35, ['pants_2'] = 0,
+                    ['shoes_1'] = 51, ['shoes_2'] = 0,
+                    ['helmet_1'] = 46, ['helmet_2'] = 0,
                     ['chain_1'] = 0, ['chain_2'] = 0,
                     ['ears_1'] = 2, ['ears_2'] = 0
                 }
@@ -232,9 +232,9 @@ function OpenCloakroomMenu()
                     ['torso_1'] = 55, ['torso_2'] = 0,
                     ['decals_1'] = 8, ['decals_2'] = 1,
                     ['arms'] = 41,
-                    ['pants_1'] = 25, ['pants_2'] = 0,
-                    ['shoes_1'] = 25, ['shoes_2'] = 0,
-                    ['helmet_1'] = -1, ['helmet_2'] = 0,
+                    ['pants_1'] = 35, ['pants_2'] = 0,
+                    ['shoes_1'] = 51, ['shoes_2'] = 0,
+                    ['helmet_1'] = 46, ['helmet_2'] = 0,
                     ['chain_1'] = 0, ['chain_2'] = 0,
                     ['ears_1'] = 2, ['ears_2'] = 0
                 }
@@ -276,9 +276,9 @@ function OpenCloakroomMenu()
                     ['torso_1'] = 55, ['torso_2'] = 0,
                     ['decals_1'] = 8, ['decals_2'] = 2,
                     ['arms'] = 41,
-                    ['pants_1'] = 25, ['pants_2'] = 0,
-                    ['shoes_1'] = 25, ['shoes_2'] = 0,
-                    ['helmet_1'] = -1, ['helmet_2'] = 0,
+                    ['pants_1'] = 35, ['pants_2'] = 0,
+                    ['shoes_1'] = 51, ['shoes_2'] = 0,
+                    ['helmet_1'] = 60, ['helmet_2'] = 9,
                     ['chain_1'] = 0, ['chain_2'] = 0,
                     ['ears_1'] = 2, ['ears_2'] = 0
                 }
@@ -320,9 +320,9 @@ function OpenCloakroomMenu()
                     ['torso_1'] = 55, ['torso_2'] = 0,
                     ['decals_1'] = 8, ['decals_2'] = 3,
                     ['arms'] = 41,
-                    ['pants_1'] = 25, ['pants_2'] = 0,
-                    ['shoes_1'] = 25, ['shoes_2'] = 0,
-                    ['helmet_1'] = -1, ['helmet_2'] = 0,
+                    ['pants_1'] = 35, ['pants_2'] = 0,
+                    ['shoes_1'] = 51, ['shoes_2'] = 0,
+                    ['helmet_1'] = 106, ['helmet_2'] = 20,
                     ['chain_1'] = 0, ['chain_2'] = 0,
                     ['ears_1'] = 2, ['ears_2'] = 0
                 }
@@ -667,49 +667,70 @@ function OpenVehicleSpawnerMenu(station, partNum)
 
   else
 
+
+
+
     local elements = {}
 
     table.insert(elements, { label = 'Vélo', value = 'fixter' })
     table.insert(elements, { label = 'Cruiser', value = 'police' })
-    table.insert(elements, { label = 'Sheriff Cruiser', value = 'sheriff' })
 
     if PlayerData.job.grade_name == 'officer' then
       table.insert(elements, { label = 'Interceptor', value = 'police3'})
+      table.insert(elements, { label = 'Patrouille', value = 'police7'})
+      table.insert(elements, { label = 'Patrouille2', value = 'police8'})
     end
 
     if PlayerData.job.grade_name == 'sergeant' then
       table.insert(elements, { label = 'Sheriff SUV', value = 'sheriff2'})
+      table.insert(elements, { label = 'Patrouille', value = 'police7'})
+      table.insert(elements, { label = 'Patrouille2', value = 'police8'})
       table.insert(elements, { label = 'Interceptor', value = 'police3'})
-      table.insert(elements, { label = 'Buffalo', value = 'police2'})
+      table.insert(elements, { label = 'Dodge', value = 'police2'})
       table.insert(elements, { label = 'Moto', value = 'policeb'})
+      table.insert(elements, { label = 'Dodge Unmarked', value = 'fbi'})
+      table.insert(elements, { label = '4x4', value = 'hwaycar9'})
       table.insert(elements, { label = 'Bus pénitentiaire', value = 'pbus'})
       table.insert(elements, { label = 'Bus de transport', value = 'policet'})
       table.insert(elements, { label = 'Antiémeute', value = 'riot'})
+      table.insert(elements, { label = 'Hummer', value = 'insurgent2'})
     end
 
     if PlayerData.job.grade_name == 'lieutenant' then
-      table.insert(elements, { label = 'Sheriff SUV', value = 'sheriff2'})
+       table.insert(elements, { label = 'Sheriff SUV', value = 'sheriff2'})
+      table.insert(elements, { label = 'Patrouille', value = 'police7'})
+      table.insert(elements, { label = 'Patrouille2', value = 'police8'})
       table.insert(elements, { label = 'Interceptor', value = 'police3'})
-      table.insert(elements, { label = 'Buffalo', value = 'police2'})
+      table.insert(elements, { label = 'Dodge', value = 'police2'})
       table.insert(elements, { label = 'Moto', value = 'policeb'})
+      table.insert(elements, { label = 'Dodge Unmarked', value = 'fbi'})
+      table.insert(elements, { label = '4x4', value = 'hwaycar9'})
       table.insert(elements, { label = 'Bus pénitentiaire', value = 'pbus'})
       table.insert(elements, { label = 'Bus de transport', value = 'policet'})
+      table.insert(elements, { label = 'Speedenforcer', value = 'pol718'})
       table.insert(elements, { label = 'Antiémeute', value = 'riot'})
-      table.insert(elements, { label = 'FBI', value = 'fbi'})
       table.insert(elements, { label = 'FBI SUV', value = 'fbi2'})
+      table.insert(elements, { label = 'Hummer', value = 'insurgent2'})
     end
 
     if PlayerData.job.grade_name == 'boss' then
-      table.insert(elements, { label = 'Sheriff SUV', value = 'sheriff2'})
+       table.insert(elements, { label = 'Sheriff SUV', value = 'sheriff2'})
+      table.insert(elements, { label = 'Patrouille', value = 'police7'})
+      table.insert(elements, { label = 'Patrouille2', value = 'police8'})
       table.insert(elements, { label = 'Interceptor', value = 'police3'})
-      table.insert(elements, { label = 'Buffalo', value = 'police2'})
+      table.insert(elements, { label = 'Dodge', value = 'police2'})
       table.insert(elements, { label = 'Moto', value = 'policeb'})
+      table.insert(elements, { label = 'Dodge Unmarked', value = 'fbi'})
+      table.insert(elements, { label = '4x4', value = 'hwaycar9'})
       table.insert(elements, { label = 'Bus pénitentiaire', value = 'pbus'})
       table.insert(elements, { label = 'Bus de transport', value = 'policet'})
+      table.insert(elements, { label = 'Speedenforcer', value = 'pol718'})
       table.insert(elements, { label = 'Antiémeute', value = 'riot'})
-      table.insert(elements, { label = 'FBI', value = 'fbi'})
       table.insert(elements, { label = 'FBI SUV', value = 'fbi2'})
-      table.insert(elements, { label = 'Voiture Banalisée ', value = 'police4'})
+      table.insert(elements, { label = 'Voiture Banalisée', value = 'police4'})
+      table.insert(elements, { label = 'APC', value = 'apc'})
+      table.insert(elements, { label = 'Hummer', value = 'insurgent2'})
+      table.insert(elements, { label = 'Hummer armé', value = 'insurgent'})
     end
 
     ESX.UI.Menu.Open(

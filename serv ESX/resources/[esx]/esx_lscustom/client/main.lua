@@ -58,7 +58,7 @@ function OpenLSMenu(elems, menuname, menutitle, parent)
 			if data.current.modType == "modFrontWheels" then
 				isRimMod = true
 			end
-			local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1), false)			
+			local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1), false)
 			local found = false
 			for k,v in pairs(Config.Menus) do
 				if k == data.current.modType or isRimMod then
@@ -78,8 +78,11 @@ function OpenLSMenu(elems, menuname, menutitle, parent)
 						if isRimMod then
 							price = math.floor(vehiclePrice * data.current.price / 100)
 							TriggerServerEvent("esx_lscustom:buyMod", price)
-						elseif v.modType == 11 or v.modType == 12 or v.modType == 13 or v.modType == 15 or v.modType == 16 or v.modType == 17 then
+						elseif v.modType == 11 or v.modType == 12 or v.modType == 13 or v.modType == 15 or v.modType == 16 then
 							price = math.floor(vehiclePrice * v.price[data.current.modNum + 1] / 100)
+							TriggerServerEvent("esx_lscustom:buyMod", price)
+						elseif v.modType == 17 then
+							price = math.floor(vehiclePrice * v.price[1] / 100)
 							TriggerServerEvent("esx_lscustom:buyMod", price)
 						else
 							price = math.floor(vehiclePrice * v.price / 100)
@@ -122,8 +125,8 @@ function UpdateMods(data)
 
 	local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1), false)
 
-	if data.modType ~= nil then		
-		local props = {}		
+	if data.modType ~= nil then
+		local props = {}
 
 		--Citizen.Trace('modType: ' .. data.modType)
 		--Citizen.Trace('modNum: ' .. json.encode(data.modNum))
@@ -192,7 +195,7 @@ function GetAction(data)
 			parent    = v.parent
 
 			if v.modType ~= nil then
-				
+
 				if v.modType == 22 then
 					table.insert(elements, {label = " " .. _U('by_default'), modType = k, modNum = false})
 				elseif v.modType == 'color1' or v.modType == 'color2' or v.modType == 'pearlescentColor' or v.modType == 'wheelColor' then
@@ -236,7 +239,7 @@ function GetAction(data)
 					end
 					table.insert(elements, {label = _label, modType = k, modNum = true})
 				elseif v.modType == 'neonColor' or v.modType == 'tyreSmokeColor' then -- NEON & SMOKE COLOR
-					local neons = GetNeons()					
+					local neons = GetNeons()
 					price = math.floor(vehiclePrice * v.price / 100)
 					for i=1, #neons, 1 do
 						table.insert(elements,
@@ -303,10 +306,10 @@ function GetAction(data)
 					end
 				elseif v.modType == 17 then -- TURBO
 					local _label = ''
-					if currentMods.modTurbo then
+					if currentMods[k] then
 						_label = 'Turbo - <span style="color:cornflowerblue;">'.. _U('installed') ..'</span>'
 					else
-						_label = 'Turbo - <span style="color:green;">$' .. v.price .. ' </span>'
+						_label = 'Turbo - <span style="color:green;">$' .. math.floor(vehiclePrice * v.price[1] / 100) .. ' </span>'
 					end
 					table.insert(elements, {label = _label, modType = k, modNum = true})
 				else
@@ -333,7 +336,7 @@ function GetAction(data)
 						elseif data.value == 'secondaryRespray' then
 							table.insert(elements, {label = Config.Colors[i].label, value = 'color2', color = Config.Colors[i].value})
 						elseif data.value == 'pearlescentRespray' then
-							table.insert(elements, {label = Config.Colors[i].label, value = 'pearlescentColor', color = Config.Colors[i].value})						
+							table.insert(elements, {label = Config.Colors[i].label, value = 'pearlescentColor', color = Config.Colors[i].value})
 						elseif data.value == 'modFrontWheelsColor' then
 							table.insert(elements, {label = Config.Colors[i].label, value = 'wheelColor', color = Config.Colors[i].value})
 						end
@@ -358,19 +361,17 @@ function GetAction(data)
 end
 
 -- Blips
-Citizen.CreateThread(function()
-
-	for k,v in pairs(Config.Zones)do
-		local blip = AddBlipForCoord(v.Pos.x, v.Pos.y, v.Pos.z)
-		SetBlipSprite(blip, 72)
-		SetBlipScale(blip, 0.0)
-		SetBlipAsShortRange(blip, true)
-		BeginTextCommandSetBlipName("STRING")
-		AddTextComponentString(v.Name)
-		EndTextCommandSetBlipName(blip)
-	end
-end)
-
+--Citizen.CreateThread(function()
+--
+--	for k,v in pairs(Config.Zones)do
+--		local blip = AddBlipForCoord(v.Pos.x, v.Pos.y, v.Pos.z)
+--		SetBlipSprite(blip, 72)
+--		SetBlipScale(blip, 0.8)
+--		SetBlipAsShortRange(blip, true)
+--		BeginTextCommandSetBlipName("STRING")
+--		AddTextComponentString(v.Name)
+--		EndTextCommandSetBlipName(blip)
+--end)
 -- Activate menu when player is inside marker
 Citizen.CreateThread(function()
 	while true do
@@ -397,17 +398,21 @@ Citizen.CreateThread(function()
 				end
 			end
 
-			if IsControlJustReleased(0, 38) and not lsMenuIsShowed and isInLSMarker then				
-				lsMenuIsShowed = true
+			if IsControlJustReleased(0, 38) and not lsMenuIsShowed and isInLSMarker then
+                if (PlayerData.job.grade_name == 'boss' or PlayerData.job.grade_name == 'experimente' or PlayerData.job.grade_name == 'chief') then
+                    lsMenuIsShowed = true
 
-				local vehicle = GetVehiclePedIsIn(playerPed, false)
-				FreezeEntityPosition(vehicle, true)
+                    local vehicle = GetVehiclePedIsIn(playerPed, false)
+                    FreezeEntityPosition(vehicle, true)
 
-				myCar = ESX.Game.GetVehicleProperties(vehicle)
+                    myCar = ESX.Game.GetVehicleProperties(vehicle)
 
-				ESX.UI.Menu.CloseAll()
-				GetAction({value = 'main'})
-			end
+                    ESX.UI.Menu.CloseAll()
+                    GetAction({value = 'main'})
+                else
+                    TriggerEvent('esx:showNotification', 'Pas assez qualifié pour modifier un véhicule')
+                end
+            end
 
 			if isInLSMarker and not hasAlreadyEnteredMarker then
 				hasAlreadyEnteredMarker = true

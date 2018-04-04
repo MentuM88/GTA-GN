@@ -10,7 +10,7 @@ ESX.RegisterUsableItem('pain', function(source)
 
 	TriggerClientEvent('esx_status:add', source, 'hunger', 50000)
 	TriggerClientEvent('esx_basicneeds:onEat', source)
-	TriggerClientEvent('esx:showNotification', source, _U('pain mange'))
+	TriggerClientEvent('esx:showNotification', source, _U('used_pain'))
 
 end)
 
@@ -22,7 +22,7 @@ ESX.RegisterUsableItem('eau', function(source)
 
 	TriggerClientEvent('esx_status:add', source, 'thirst', 50000)
 	TriggerClientEvent('esx_basicneeds:onDrink', source)
-	TriggerClientEvent('esx:showNotification', source, _U('eau bu'))
+	TriggerClientEvent('esx:showNotification', source, _U('used_eau'))
 
 end)
 
@@ -34,7 +34,7 @@ ESX.RegisterUsableItem('hamburger', function(source)
 
 	TriggerClientEvent('esx_status:add', source, 'hunger', 300000)
 	TriggerClientEvent('esx_basicneeds:onEat', source)
-	TriggerClientEvent('esx:showNotification', source, _U('burger mange'))
+	TriggerClientEvent('esx:showNotification', source, _U('used_burger'))
 
 end)
 
@@ -46,7 +46,7 @@ ESX.RegisterUsableItem('icetea', function(source)
 
 	TriggerClientEvent('esx_status:add', source, 'thirst', 250000)
 	TriggerClientEvent('esx_basicneeds:onDrink', source)
-	TriggerClientEvent('esx:showNotification', source, _U('icetea bu'))
+	TriggerClientEvent('esx:showNotification', source, _U('used_icetea'))
 
 end)
 
@@ -58,7 +58,7 @@ ESX.RegisterUsableItem('kebab', function(source)
 
 	TriggerClientEvent('esx_status:add', source, 'hunger', 350000)
 	TriggerClientEvent('esx_basicneeds:onEat', source)
-	TriggerClientEvent('esx:showNotification', source, _U('kebab mange'))
+	TriggerClientEvent('esx:showNotification', source, _U('used_kebab'))
 
 end)
 
@@ -70,7 +70,7 @@ ESX.RegisterUsableItem('sushi', function(source)
 
 	TriggerClientEvent('esx_status:add', source, 'hunger', 200000)
 	TriggerClientEvent('esx_basicneeds:onEat', source)
-	TriggerClientEvent('esx:showNotification', source, _U('sushi mange'))
+	TriggerClientEvent('esx:showNotification', source, _U('used_sushi'))
 
 end)
 
@@ -82,7 +82,7 @@ ESX.RegisterUsableItem('pizza', function(source)
 
 	TriggerClientEvent('esx_status:add', source, 'hunger',400000)
 	TriggerClientEvent('esx_basicneeds:onEat', source)
-	TriggerClientEvent('esx:showNotification', source, _U('pizza mange'))
+	TriggerClientEvent('esx:showNotification', source, _U('used_pizza'))
 
 end)
 
@@ -94,7 +94,7 @@ ESX.RegisterUsableItem('sandwich', function(source)
 
 	TriggerClientEvent('esx_status:add', source, 'hunger', 180000)
 	TriggerClientEvent('esx_basicneeds:onEat', source)
-	TriggerClientEvent('esx:showNotification', source, _U('sandwich mange'))
+	TriggerClientEvent('esx:showNotification', source, _U('used_sand'))
 
 end)
 
@@ -108,6 +108,168 @@ ESX.RegisterUsableItem('cappuccino', function(source)
 	TriggerClientEvent('esx_status:add', source, 'thirst', 100000)
 	TriggerClientEvent('esx_status:add', source, 'hunger', 100000)
 	TriggerClientEvent('esx_basicneeds:onDrink', source)
-	TriggerClientEvent('esx:showNotification', source, _U('what else'))
+	TriggerClientEvent('esx:showNotification', source, _U('used_cap'))
+
+end)
+
+ESX.RegisterUsableItem('soda', function(source)
+
+	local _source = source
+    local xPlayer = ESX.GetPlayerFromId(_source)
+
+	xPlayer.removeInventoryItem('soda', 1)
+
+	TriggerClientEvent('esx_status:add', source, 'thirst', 300000)
+	TriggerClientEvent('esx_basicneeds:onDrink', source)
+	TriggerClientEvent('esx:showNotification', source, _U('used_soda'))
+
+end)
+
+ESX.RegisterUsableItem('jusfruit', function(source)
+
+	local _source = source
+    local xPlayer = ESX.GetPlayerFromId(_source)
+
+	xPlayer.removeInventoryItem('jusfruit', 1)
+
+	TriggerClientEvent('esx_status:add', source, 'thirst', 300000)
+	TriggerClientEvent('esx_basicneeds:onDrink', source)
+	TriggerClientEvent('esx:showNotification', source, _U('used_jusfruit'))
+
+end)
+
+ESX.RegisterUsableItem('energy', function(source)
+
+	local _source = source
+    local xPlayer = ESX.GetPlayerFromId(_source)
+
+	xPlayer.removeInventoryItem('energy', 1)
+
+	TriggerClientEvent('esx_status:add', source, 'thirst', 300000)
+	TriggerClientEvent('esx_basicneeds:onDrink', source)
+	TriggerClientEvent('esx:showNotification', source, _U('used_energy'))
+
+end)
+
+ESX.RegisterUsableItem('drpepper', function(source)
+
+	local _source = source
+    local xPlayer = ESX.GetPlayerFromId(_source)
+
+	xPlayer.removeInventoryItem('drpepper', 1)
+
+	TriggerClientEvent('esx_status:add', source, 'thirst', 300000)
+	TriggerClientEvent('esx_basicneeds:onDrink', source)
+	TriggerClientEvent('esx:showNotification', source, _U('used_drpepper'))
+
+end)
+
+ESX.RegisterUsableItem('limonade', function(source)
+
+	local _source = source
+    local xPlayer = ESX.GetPlayerFromId(_source)
+
+	xPlayer.removeInventoryItem('limonade', 1)
+
+	TriggerClientEvent('esx_status:add', source, 'thirst', 300000)
+	TriggerClientEvent('esx_basicneeds:onDrink', source)
+	TriggerClientEvent('esx:showNotification', source, _U('used_limonade'))
+
+end)
+
+ESX.RegisterUsableItem('mixapero', function(source)
+
+        local xPlayer = ESX.GetPlayerFromId(source)
+
+        xPlayer.removeInventoryItem('mixapero', 1)
+
+        TriggerClientEvent('esx_status:add', source, 'hunger', 100000)
+        TriggerClientEvent('esx_status:remove', source, 'thirst', 50000)
+        TriggerClientEvent('esx_basicneeds:onEat', source)
+        TriggerClientEvent('esx:showNotification', source, _U('used_mixapero'))
+
+end)
+
+ESX.RegisterUsableItem('bolcacahuetes', function(source)
+
+        local xPlayer = ESX.GetPlayerFromId(source)
+
+        xPlayer.removeInventoryItem('bolcacahuetes', 1)
+
+        TriggerClientEvent('esx_status:add', source, 'hunger', 100000)
+        TriggerClientEvent('esx_basicneeds:onEat', source)
+        TriggerClientEvent('esx:showNotification', source, _U('used_bolcacahuetes'))
+
+end)
+
+ESX.RegisterUsableItem('bolnoixcajou', function(source)
+
+        local xPlayer = ESX.GetPlayerFromId(source)
+
+        xPlayer.removeInventoryItem('bolnoixcajou', 1)
+
+        TriggerClientEvent('esx_status:add', source, 'hunger', 100000)
+        TriggerClientEvent('esx_basicneeds:onEat', source)
+        TriggerClientEvent('esx:showNotification', source, _U('used_bolnoixcajou'))
+
+end)
+
+ESX.RegisterUsableItem('bolpistache', function(source)
+
+        local xPlayer = ESX.GetPlayerFromId(source)
+
+        xPlayer.removeInventoryItem('bolpistache', 1)
+
+        TriggerClientEvent('esx_status:add', source, 'hunger', 100000)
+        TriggerClientEvent('esx_basicneeds:onEat', source)
+        TriggerClientEvent('esx:showNotification', source, _U('used_bolpistache'))
+
+end)
+
+ESX.RegisterUsableItem('bolchips', function(source)
+
+        local xPlayer = ESX.GetPlayerFromId(source)
+
+        xPlayer.removeInventoryItem('bolchips', 1)
+
+        TriggerClientEvent('esx_status:add', source, 'hunger', 100000)
+        TriggerClientEvent('esx_basicneeds:onEat', source)
+        TriggerClientEvent('esx:showNotification', source, _U('used_bolchips'))
+
+end)
+
+ESX.RegisterUsableItem('saucisson', function(source)
+
+        local xPlayer = ESX.GetPlayerFromId(source)
+
+        xPlayer.removeInventoryItem('saucisson', 1)
+
+        TriggerClientEvent('esx_status:add', source, 'hunger', 100000)
+        TriggerClientEvent('esx_basicneeds:onEat', source)
+        TriggerClientEvent('esx:showNotification', source, _U('used_saucisson'))
+
+end)
+
+ESX.RegisterUsableItem('ice', function(source)
+
+        local xPlayer = ESX.GetPlayerFromId(source)
+
+        xPlayer.removeInventoryItem('ice', 1)
+
+        TriggerClientEvent('esx_status:add', source, 'thirst', 100)
+        TriggerClientEvent('esx_basicneeds:onEat', source)
+        TriggerClientEvent('esx:showNotification', source, _U('used_ice'))
+
+end)
+
+ESX.RegisterUsableItem('menthe', function(source)
+
+        local xPlayer = ESX.GetPlayerFromId(source)
+
+        xPlayer.removeInventoryItem('menthe', 1)
+
+        TriggerClientEvent('esx_status:add', source, 'hunger', 100)
+        TriggerClientEvent('esx_basicneeds:onEat', source)
+        TriggerClientEvent('esx:showNotification', source, _U('used_menthe'))
 
 end)

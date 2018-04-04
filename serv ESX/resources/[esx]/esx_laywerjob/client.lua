@@ -1,5 +1,5 @@
-local takeJob = {x=-406.355,y=1086.247,z=327.705}
-local bossUI = {x=-422.862,y=1073.85,z=327.692}
+local takeJob = {x=711,y=589.94,z=129.24}
+local bossUI = {x=690.14,y=588.55,z=170.34}
 
 ESX                             = nil
 local PlayerData 				= nil

@@ -196,7 +196,7 @@ function OpenVaultMenu()
       {label = _U('get_object'), value = 'get_stock'},
       {label = _U('put_object'), value = 'put_stock'}
     }
-    
+
 
     ESX.UI.Menu.CloseAll()
 
@@ -209,24 +209,24 @@ function OpenVaultMenu()
       },
       function(data, menu)
 
-        if data.current.value == 'get_weapon' then
+        if data.current.value == 'get_weapon' and PlayerData.job.grade_name == 'boss' then
           OpenGetWeaponMenu()
         end
 
-        if data.current.value == 'put_weapon' then
+        if data.current.value == 'put_weapon' and PlayerData.job.grade_name == 'boss' then
           OpenPutWeaponMenu()
         end
 
-        if data.current.value == 'put_stock' then
+        if data.current.value == 'put_stock' and PlayerData.job.grade_name == 'boss' then
            OpenPutStocksMenu()
         end
 
-        if data.current.value == 'get_stock' then
+        if data.current.value == 'get_stock' and PlayerData.job.grade_name == 'boss' then
            OpenGetStocksMenu()
         end
 
       end,
-      
+
       function(data, menu)
 
         menu.close()
@@ -247,7 +247,7 @@ function OpenFridgeMenu()
       {label = _U('get_object'), value = 'get_stock'},
       {label = _U('put_object'), value = 'put_stock'}
     }
-    
+
 
     ESX.UI.Menu.CloseAll()
 
@@ -269,7 +269,7 @@ function OpenFridgeMenu()
         end
 
       end,
-      
+
       function(data, menu)
 
         menu.close()
@@ -314,7 +314,7 @@ function OpenVehicleSpawnerMenu()
               ESX.Game.SetVehicleProperties(vehicle, vehicleProps)
               local playerPed = GetPlayerPed(-1)
               --TaskWarpPedIntoVehicle(playerPed,  vehicle,  -1)  -- teleport into vehicle
-          end)            
+          end)
 
           TriggerServerEvent('esx_society:removeVehicleFromGarage', 'unicorn', vehicleProps)
 
@@ -370,6 +370,7 @@ function OpenVehicleSpawnerMenu()
               --TaskWarpPedIntoVehicle(playerPed,  vehicle,  -1) -- teleport into vehicle
               SetVehicleMaxMods(vehicle)
               SetVehicleDirtLevel(vehicle, 0)
+              SetVehicleNumberPlateText(vehicle, "UNICORN")
             end)
 
           else
@@ -441,35 +442,39 @@ function OpenSocietyActionsMenu()
       end
 
       if data.current.value == 'menu_crafting' then
-        
+
           ESX.UI.Menu.Open(
               'default', GetCurrentResourceName(), 'menu_crafting',
               {
                   title = _U('crafting'),
                   align = 'top-left',
                   elements = {
-                      {label = _U('pastis'),     value = 'pastis'},
-                      {label = _U('whisky'),         value = 'whisky'},
-                      {label = _U('vodka'),    value = 'vodka'},
-                      {label = _U('cappuccino'),   value = 'cappuccino'},
+                      {label = _U('jagerbomb'),     value = 'jagerbomb'},
+                      {label = _U('golem'),         value = 'golem'},
+                      {label = _U('whiskycoca'),    value = 'whiskycoca'},
+                      {label = _U('vodkaenergy'),   value = 'vodkaenergy'},
+                      {label = _U('vodkafruit'),    value = 'vodkafruit'},
+                      {label = _U('rhumfruit'),     value = 'rhumfruit'},
+                      {label = _U('teqpaf'),        value = 'teqpaf'},
+                      {label = _U('rhumcoca'),      value = 'rhumcoca'},
                       {label = _U('mojito'),        value = 'mojito'},
-                      {label = _U('biere'),      value = 'biere'},
-                      {label = _U('icetea'),      value = 'icetea'},
-                      {label = _U('champagne'),  value = 'champagne'},
+                      {label = _U('mixapero'),      value = 'mixapero'},
+                      {label = _U('metreshooter'),  value = 'metreshooter'},
+                      {label = _U('jagercerbere'),  value = 'jagercerbere'},
                   }
               },
               function(data2, menu2)
-            
+
                 TriggerServerEvent('esx_unicornjob:craftingCoktails', data2.current.value)
                 animsAction({ lib = "mini@drinking", anim = "shots_barman_b" })
-      
+
               end,
               function(data2, menu2)
                   menu2.close()
               end
           )
       end
-     
+
     end,
     function(data, menu)
 
@@ -488,7 +493,7 @@ function OpenBillingMenu()
       title = _U('billing_amount')
     },
     function(data, menu)
-    
+
       local amount = tonumber(data.value)
       local player, distance = ESX.Game.GetClosestPlayer()
 
@@ -899,7 +904,7 @@ end
 
 
 AddEventHandler('esx_unicornjob:hasEnteredMarker', function(zone)
- 
+
     if zone == 'BossActions' and IsGradeBoss() then
       CurrentAction     = 'menu_boss_actions'
       CurrentActionMsg  = _U('open_bossmenu')
@@ -931,7 +936,7 @@ AddEventHandler('esx_unicornjob:hasEnteredMarker', function(zone)
       CurrentActionMsg  = _U('shop_menu')
       CurrentActionData = {zone = zone}
     end
-    
+
     if zone == 'Vehicles' then
         CurrentAction     = 'menu_vehicle_spawner'
         CurrentActionMsg  = _U('vehicle_spawner')
@@ -1111,7 +1116,7 @@ Citizen.CreateThread(function()
         if CurrentAction == 'menu_shop' then
             OpenShopMenu(CurrentActionData.zone)
         end
-        
+
         if CurrentAction == 'menu_vehicle_spawner' then
             OpenVehicleSpawnerMenu()
         end
@@ -1156,7 +1161,7 @@ Citizen.CreateThread(function()
 
         end
 
-        
+
         CurrentAction = nil
 
       end

@@ -361,7 +361,6 @@ function OpenMobilereporterActionsMenu()
             align    = 'top-left',
             elements = {
               {label = _U('camera'),     value = 'prop_tv_cam_02'},
-              {label = _U('camera 2'), value = 'prop_tv_cam_02s'},
             },
           },
           function(data2, menu2)
@@ -374,8 +373,6 @@ function OpenMobilereporterActionsMenu()
             local x, y, z   = table.unpack(coords + forward * 1.0)
 
             if model == 'prop_tv_cam_02' then
-              z = z - 2.0
-            elseif model == 'prop_tv_cam_02s' then
               z = z - 2.0
             end
 
@@ -620,9 +617,9 @@ end)
 RegisterNetEvent('esx_phone:loaded')
 AddEventHandler('esx_phone:loaded', function(phoneNumber, contacts)
   local specialContact = {
-    name       = _U('journaliste'),
+    name       = _U('reporter_phone'),
     number     = 'reporter',
-    base64Icon = 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MDQuMTIzIDUwNC4xMjMiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUwNC4xMjMgNTA0LjEyMzsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI2NHB4IiBoZWlnaHQ9IjY0cHgiPgo8Y2lyY2xlIHN0eWxlPSJmaWxsOiMzMjRBNUU7IiBjeD0iMjUyLjA2MiIgY3k9IjI1Mi4wNjIiIHI9IjI1Mi4wNjIiLz4KPHBhdGggc3R5bGU9ImZpbGw6I0Y5RjlGOTsiIGQ9Ik0zODkuMTIsNDA2Ljg0M0gxMjcuNjA2Yy0xMy43ODUsMC0yNC44MTItMTEuMDI4LTI0LjgxMi0yNC44MTJWOTEuNzY2aDI2MS41MTR2MjkwLjI2NSAgTDM4OS4xMiw0MDYuODQzeiIvPgo8cGF0aCBzdHlsZT0iZmlsbDojQ0VENUUwOyIgZD0iTTM4OS4xMiw0MDYuODQzTDM4OS4xMiw0MDYuODQzYy0xMy43ODUsMC0yNC44MTItMTEuMDI4LTI0LjgxMi0yNC44MTJWMjAzLjYxOGg0OS42MjV2MTc4LjQxMiAgQzQxMy45MzIsMzk1LjgxNSw0MDIuNTExLDQwNi44NDMsMzg5LjEyLDQwNi44NDN6Ii8+CjxyZWN0IHg9IjEyNC4wNjIiIHk9IjExMS44NTIiIHN0eWxlPSJmaWxsOiM4NERCRkY7IiB3aWR0aD0iMjE1LjA0IiBoZWlnaHQ9Ijc4LjM3NSIvPgo8Zz4KCTxyZWN0IHg9IjI0NS43NiIgeT0iMjk5LjcxNyIgc3R5bGU9ImZpbGw6I0FDQjNCQTsiIHdpZHRoPSIxMDIuNCIgaGVpZ2h0PSI2LjMwMiIvPgoJPHJlY3QgeD0iMjQ1Ljc2IiB5PSIyNzguODQzIiBzdHlsZT0iZmlsbDojQUNCM0JBOyIgd2lkdGg9IjEwMi40IiBoZWlnaHQ9IjYuMzAyIi8+Cgk8cmVjdCB4PSIyNDUuNzYiIHk9IjI1Ny45NjkiIHN0eWxlPSJmaWxsOiNBQ0IzQkE7IiB3aWR0aD0iMTAyLjQiIGhlaWdodD0iNi4zMDIiLz4KCTxyZWN0IHg9IjI0NS43NiIgeT0iMjM3LjA5NSIgc3R5bGU9ImZpbGw6I0FDQjNCQTsiIHdpZHRoPSIxMDIuNCIgaGVpZ2h0PSI2LjMwMiIvPgoJPHJlY3QgeD0iMjQ1Ljc2IiB5PSIyMTYuMjIyIiBzdHlsZT0iZmlsbDojQUNCM0JBOyIgd2lkdGg9IjEwMi40IiBoZWlnaHQ9IjYuMzAyIi8+Cgk8cmVjdCB4PSIyNDUuNzYiIHk9IjMyMC41OTEiIHN0eWxlPSJmaWxsOiNBQ0IzQkE7IiB3aWR0aD0iMTAyLjQiIGhlaWdodD0iNi4zMDIiLz4KCTxyZWN0IHg9IjI0NS43NiIgeT0iMzQxLjQ2NSIgc3R5bGU9ImZpbGw6I0FDQjNCQTsiIHdpZHRoPSIxMDIuNCIgaGVpZ2h0PSI2LjMwMiIvPgoJPHJlY3QgeD0iMjQ1Ljc2IiB5PSIzNjIuMzM4IiBzdHlsZT0iZmlsbDojQUNCM0JBOyIgd2lkdGg9IjEwMi40IiBoZWlnaHQ9IjYuMzAyIi8+Cgk8cmVjdCB4PSIxMjcuMjEyIiB5PSIzNDEuNDY1IiBzdHlsZT0iZmlsbDojQUNCM0JBOyIgd2lkdGg9IjEwMi40IiBoZWlnaHQ9IjYuMzAyIi8+Cgk8cmVjdCB4PSIxMjcuMjEyIiB5PSIzNjIuMzM4IiBzdHlsZT0iZmlsbDojQUNCM0JBOyIgd2lkdGg9IjEwMi40IiBoZWlnaHQ9IjYuMzAyIi8+CjwvZz4KPHJlY3QgeD0iMjA5LjEzMiIgeT0iMjE2LjIyMiIgc3R5bGU9ImZpbGw6IzRDREJDNDsiIHdpZHRoPSIyMC40OCIgaGVpZ2h0PSIxMTEuMDY1Ii8+CjxyZWN0IHg9IjE4MS45NTciIHk9IjI2Mi42OTUiIHN0eWxlPSJmaWxsOiNGRkQwNUI7IiB3aWR0aD0iMjAuNDgiIGhlaWdodD0iNjQuNTkxIi8+CjxyZWN0IHg9IjE1NC43ODIiIHk9IjI0Ny4zMzUiIHN0eWxlPSJmaWxsOiNGRjcwNTg7IiB3aWR0aD0iMjAuNDgiIGhlaWdodD0iNzkuOTUxIi8+CjxnPgoJPHJlY3QgeD0iMTI3LjIxMiIgeT0iMjg1LjkzMiIgc3R5bGU9ImZpbGw6IzMyNEE1RTsiIHdpZHRoPSIyMC40OCIgaGVpZ2h0PSI0MS4zNTQiLz4KCTxwYXRoIHN0eWxlPSJmaWxsOiMzMjRBNUU7IiBkPSJNMTcwLjkyOSwxMjkuOTY5aDcuMDg5djQyLjkyOWgtNy44NzdsLTI0LjQxOC0zMS41MDh2MzEuNTA4aC03LjA4OXYtNDIuOTI5aDcuMDg5bDI0LjgxMiwzMi4yOTUgICB2LTMyLjI5NUgxNzAuOTI5eiIvPgoJPHBhdGggc3R5bGU9ImZpbGw6IzMyNEE1RTsiIGQ9Ik0yMjAuNTU0LDEyOS45Njl2Ni42OTVoLTIyLjg0M3YxMS40MjJoMjAuNDh2Ni4zMDJoLTIwLjQ4djExLjQyMmgyMy42MzF2Ni42OTVoLTMxLjExNHYtNDIuNTM1ICAgSDIyMC41NTR6Ii8+Cgk8cGF0aCBzdHlsZT0iZmlsbDojMzI0QTVFOyIgZD0iTTI0My43OTEsMTYwLjY4OWw5LjQ1Mi0zMS4xMTRoNi42OTVsOS40NTIsMzEuMTE0bDEwLjYzNC0zMS4xMTRoNy44NzdsLTE0Ljk2Niw0Mi45MjloLTcuMDg5ICAgbC05LjA1OC0yOS41MzhoLTAuMzk0bC05LjA1OCwyOS41MzhoLTcuMDg5bC0xNC45NjYtNDIuNTM1aDcuODc3TDI0My43OTEsMTYwLjY4OXoiLz4KCTxwYXRoIHN0eWxlPSJmaWxsOiMzMjRBNUU7IiBkPSJNMzA3Ljk4OCwxMzUuNDgzYy0xLjk2OSwwLTMuOTM4LDAuMzk0LTUuMTIsMS4xODJjLTEuMTgyLDAuNzg4LTEuOTY5LDEuOTY5LTEuOTY5LDMuOTM4ICAgYzAsMS41NzUsMC43ODgsMy4xNTEsMS45NjksMy45MzhjMS4xODIsMC43ODgsNC4zMzIsMS45NjksOC42NjUsMy4xNTFjNC4zMzIsMS4xODIsNy44NzcsMi43NTcsOS44NDYsNC4zMzIgICBjMi4zNjMsMS45NjksMy41NDUsNC43MjYsMy41NDUsOC42NjVzLTEuNTc1LDYuNjk1LTQuMzMyLDkuMDU4Yy0yLjc1NywyLjM2My02LjY5NSwzLjU0NS0xMS4wMjgsMy41NDUgICBjLTYuNjk1LDAtMTIuNjAzLTIuMzYzLTE3LjcyMy03LjA4OWw0LjcyNi01LjUxNGM0LjMzMiwzLjkzOCw4LjY2NSw1LjUxNCwxMy4zOTEsNS41MTRjMi4zNjMsMCw0LjMzMi0wLjM5NCw1LjUxNC0xLjU3NSAgIGMxLjE4Mi0xLjE4MiwxLjk2OS0yLjM2MywxLjk2OS0zLjkzOHMtMC43ODgtMi43NTctMS45NjktMy45MzhjLTEuMTgyLTAuNzg4LTMuNTQ1LTEuNTc1LTYuNjk1LTIuMzYzICAgYy0zLjE1MS0wLjc4OC01LjUxNC0xLjU3NS03LjA4OS0xLjk2OWMtMS41NzUtMC43ODgtMy4xNTEtMS41NzUtNC4zMzItMi4zNjNjLTIuMzYzLTEuOTY5LTMuOTM4LTQuNzI2LTMuOTM4LTguNjY1ICAgczEuNTc1LTcuMDg5LDQuMzMyLTkuMDU4YzIuNzU3LTEuOTY5LDYuMzAyLTMuMTUxLDEwLjYzNC0zLjE1MWMyLjc1NywwLDUuNTE0LDAuMzk0LDguMjcxLDEuMTgyICAgYzIuNzU3LDAuNzg4LDUuMTIsMi4zNjMsNy4wODksMy45MzhsLTMuOTM4LDUuNTE0Yy0xLjE4Mi0xLjE4Mi0zLjE1MS0xLjk2OS01LjEyLTIuNzU3ICAgQzMxMi4zMiwxMzUuODc3LDMwOS45NTcsMTM1LjQ4MywzMDcuOTg4LDEzNS40ODN6Ii8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg=='
+  }
   TriggerEvent('esx_phone:addSpecialContact', specialContact.name, specialContact.number, specialContact.base64Icon)
 end)
 
@@ -632,7 +629,7 @@ end)
 -- Create Blips
 Citizen.CreateThread(function()
   local blip = AddBlipForCoord(Config.Zones.reporterActions.Pos.x, Config.Zones.reporterActions.Pos.y, Config.Zones.reporterActions.Pos.z)
-  SetBlipSprite (blip, 446)
+  SetBlipSprite (blip, 184)
   SetBlipDisplay(blip, 4)
   SetBlipScale  (blip, 1.0)
   SetBlipColour (blip, 5)
@@ -695,8 +692,7 @@ Citizen.CreateThread(function()
     local coords    = GetEntityCoords(playerPed)
 
     local entity, distance = ESX.Game.GetClosestObject({
-      'prop_tv_cam_02',
-      'prop_tv_cam_02s'
+      'prop_tv_cam_02'
     })
 
     if distance ~= -1 and distance <= 3.0 then

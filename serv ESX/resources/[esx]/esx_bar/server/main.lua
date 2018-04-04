@@ -14,8 +14,7 @@ TriggerEvent('esx_society:registerSociety', 'unicorn', 'Unicorn', 'society_unico
 RegisterServerEvent('esx_unicornjob:getStockItem')
 AddEventHandler('esx_unicornjob:getStockItem', function(itemName, count)
 
-  local _source = source
-  local xPlayer = ESX.GetPlayerFromId(_source)
+  local xPlayer = ESX.GetPlayerFromId(source)
 
   TriggerEvent('esx_addoninventory:getSharedInventory', 'society_unicorn', function(inventory)
 
@@ -45,8 +44,7 @@ end)
 RegisterServerEvent('esx_unicornjob:putStockItems')
 AddEventHandler('esx_unicornjob:putStockItems', function(itemName, count)
 
-  local _source = source
-  local xPlayer = ESX.GetPlayerFromId(_source)
+  local xPlayer = ESX.GetPlayerFromId(source)
 
   TriggerEvent('esx_addoninventory:getSharedInventory', 'society_unicorn', function(inventory)
 
@@ -70,8 +68,7 @@ end)
 RegisterServerEvent('esx_unicornjob:getFridgeStockItem')
 AddEventHandler('esx_unicornjob:getFridgeStockItem', function(itemName, count)
 
-  local _source = source
-  local xPlayer = ESX.GetPlayerFromId(_source)
+  local xPlayer = ESX.GetPlayerFromId(source)
 
   TriggerEvent('esx_addoninventory:getSharedInventory', 'society_unicorn_fridge', function(inventory)
 
@@ -101,8 +98,7 @@ end)
 RegisterServerEvent('esx_unicornjob:putFridgeStockItems')
 AddEventHandler('esx_unicornjob:putFridgeStockItems', function(itemName, count)
 
-  local _source = source
-  local xPlayer = ESX.GetPlayerFromId(_source)
+  local xPlayer = ESX.GetPlayerFromId(source)
 
   TriggerEvent('esx_addoninventory:getSharedInventory', 'society_unicorn_fridge', function(inventory)
 
@@ -127,7 +123,7 @@ RegisterServerEvent('esx_unicornjob:buyItem')
 AddEventHandler('esx_unicornjob:buyItem', function(itemName, price, itemLabel)
 
     local _source = source
-    local xPlayer = ESX.GetPlayerFromId(_source)
+    local xPlayer  = ESX.GetPlayerFromId(_source)
     local limit = xPlayer.getInventoryItem(itemName).limit
     local qtty = xPlayer.getInventoryItem(itemName).count
     local societyAccount = nil
@@ -582,8 +578,7 @@ end)
 
 ESX.RegisterServerCallback('esx_unicornjob:addVaultWeapon', function(source, cb, weaponName)
 
-  local _source = source
-  local xPlayer = ESX.GetPlayerFromId(_source)
+  local xPlayer = ESX.GetPlayerFromId(source)
 
   xPlayer.removeWeapon(weaponName)
 
@@ -621,8 +616,7 @@ end)
 
 ESX.RegisterServerCallback('esx_unicornjob:removeVaultWeapon', function(source, cb, weaponName)
 
-  local _source = source
-  local xPlayer = ESX.GetPlayerFromId(_source)
+  local xPlayer = ESX.GetPlayerFromId(source)
 
   xPlayer.addWeapon(weaponName, 1000)
 
@@ -660,8 +654,7 @@ end)
 
 ESX.RegisterServerCallback('esx_unicornjob:getPlayerInventory', function(source, cb)
 
-  local _source = source
-  local xPlayer = ESX.GetPlayerFromId(_source)
+  local xPlayer    = ESX.GetPlayerFromId(source)
   local items      = xPlayer.inventory
 
   cb({

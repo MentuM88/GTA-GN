@@ -1,7 +1,7 @@
 Config              = {}
 Config.DrawDistance = 100.0
 Config.Locale = 'fr'
-Config.IsMecanoJobOnly = false
+Config.IsMecanoJobOnly = true
 
 Config.Zones = {
     ls1 = {
@@ -462,37 +462,37 @@ Config.Menus = {
 		label = _U('engine'),
 		parent = 'upgrades',
 		modType = 11,
-		price = {13.95, 32.56, 65.12, 139.53}
+		price = {2.95, 3.56, 5.12, 10.53}
 	},
 	modBrakes = {
 		label = _U('brakes'),
 		parent = 'upgrades',
 		modType = 12,
-		price = {4.65, 9.3, 18.6, 13.95}
+		price = {2.95, 3.56, 5.12, 10.53}
 	},
 	modTransmission = {
 		label = _U('transmission'),
 		parent = 'upgrades',
 		modType = 13,
-		price = {13.95, 20.93, 46.51}
+		price = {2.95, 3.56, 5.12, 10.53}
 	},
 	modSuspension = {
 		label = _U('suspension'),
 		parent = 'upgrades',
 		modType = 15,
-		price = {3.72, 7.44, 14.88, 29.77, 40.2}
+		price = {2.95, 3.56, 5.12, 10.53}
 	},
 	modArmor = {
 		label = _U('armor'),
 		parent = 'upgrades',
 		modType = 16,
-		price = {69.77, 116.28, 400.6, 600.6, 900.6, 1000.6}
+		price = {10.77, 20.28, 30.6, 40.6, 50.6, 60.6}
 	},
 	modTurbo = {
 		label = _U('turbo'),
 		parent = 'upgrades',
 		modType = 17,
-		price = {55.81}
+		price = {10.81}
 	},
 	cosmetics = {
 		label = _U('cosmetics'),

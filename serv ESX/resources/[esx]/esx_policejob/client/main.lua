@@ -47,10 +47,10 @@ end)
 function SetVehicleMaxMods(vehicle)
 
   local props = {
-    modEngine       = 4,
-    modBrakes       = 4,
-    modTransmission = 4,
-    modSuspension   = 4,
+    modEngine       = 3,
+    modBrakes       = 2,
+    modTransmission = 2,
+    modSuspension   = 3,
     modTurbo        = true,
   }
 
@@ -155,15 +155,15 @@ function OpenCloakroomMenu()
             else
 
                 local clothesSkin = {
-                    ['tshirt_1'] = 36, ['tshirt_2'] = 1,
+                    ['tshirt_1'] = 35, ['tshirt_2'] = 0,
                     ['torso_1'] = 48, ['torso_2'] = 0,
                     ['decals_1'] = 0, ['decals_2'] = 0,
-                    ['arms'] = 44,
+                    ['arms'] = 33,
                     ['pants_1'] = 34, ['pants_2'] = 0,
-                    ['shoes_1'] = 27, ['shoes_2'] = 0,
+                    ['shoes_1'] = 24, ['shoes_2'] = 0,
                     ['helmet_1'] = 45, ['helmet_2'] = 0,
                     ['chain_1'] = 0, ['chain_2'] = 0,
-                    ['ears_1'] = 2, ['ears_2'] = 0
+                    ['ears_1'] = 2, ['ears_2'] = 00
                 }
                 TriggerEvent('skinchanger:loadClothes', skin, clothesSkin)
 
@@ -201,11 +201,11 @@ function OpenCloakroomMenu()
                 local clothesSkin = {
                     ['tshirt_1'] = 35, ['tshirt_2'] = 0,
                     ['torso_1'] = 48, ['torso_2'] = 0,
-                    ['decals_1'] = 0, ['decals_2'] = 0,
-                    ['arms'] = 44,
+                    ['decals_1'] = 8, ['decals_2'] = 1,
+                    ['arms'] =33,
                     ['pants_1'] = 34, ['pants_2'] = 0,
-                    ['shoes_1'] = 27, ['shoes_2'] = 0,
-                    ['helmet_1'] = -1, ['helmet_2'] = 0,
+                    ['shoes_1'] = 24, ['shoes_2'] = 0,
+                    ['helmet_1'] = 45, ['helmet_2'] = 0,
                     ['chain_1'] = 0, ['chain_2'] = 0,
                     ['ears_1'] = 2, ['ears_2'] = 0
                 }
@@ -228,13 +228,13 @@ function OpenCloakroomMenu()
             if skin.sex == 0 then
 
                 local clothesSkin = {
-                    ['tshirt_1'] = 58, ['tshirt_2'] = 0,
-                    ['torso_1'] = 55, ['torso_2'] = 0,
+                    ['tshirt_1'] = 35, ['tshirt_2'] = 0,
+                    ['torso_1'] = 48, ['torso_2'] = 0,
                     ['decals_1'] = 8, ['decals_2'] = 1,
-                    ['arms'] = 41,
-                    ['pants_1'] = 35, ['pants_2'] = 0,
-                    ['shoes_1'] = 51, ['shoes_2'] = 0,
-                    ['helmet_1'] = 46, ['helmet_2'] = 0,
+                    ['arms'] = 35,
+                    ['pants_1'] = 7, ['pants_2'] = 0,
+                    ['shoes_1'] = 0, ['shoes_2'] = 0,
+                    ['helmet_1'] = 45, ['helmet_2'] = 0,
                     ['chain_1'] = 0, ['chain_2'] = 0,
                     ['ears_1'] = 2, ['ears_2'] = 0
                 }
@@ -245,11 +245,11 @@ function OpenCloakroomMenu()
                 local clothesSkin = {
                     ['tshirt_1'] = 35, ['tshirt_2'] = 0,
                     ['torso_1'] = 48, ['torso_2'] = 0,
-                    ['decals_1'] = 7, ['decals_2'] = 1,
-                    ['arms'] = 44,
+                    ['decals_1'] = 8, ['decals_2'] = 1,
+                    ['arms'] = 35,
                     ['pants_1'] = 34, ['pants_2'] = 0,
-                    ['shoes_1'] = 27, ['shoes_2'] = 0,
-                    ['helmet_1'] = -1, ['helmet_2'] = 0,
+                    ['shoes_1'] = 24, ['shoes_2'] = 0,
+                    ['helmet_1'] = 45, ['helmet_2'] = 0,
                     ['chain_1'] = 0, ['chain_2'] = 0,
                     ['ears_1'] = 2, ['ears_2'] = 0
                 }
@@ -289,11 +289,11 @@ function OpenCloakroomMenu()
                 local clothesSkin = {
                     ['tshirt_1'] = 35, ['tshirt_2'] = 0,
                     ['torso_1'] = 48, ['torso_2'] = 0,
-                    ['decals_1'] = 7, ['decals_2'] = 2,
-                    ['arms'] = 44,
+                    ['decals_1'] = 8, ['decals_2'] = 2,
+                    ['arms'] = 35,
                     ['pants_1'] = 34, ['pants_2'] = 0,
-                    ['shoes_1'] = 27, ['shoes_2'] = 0,
-                    ['helmet_1'] = -1, ['helmet_2'] = 0,
+                    ['shoes_1'] = 24, ['shoes_2'] = 0,
+                    ['helmet_1'] = 45, ['helmet_2'] = 0,
                     ['chain_1'] = 0, ['chain_2'] = 0,
                     ['ears_1'] = 2, ['ears_2'] = 0
                 }
@@ -643,10 +643,14 @@ function OpenVehicleSpawnerMenu(station, partNum)
 
           local vehicleProps = data.current.value
 
-          ESX.Game.SpawnVehicle(vehicleProps.model, vehicles[partNum].SpawnPoint, 270.0, function(vehicle)
+ESX.Game.SpawnVehicle(vehicleProps.model, vehicles[partNum].SpawnPoint, 270.0, function(vehicle)
             ESX.Game.SetVehicleProperties(vehicle, vehicleProps)
             local playerPed = GetPlayerPed(-1)
             TaskWarpPedIntoVehicle(playerPed,  vehicle,  -1)
+            local plate = math.random(100, 900)
+            SetVehicleNumberPlateText(vehicle, "LSPD"..plate.." ")
+            SetVehicleEnginePowerMultiplier(vehicle, 15.0)
+            SetVehicleEngineTorqueMultiplier(vehicle, 18.0)
           end)
 
           TriggerServerEvent('esx_society:removeVehicleFromGarage', 'police', vehicleProps)
